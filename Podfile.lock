@@ -1,0 +1,20 @@
+PODS:
+  - FileBrowser (1.0.0)
+  - GiphyCoreSDK (1.2.0)
+
+DEPENDENCIES:
+  - FileBrowser (~> 1.0)
+  - GiphyCoreSDK
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FileBrowser
+    - GiphyCoreSDK
+
+SPEC CHECKSUMS:
+  FileBrowser: 2ca91ff61c9ea09665eb3b8f9e64a7a77e66a0bf
+  GiphyCoreSDK: 1278bfc2dbdc9f1b2b1703ee70224f515b9530a6
+
+PODFILE CHECKSUM: 780702758a3d4161d6c7a30046290da2acb62ea2
+
+COCOAPODS: 1.5.3
