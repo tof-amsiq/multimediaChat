@@ -119,6 +119,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     @objc func photoAlbumIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
+        
+        let d = Date()
+        let df = DateFormatter()
+        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+        
+        let stringDate = df.string(from: d)
         CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
         CameraController.shared.imagePickedBlock = {(image) in
             debugPrint("Tobias \(image)")
@@ -126,7 +132,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: image)!
             self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
             let imageData: NSData = UIImagePNGRepresentation(image) as NSData!
-            SocketIOManager.shared.uploadData(data: imageData)
+            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate)
         }
         CameraController.shared.imagePickedURL = {(url) in
             debugPrint("Tobias \(url)")
