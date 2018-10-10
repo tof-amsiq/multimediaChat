@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		30E6138E7736414D1F6D747F /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */; };
-		81060829215B865D0073E3DB /* GIFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81060828215B865D0073E3DB /* GIFViewController.xib */; };
-		8106082B215B86EC0073E3DB /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8106082A215B86EC0073E3DB /* GifViewController.swift */; };
 		81060830215B90B10073E3DB /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8106082E215B90B10073E3DB /* GifView.swift */; };
 		81060831215B90B10073E3DB /* GifView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8106082F215B90B10073E3DB /* GifView.xib */; };
 		81060834215B95060073E3DB /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81060832215B95060073E3DB /* GifCell.swift */; };
@@ -26,8 +24,6 @@
 		81AE8B78214A5E58009F8524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */; };
 		81AE8B83214A5E58009F8524 /* CollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B82214A5E58009F8524 /* CollectionViewTests.swift */; };
 		81AE8B8E214A5E58009F8524 /* CollectionViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B8D214A5E58009F8524 /* CollectionViewUITests.swift */; };
-		81AE8BA5214A6455009F8524 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8BA3214A6455009F8524 /* CollectionViewCell.swift */; };
-		81AE8BA6214A6455009F8524 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE8BA4214A6455009F8524 /* CollectionViewCell.xib */; };
 		81D689CC2160D31800F569EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D689CB2160D31800F569EE /* Main.storyboard */; };
 		81D689CF2162224500F569EE /* Datamodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689CE2162224500F569EE /* Datamodel.swift */; };
 		81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */; };
@@ -57,8 +53,6 @@
 /* Begin PBXFileReference section */
 		3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.release.xcconfig"; sourceTree = "<group>"; };
-		81060828215B865D0073E3DB /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GIFViewController.xib; path = GifController/GIFViewController.xib; sourceTree = "<group>"; };
-		8106082A215B86EC0073E3DB /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifViewController.swift; path = GifController/GifViewController.swift; sourceTree = "<group>"; };
 		8106082E215B90B10073E3DB /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifView.swift; path = GifController/GifView.swift; sourceTree = "<group>"; };
 		8106082F215B90B10073E3DB /* GifView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifView.xib; path = GifController/GifView.xib; sourceTree = "<group>"; };
 		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifCell.swift; path = GifController/GifCell.swift; sourceTree = "<group>"; };
@@ -81,8 +75,6 @@
 		81AE8B89214A5E58009F8524 /* MultimediaChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultimediaChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AE8B8D214A5E58009F8524 /* CollectionViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewUITests.swift; sourceTree = "<group>"; };
 		81AE8B8F214A5E58009F8524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81AE8BA3214A6455009F8524 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		81AE8BA4214A6455009F8524 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		81D689CB2160D31800F569EE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		81D689CE2162224500F569EE /* Datamodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Datamodel.swift; path = DataController/Datamodel.swift; sourceTree = "<group>"; };
 		81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioRecorderViewController.swift; path = AudioRecorder/AudioRecorderViewController.swift; sourceTree = "<group>"; };
@@ -125,8 +117,6 @@
 		81060825215B86220073E3DB /* GifController */ = {
 			isa = PBXGroup;
 			children = (
-				81060828215B865D0073E3DB /* GIFViewController.xib */,
-				8106082A215B86EC0073E3DB /* GifViewController.swift */,
 				8106082E215B90B10073E3DB /* GifView.swift */,
 				8106082F215B90B10073E3DB /* GifView.xib */,
 				81060832215B95060073E3DB /* GifCell.swift */,
@@ -172,10 +162,8 @@
 				81AE8B74214A5E58009F8524 /* Assets.xcassets */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
-				81AE8BA3214A6455009F8524 /* CollectionViewCell.swift */,
 				814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */,
 				814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */,
-				81AE8BA4214A6455009F8524 /* CollectionViewCell.xib */,
 				81095338215A68F2009291C6 /* imageExtension.swift */,
 			);
 			path = MultimediaChat;
@@ -360,10 +348,8 @@
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,
 				81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */,
-				81AE8BA6214A6455009F8524 /* CollectionViewCell.xib in Resources */,
 				81D689D82164B44600F569EE /* AudioViewController.xib in Resources */,
 				81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */,
-				81060829215B865D0073E3DB /* GIFViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,8 +434,6 @@
 				81060830215B90B10073E3DB /* GifView.swift in Sources */,
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
 				81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */,
-				8106082B215B86EC0073E3DB /* GifViewController.swift in Sources */,
-				81AE8BA5214A6455009F8524 /* CollectionViewCell.swift in Sources */,
 				81D689D72164B44600F569EE /* AudioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
