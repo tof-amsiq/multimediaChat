@@ -57,16 +57,16 @@
 /* Begin PBXFileReference section */
 		3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.release.xcconfig"; sourceTree = "<group>"; };
-		81060828215B865D0073E3DB /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIFViewController.xib; sourceTree = "<group>"; };
-		8106082A215B86EC0073E3DB /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
-		8106082E215B90B10073E3DB /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
-		8106082F215B90B10073E3DB /* GifView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifView.xib; sourceTree = "<group>"; };
-		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
-		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
+		81060828215B865D0073E3DB /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GIFViewController.xib; path = GifController/GIFViewController.xib; sourceTree = "<group>"; };
+		8106082A215B86EC0073E3DB /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifViewController.swift; path = GifController/GifViewController.swift; sourceTree = "<group>"; };
+		8106082E215B90B10073E3DB /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifView.swift; path = GifController/GifView.swift; sourceTree = "<group>"; };
+		8106082F215B90B10073E3DB /* GifView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifView.xib; path = GifController/GifView.xib; sourceTree = "<group>"; };
+		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifCell.swift; path = GifController/GifCell.swift; sourceTree = "<group>"; };
+		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifCell.xib; path = GifController/GifCell.xib; sourceTree = "<group>"; };
 		81095338215A68F2009291C6 /* imageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
 		814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverViewCell.swift; sourceTree = "<group>"; };
 		814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverViewCell.xib; sourceTree = "<group>"; };
-		814C75CC214BB5A7007C07E8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		814C75CC214BB5A7007C07E8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = DataController/Message.swift; sourceTree = "<group>"; };
 		81834CCB21590D66004D65E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		81834CCC21590D66004D65E2 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		81AE8B6A214A5E56009F8524 /* MultimediaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultimediaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,10 +84,10 @@
 		81AE8BA3214A6455009F8524 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		81AE8BA4214A6455009F8524 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		81D689CB2160D31800F569EE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		81D689CE2162224500F569EE /* Datamodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datamodel.swift; sourceTree = "<group>"; };
-		81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderViewController.swift; sourceTree = "<group>"; };
-		81D689D52164B44600F569EE /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
-		81D689D62164B44600F569EE /* AudioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioViewController.xib; sourceTree = "<group>"; };
+		81D689CE2162224500F569EE /* Datamodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Datamodel.swift; path = DataController/Datamodel.swift; sourceTree = "<group>"; };
+		81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioRecorderViewController.swift; path = AudioRecorder/AudioRecorderViewController.swift; sourceTree = "<group>"; };
+		81D689D52164B44600F569EE /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioViewController.swift; path = AudioRecorder/AudioViewController.swift; sourceTree = "<group>"; };
+		81D689D62164B44600F569EE /* AudioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AudioViewController.xib; path = AudioRecorder/AudioViewController.xib; sourceTree = "<group>"; };
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = CameraController/CameraController.swift; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
