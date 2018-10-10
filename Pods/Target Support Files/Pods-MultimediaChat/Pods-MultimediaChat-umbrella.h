@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_CollectionViewVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_CollectionViewVersionString[];
+FOUNDATION_EXPORT double Pods_MultimediaChatVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MultimediaChatVersionString[];
 

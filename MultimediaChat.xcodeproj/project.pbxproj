@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30E6138E7736414D1F6D747F /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */; };
 		81060829215B865D0073E3DB /* GIFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81060828215B865D0073E3DB /* GIFViewController.xib */; };
 		8106082B215B86EC0073E3DB /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8106082A215B86EC0073E3DB /* GifViewController.swift */; };
 		81060830215B90B10073E3DB /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8106082E215B90B10073E3DB /* GifView.swift */; };
@@ -14,8 +15,6 @@
 		81060834215B95060073E3DB /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81060832215B95060073E3DB /* GifCell.swift */; };
 		81060835215B95060073E3DB /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81060833215B95060073E3DB /* GifCell.xib */; };
 		81095339215A68F2009291C6 /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81095338215A68F2009291C6 /* imageExtension.swift */; };
-		8109533D215A759E009291C6 /* funny.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8109533C215A759E009291C6 /* funny.gif */; };
-		8109533F215A75A7009291C6 /* play.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8109533E215A75A6009291C6 /* play.gif */; };
 		814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */; };
 		814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */; };
 		814C75CD214BB5A7007C07E8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75CC214BB5A7007C07E8 /* Message.swift */; };
@@ -56,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.release.xcconfig"; sourceTree = "<group>"; };
 		81060828215B865D0073E3DB /* GIFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIFViewController.xib; sourceTree = "<group>"; };
 		8106082A215B86EC0073E3DB /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
@@ -64,8 +64,6 @@
 		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
 		81095338215A68F2009291C6 /* imageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
-		8109533C215A759E009291C6 /* funny.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = funny.gif; path = "../../../Downloads/GIF-Swift-master/GIF-Swift/funny.gif"; sourceTree = "<group>"; };
-		8109533E215A75A6009291C6 /* play.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = play.gif; path = "../../../Downloads/GIF-Swift-master/GIF-Swift/play.gif"; sourceTree = "<group>"; };
 		814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverViewCell.swift; sourceTree = "<group>"; };
 		814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverViewCell.xib; sourceTree = "<group>"; };
 		814C75CC214BB5A7007C07E8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -91,8 +89,10 @@
 		81D689D52164B44600F569EE /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		81D689D62164B44600F569EE /* AudioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioViewController.xib; sourceTree = "<group>"; };
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
+		F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E4E034928590ACF40D8DCB /* Pods_CollectionView.framework in Frameworks */,
+				30E6138E7736414D1F6D747F /* Pods_MultimediaChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,8 +177,6 @@
 				814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */,
 				81AE8BA4214A6455009F8524 /* CollectionViewCell.xib */,
 				81095338215A68F2009291C6 /* imageExtension.swift */,
-				8109533E215A75A6009291C6 /* play.gif */,
-				8109533C215A759E009291C6 /* funny.gif */,
 			);
 			path = MultimediaChat;
 			sourceTree = "<group>";
@@ -233,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */,
+				3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,6 +242,8 @@
 			children = (
 				E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */,
 				44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */,
+				F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */,
+				C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -357,9 +359,7 @@
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,
-				8109533F215A75A7009291C6 /* play.gif in Resources */,
 				81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */,
-				8109533D215A759E009291C6 /* funny.gif in Resources */,
 				81AE8BA6214A6455009F8524 /* CollectionViewCell.xib in Resources */,
 				81D689D82164B44600F569EE /* AudioViewController.xib in Resources */,
 				81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */,
@@ -399,7 +399,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CollectionView-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MultimediaChat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -414,7 +414,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
 			);
@@ -427,7 +427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -613,7 +613,7 @@
 		};
 		81AE8B93214A5E58009F8524 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */;
+			baseConfigurationReference = F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -632,7 +632,7 @@
 		};
 		81AE8B94214A5E58009F8524 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */;
+			baseConfigurationReference = C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
