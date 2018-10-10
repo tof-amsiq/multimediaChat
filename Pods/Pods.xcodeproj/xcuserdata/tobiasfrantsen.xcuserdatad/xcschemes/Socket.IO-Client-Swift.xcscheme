@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CEEF0F042F3E4DC731C3B4D14C2C637B"
-               BuildableName = "Pods_MultimediaChat.framework"
-               BlueprintName = "Pods-MultimediaChat"
+               BlueprintIdentifier = "FEC00AE96E100FEDE11C51D601F7DA48"
+               BuildableName = "SocketIO.framework"
+               BlueprintName = "Socket.IO-Client-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CEEF0F042F3E4DC731C3B4D14C2C637B"
-            BuildableName = "Pods_MultimediaChat.framework"
-            BlueprintName = "Pods-MultimediaChat"
+            BlueprintIdentifier = "FEC00AE96E100FEDE11C51D601F7DA48"
+            BuildableName = "SocketIO.framework"
+            BlueprintName = "Socket.IO-Client-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

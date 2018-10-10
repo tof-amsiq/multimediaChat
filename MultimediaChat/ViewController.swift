@@ -40,7 +40,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        SocketIOManager.shared.connectSocket()
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -96,7 +96,13 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         present(fileBrowser, animated: true, completion: nil)
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
-            print(file.displayName)
+            print("tobias\(file.displayName)")
+            
+            
+            let url = URL(string: "file:///Users/tobiasfrantsen/Downloads/icon.png")!
+            
+            let imageData:NSData = NSData.init(contentsOf: url)!
+            
             let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, imageTest: nil)!
             self.addNewMessageToCollectionView(newMessage: newFileMessage)
             self.dismiss(animated: true)
@@ -116,8 +122,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
         CameraController.shared.imagePickedBlock = {(image) in
             debugPrint("Tobias \(image)")
+        
             let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: image)!
             self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
+            let imageData: NSData = UIImagePNGRepresentation(image) as NSData!
+            SocketIOManager.shared.uploadData(data: imageData)
         }
         CameraController.shared.imagePickedURL = {(url) in
             debugPrint("Tobias \(url)")

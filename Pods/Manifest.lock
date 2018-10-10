@@ -1,20 +1,28 @@
 PODS:
   - FileBrowser (1.0.0)
   - GiphyCoreSDK (1.2.0)
+  - Socket.IO-Client-Swift (13.3.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - FileBrowser (~> 1.0)
   - GiphyCoreSDK
+  - Socket.IO-Client-Swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FileBrowser
     - GiphyCoreSDK
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
   FileBrowser: 2ca91ff61c9ea09665eb3b8f9e64a7a77e66a0bf
   GiphyCoreSDK: 1278bfc2dbdc9f1b2b1703ee70224f515b9530a6
+  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 5bfa30020d1ca95b676a85dc93caa2aa41be3ea1
+PODFILE CHECKSUM: 3d1e103a435fba377b2d3f0d7ce8a5c41ef39fc0
 
 COCOAPODS: 1.5.3
