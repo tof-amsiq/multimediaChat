@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30E6138E7736414D1F6D747F /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */; };
 		81060830215B90B10073E3DB /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8106082E215B90B10073E3DB /* GifView.swift */; };
 		81060831215B90B10073E3DB /* GifView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8106082F215B90B10073E3DB /* GifView.xib */; };
 		81060834215B95060073E3DB /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81060832215B95060073E3DB /* GifCell.swift */; };
@@ -31,7 +30,7 @@
 		81D689D72164B44600F569EE /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689D52164B44600F569EE /* AudioViewController.swift */; };
 		81D689D82164B44600F569EE /* AudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D689D62164B44600F569EE /* AudioViewController.xib */; };
 		81D689DB2164C09B00F569EE /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689DA2164C09B00F569EE /* CameraController.swift */; };
-		E9E4E034928590ACF40D8DCB /* Pods_CollectionView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */; };
+		C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44921D266F87AD301C735F9B /* Pods-CollectionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.release.xcconfig"; sourceTree = "<group>"; };
+		559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8106082E215B90B10073E3DB /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifView.swift; path = GifController/GifView.swift; sourceTree = "<group>"; };
 		8106082F215B90B10073E3DB /* GifView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifView.xib; path = GifController/GifView.xib; sourceTree = "<group>"; };
 		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifCell.swift; path = GifController/GifCell.swift; sourceTree = "<group>"; };
@@ -84,7 +83,6 @@
 		81D689D62164B44600F569EE /* AudioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AudioViewController.xib; path = AudioRecorder/AudioViewController.xib; sourceTree = "<group>"; };
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = CameraController/CameraController.swift; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
-		CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollectionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
 		F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,8 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E4E034928590ACF40D8DCB /* Pods_CollectionView.framework in Frameworks */,
-				30E6138E7736414D1F6D747F /* Pods_MultimediaChat.framework in Frameworks */,
+				C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,8 +227,7 @@
 		C1B91A85E2B38684FA7581A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF36BBA73AE43A6516291887 /* Pods_CollectionView.framework */,
-				3A336AF2A62E0E3350B953D1 /* Pods_MultimediaChat.framework */,
+				559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
