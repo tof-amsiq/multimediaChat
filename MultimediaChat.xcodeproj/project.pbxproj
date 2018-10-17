@@ -24,12 +24,16 @@
 		81AE8B78214A5E58009F8524 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */; };
 		81AE8B83214A5E58009F8524 /* CollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B82214A5E58009F8524 /* CollectionViewTests.swift */; };
 		81AE8B8E214A5E58009F8524 /* CollectionViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B8D214A5E58009F8524 /* CollectionViewUITests.swift */; };
+		81C1F382216E6721007728C0 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C1F380216E6721007728C0 /* ImageViewCell.swift */; };
+		81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C1F381216E6721007728C0 /* ImageViewCell.xib */; };
 		81D689CC2160D31800F569EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81D689CB2160D31800F569EE /* Main.storyboard */; };
 		81D689CF2162224500F569EE /* Datamodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689CE2162224500F569EE /* Datamodel.swift */; };
 		81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */; };
 		81D689D72164B44600F569EE /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689D52164B44600F569EE /* AudioViewController.swift */; };
 		81D689D82164B44600F569EE /* AudioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D689D62164B44600F569EE /* AudioViewController.xib */; };
 		81D689DB2164C09B00F569EE /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689DA2164C09B00F569EE /* CameraController.swift */; };
+		81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC82782175F40F002B40D4 /* TextViewCell.swift */; };
+		81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81DC82792175F40F002B40D4 /* TextViewCell.xib */; };
 		C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +80,16 @@
 		81AE8B89214A5E58009F8524 /* MultimediaChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultimediaChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AE8B8D214A5E58009F8524 /* CollectionViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewUITests.swift; sourceTree = "<group>"; };
 		81AE8B8F214A5E58009F8524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81C1F380216E6721007728C0 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		81C1F381216E6721007728C0 /* ImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCell.xib; sourceTree = "<group>"; };
 		81D689CB2160D31800F569EE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		81D689CE2162224500F569EE /* Datamodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Datamodel.swift; path = DataController/Datamodel.swift; sourceTree = "<group>"; };
 		81D689D12163CF2B00F569EE /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioRecorderViewController.swift; path = AudioRecorder/AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		81D689D52164B44600F569EE /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioViewController.swift; path = AudioRecorder/AudioViewController.swift; sourceTree = "<group>"; };
 		81D689D62164B44600F569EE /* AudioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AudioViewController.xib; path = AudioRecorder/AudioViewController.xib; sourceTree = "<group>"; };
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = CameraController/CameraController.swift; sourceTree = "<group>"; };
+		81DC82782175F40F002B40D4 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		81DC82792175F40F002B40D4 /* TextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
 		F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +165,7 @@
 		81AE8B6C214A5E56009F8524 /* MultimediaChat */ = {
 			isa = PBXGroup;
 			children = (
+				81C1F37F216E62B8007728C0 /* MessageView */,
 				812363C1216E18BB00D224B8 /* SocketController */,
 				81D689D92164C07E00F569EE /* CameraController */,
 				81D689D02163CEF900F569EE /* AudioRecorder */,
@@ -195,6 +204,17 @@
 			);
 			name = CollectionViewUITests;
 			path = MultimediaChatUITests;
+			sourceTree = "<group>";
+		};
+		81C1F37F216E62B8007728C0 /* MessageView */ = {
+			isa = PBXGroup;
+			children = (
+				81C1F380216E6721007728C0 /* ImageViewCell.swift */,
+				81C1F381216E6721007728C0 /* ImageViewCell.xib */,
+				81DC82782175F40F002B40D4 /* TextViewCell.swift */,
+				81DC82792175F40F002B40D4 /* TextViewCell.xib */,
+			);
+			path = MessageView;
 			sourceTree = "<group>";
 		};
 		81D689CD216221C900F569EE /* DataController */ = {
@@ -350,6 +370,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AE8B78214A5E58009F8524 /* LaunchScreen.storyboard in Resources */,
+				81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */,
+				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
@@ -442,9 +464,11 @@
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
+				81C1F382216E6721007728C0 /* ImageViewCell.swift in Sources */,
 				81060830215B90B10073E3DB /* GifView.swift in Sources */,
 				812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */,
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
+				81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */,
 				81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */,
 				81D689D72164B44600F569EE /* AudioViewController.swift in Sources */,
 			);

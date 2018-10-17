@@ -25,8 +25,9 @@ class Message: NSObject {
     public var nameOfSender: String
     public var linkToFile: String
     public var image: UIImage?
+    public var text: String?
     
-    init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, imageTest: UIImage?) {
+    init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, imageTest: UIImage?, messageText: String?) {
         
         self.type = messageType
         self.sender = isSender
@@ -34,6 +35,7 @@ class Message: NSObject {
         self.nameOfSender = nameSender
         self.linkToFile = filePath
         self.image = imageTest
+        self.text = messageText
        
     }
     

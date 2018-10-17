@@ -36,7 +36,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
 //    private var rows: [cellType] = []
     private var messageArray: [Message] = []
     
-   
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,19 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionView.dataSource = self
         collectionView.delegate = self
         
+//        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
+//            let collectionView = collectionView {
+//            let w = collectionView.frame.width - 20
+//            flowLayout.estimatedItemSize = CGSize(width: w, height: 200)
+//        }
+        
 //        self.topBorderView.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-        collectionView.register(UINib.init(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
-         collectionView.register(UINib.init(nibName: "ReceiverViewCell", bundle: nil), forCellWithReuseIdentifier: "ReceiverViewCell")
+//        collectionView.register(UINib.init(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
+//         collectionView.register(UINib.init(nibName: "ReceiverViewCell", bundle: nil), forCellWithReuseIdentifier: "ReceiverViewCell")
+        
+        collectionView.register(UINib.init(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
+          collectionView.register(UINib.init(nibName: "TextViewCell", bundle: nil), forCellWithReuseIdentifier: "TextViewCell")
+
         
 //      rows = self.buildRows()
         
@@ -84,7 +94,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         self.fileImageView.addGestureRecognizer(fileTapGestureRecognizer)
         
         
-        self.messageArray = self.getMessage()
+//        self.messageArray = self.getMessage()
         
         
         
@@ -103,7 +113,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             
             let imageData:NSData = NSData.init(contentsOf: url)!
             
-            let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, imageTest: nil)!
+            let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, imageTest: nil, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newFileMessage)
             self.dismiss(animated: true)
         }
@@ -129,7 +139,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         CameraController.shared.imagePickedBlock = {(image) in
             debugPrint("Tobias \(image)")
         
-            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: image)!
+            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: image, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
             let imageData: NSData = UIImagePNGRepresentation(image) as NSData!
             SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate)
@@ -202,21 +212,54 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         let messagePath = self.messageArray[indexPath.row].linkToFile
         let messageImage = self.messageArray[indexPath.row].image
         
-        guard let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiverViewCell", for: indexPath) as? ReceiverViewCell else {
-            return UICollectionViewCell()
+        
+        var cell = UICollectionViewCell()
+        switch messageType {
+        case .aduio:
+     //setup cell
+            break
+        case .text:
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
+                let messageText = self.messageArray[indexPath.row].text
+                menuCell.setup(text: messageText!, index: indexPath.row)
+                menuCell.textLabel.sizeToFit()
+                cell = menuCell
+            } else {
+               return UICollectionViewCell()
+            }
+        case .gif:
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
+                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row)
+                cell = menuCell
+            } else {
+                return UICollectionViewCell()
+            }
+            break
+        case .photo:
+            //setup cell
+            break
+        case .video:
+            //setup cell
+            break
+        case .file:
+            //setup cell
+            break
         }
+      
         
-        menuCell.setup(type: messageType, path: messagePath, image: messageImage)
+//        menuCell.setup(type: messageType, path: messagePath, image: messageImage)
+//
+//        if messageType == .file {
+//            let image = menuCell.imageView.image
+//            let size = CGSize(width: 20, height: 20)
+//            menuCell.imageView.image = self.ResizeImage(image: image!, targetSize: size)
+//            menuCell.imageView.contentMode = .right
+//            menuCell.imageView.backgroundColor = .white
+//        }
+      
         
-        if messageType == .file {
-            let image = menuCell.imageView.image
-            let size = CGSize(width: 20, height: 20)
-            menuCell.imageView.image = self.ResizeImage(image: image!, targetSize: size)
-            menuCell.imageView.contentMode = .right
-            menuCell.imageView.backgroundColor = .white
-        }
         
-        return menuCell
+        return cell
         
         
         
@@ -243,12 +286,14 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
 //        return returnCell
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    
+//             return CGSize(width: view.frame.width/2, height: 150)
+//        
+//
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -295,30 +340,30 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
 //        return rows
 //    }
     
-    func getMessage() -> [Message]{
-        // Message.parse(json: JSON)
-       var getMessageArray: [Message] = []
-        let message1 = Message( messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        let message2 = Message( messageType: .photo, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        let message3 = Message( messageType: .gif, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        let message4 = Message( messageType: .aduio, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        let message5 = Message( messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        let message6 = Message( messageType: .video, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
-        
-        getMessageArray.append(message1)
-        getMessageArray.append(message2)
-        getMessageArray.append(message3)
-        getMessageArray.append(message4)
-        getMessageArray.append(message5)
-        getMessageArray.append(message6)
-        
-        return getMessageArray
-    }
+//    func getMessage() -> [Message]{
+//        // Message.parse(json: JSON)
+//       var getMessageArray: [Message] = []
+//        let message1 = Message( messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//        let message2 = Message( messageType: .photo, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//        let message3 = Message( messageType: .gif, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//        let message4 = Message( messageType: .aduio, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//        let message5 = Message( messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//        let message6 = Message( messageType: .video, isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: nil)!
+//
+//        getMessageArray.append(message1)
+//        getMessageArray.append(message2)
+//        getMessageArray.append(message3)
+//        getMessageArray.append(message4)
+//        getMessageArray.append(message5)
+//        getMessageArray.append(message6)
+//
+//        return getMessageArray
+//    }
    
     
     func getLink(_ url: String?) {
         if let _url = url {
-            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: "Tobias", filePath: _url, imageTest: nil)!
+            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: "Tobias", filePath: _url, imageTest: nil, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newGifMessage)
             
         }
@@ -357,4 +402,41 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         return newImage ?? UIImage()
     }
     
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        
+        let messageText = self.inputTextField.text
+        
+        let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "", imageTest: nil, messageText: messageText)!
+        self.addNewMessageToCollectionView(newMessage: newTextMessage)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+         let messageType = self.messageArray[indexPath.row].type
+        switch messageType {
+        case .text:
+            if let text = self.messageArray[indexPath.row].text {
+              let apporximateWitdhOfTextView = 250
+              
+                let size = CGSize(width: apporximateWitdhOfTextView, height: 1000)
+                
+                let attribues = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
+                
+            let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
+                debugPrint("Tobias \(rect.height)")
+                return CGSize(width: view.frame.width - 50 , height: rect.height + 20)
+            }
+            
+        case .gif:
+            break
+        case .photo:
+            break
+        case .video:
+            break
+        case .aduio:
+            break
+        case .file:
+            break
+        }
+        return CGSize(width: view.frame.width - 50, height: 150)
+    }
 }
