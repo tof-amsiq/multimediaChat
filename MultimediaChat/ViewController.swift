@@ -56,6 +56,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         collectionView.register(UINib.init(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
           collectionView.register(UINib.init(nibName: "TextViewCell", bundle: nil), forCellWithReuseIdentifier: "TextViewCell")
+        collectionView.register(UINib.init(nibName: "AudioPlayerViewCell", bundle: nil), forCellWithReuseIdentifier: "AudioPlayerViewCell")
 
         
 //      rows = self.buildRows()
@@ -208,12 +209,13 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let messageType = self.messageArray[indexPath.row].type
+        var messageType = self.messageArray[indexPath.row].type
         let messagePath = self.messageArray[indexPath.row].linkToFile
         let messageImage = self.messageArray[indexPath.row].image
         
         
         var cell = UICollectionViewCell()
+        messageType = .video
         switch messageType {
         case .aduio:
      //setup cell
@@ -229,17 +231,27 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row)
+                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: nil)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
             }
             break
         case .photo:
-            //setup cell
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
+                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: messageImage)
+                cell = menuCell
+            } else {
+                return UICollectionViewCell()
+            }
             break
         case .video:
-            //setup cell
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
+//                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: nil)
+                cell = menuCell
+            } else {
+                return UICollectionViewCell()
+            }
             break
         case .file:
             //setup cell
@@ -411,7 +423,8 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         let messageType = self.messageArray[indexPath.row].type
+         var messageType = self.messageArray[indexPath.row].type
+        messageType = .video
         switch messageType {
         case .text:
             if let text = self.messageArray[indexPath.row].text {
@@ -431,7 +444,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .photo:
             break
         case .video:
-            break
+            CGSize(width: view.frame.width - 50, height: 250)
         case .aduio:
             break
         case .file:

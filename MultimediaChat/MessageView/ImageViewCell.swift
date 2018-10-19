@@ -30,7 +30,7 @@ class ImageViewCell: UICollectionViewCell {
     
     
     
-    func setup(type: messageType, path: String, index: Int) {
+    func setup(type: messageType, path: String, index: Int, image: UIImage?) {
         if index % 2 == 0 {
             self.viewLeadingConstraint.constant = 50
         } else {
@@ -47,6 +47,8 @@ class ImageViewCell: UICollectionViewCell {
                 let url = URL(string: path)!
                 let data = try? Data(contentsOf: url)
                 imageView.image = UIImage(data: data!)
+            } else {
+                imageView.image = image!
             }
         }
         

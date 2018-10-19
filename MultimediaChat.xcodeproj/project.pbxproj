@@ -16,8 +16,15 @@
 		814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */; };
 		814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */; };
 		814C75CD214BB5A7007C07E8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75CC214BB5A7007C07E8 /* Message.swift */; };
+		8152DF1A217770ED00E68F45 /* CoverA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF19217770ED00E68F45 /* CoverA.swift */; };
+		8152DF1C2177710A00E68F45 /* CoverA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF1B2177710A00E68F45 /* CoverA.xib */; };
+		8152DF232178D0AE00E68F45 /* AudioPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */; };
+		8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */; };
+		8152DF262178E10E00E68F45 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF252178E10E00E68F45 /* example.mp3 */; };
 		81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81834CCB21590D66004D65E2 /* ImageViewController.swift */; };
 		81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81834CCC21590D66004D65E2 /* ImageViewController.xib */; };
+		81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */; };
+		81AD2B3321776899006A0493 /* VideoPlayerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AD2B3121776899006A0493 /* VideoPlayerViewCell.xib */; };
 		81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B6D214A5E56009F8524 /* AppDelegate.swift */; };
 		81AE8B70214A5E56009F8524 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE8B6F214A5E56009F8524 /* ViewController.swift */; };
 		81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AE8B74214A5E58009F8524 /* Assets.xcassets */; };
@@ -66,8 +73,15 @@
 		814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverViewCell.swift; sourceTree = "<group>"; };
 		814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverViewCell.xib; sourceTree = "<group>"; };
 		814C75CC214BB5A7007C07E8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = DataController/Message.swift; sourceTree = "<group>"; };
+		8152DF19217770ED00E68F45 /* CoverA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverA.swift; sourceTree = "<group>"; };
+		8152DF1B2177710A00E68F45 /* CoverA.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoverA.xib; sourceTree = "<group>"; };
+		8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewCell.swift; sourceTree = "<group>"; };
+		8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerViewCell.xib; sourceTree = "<group>"; };
+		8152DF252178E10E00E68F45 /* example.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example.mp3; path = ../../../../Downloads/example.mp3; sourceTree = "<group>"; };
 		81834CCB21590D66004D65E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		81834CCC21590D66004D65E2 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewCell.swift; sourceTree = "<group>"; };
+		81AD2B3121776899006A0493 /* VideoPlayerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerViewCell.xib; sourceTree = "<group>"; };
 		81AE8B6A214A5E56009F8524 /* MultimediaChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultimediaChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AE8B6D214A5E56009F8524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81AE8B6F214A5E56009F8524 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +191,7 @@
 				81AE8B6F214A5E56009F8524 /* ViewController.swift */,
 				81D689CB2160D31800F569EE /* Main.storyboard */,
 				81AE8B74214A5E58009F8524 /* Assets.xcassets */,
+				8152DF252178E10E00E68F45 /* example.mp3 */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
 				814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */,
@@ -213,6 +228,12 @@
 				81C1F381216E6721007728C0 /* ImageViewCell.xib */,
 				81DC82782175F40F002B40D4 /* TextViewCell.swift */,
 				81DC82792175F40F002B40D4 /* TextViewCell.xib */,
+				81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */,
+				81AD2B3121776899006A0493 /* VideoPlayerViewCell.xib */,
+				8152DF19217770ED00E68F45 /* CoverA.swift */,
+				8152DF1B2177710A00E68F45 /* CoverA.xib */,
+				8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */,
+				8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */,
 			);
 			path = MessageView;
 			sourceTree = "<group>";
@@ -370,15 +391,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AE8B78214A5E58009F8524 /* LaunchScreen.storyboard in Resources */,
+				81AD2B3321776899006A0493 /* VideoPlayerViewCell.xib in Resources */,
 				81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */,
 				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
+				8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */,
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,
 				81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */,
 				81D689D82164B44600F569EE /* AudioViewController.xib in Resources */,
 				81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */,
+				8152DF262178E10E00E68F45 /* example.mp3 in Resources */,
+				8152DF1C2177710A00E68F45 /* CoverA.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +457,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
@@ -441,6 +467,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyCoreSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPlayerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
@@ -459,15 +486,18 @@
 				81AE8B70214A5E56009F8524 /* ViewController.swift in Sources */,
 				81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */,
 				81D689DB2164C09B00F569EE /* CameraController.swift in Sources */,
+				81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */,
 				814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
 				81C1F382216E6721007728C0 /* ImageViewCell.swift in Sources */,
+				8152DF232178D0AE00E68F45 /* AudioPlayerViewCell.swift in Sources */,
 				81060830215B90B10073E3DB /* GifView.swift in Sources */,
 				812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */,
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
+				8152DF1A217770ED00E68F45 /* CoverA.swift in Sources */,
 				81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */,
 				81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */,
 				81D689D72164B44600F569EE /* AudioViewController.swift in Sources */,

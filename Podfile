@@ -9,5 +9,6 @@ target 'MultimediaChat' do
 pod 'GiphyCoreSDK'
 pod 'FileBrowser', '~> 1.0'
 pod 'Socket.IO-Client-Swift'
+pod 'MMPlayerView'
 
 end
