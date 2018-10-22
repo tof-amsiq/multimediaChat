@@ -21,6 +21,8 @@
 		8152DF232178D0AE00E68F45 /* AudioPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */; };
 		8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */; };
 		8152DF262178E10E00E68F45 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF252178E10E00E68F45 /* example.mp3 */; };
+		8152DF29217DCCF900E68F45 /* FileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF27217DCCF900E68F45 /* FileViewCell.swift */; };
+		8152DF2A217DCCF900E68F45 /* FileViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF28217DCCF900E68F45 /* FileViewCell.xib */; };
 		81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81834CCB21590D66004D65E2 /* ImageViewController.swift */; };
 		81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81834CCC21590D66004D65E2 /* ImageViewController.xib */; };
 		81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */; };
@@ -78,6 +80,8 @@
 		8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewCell.swift; sourceTree = "<group>"; };
 		8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioPlayerViewCell.xib; sourceTree = "<group>"; };
 		8152DF252178E10E00E68F45 /* example.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example.mp3; path = ../../../../Downloads/example.mp3; sourceTree = "<group>"; };
+		8152DF27217DCCF900E68F45 /* FileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewCell.swift; sourceTree = "<group>"; };
+		8152DF28217DCCF900E68F45 /* FileViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileViewCell.xib; sourceTree = "<group>"; };
 		81834CCB21590D66004D65E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		81834CCC21590D66004D65E2 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				8152DF1B2177710A00E68F45 /* CoverA.xib */,
 				8152DF212178D0AE00E68F45 /* AudioPlayerViewCell.swift */,
 				8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */,
+				8152DF27217DCCF900E68F45 /* FileViewCell.swift */,
+				8152DF28217DCCF900E68F45 /* FileViewCell.xib */,
 			);
 			path = MessageView;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				81AE8B78214A5E58009F8524 /* LaunchScreen.storyboard in Resources */,
 				81AD2B3321776899006A0493 /* VideoPlayerViewCell.xib in Resources */,
 				81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */,
+				8152DF2A217DCCF900E68F45 /* FileViewCell.xib in Resources */,
 				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
 				8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */,
@@ -499,6 +506,7 @@
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
 				8152DF1A217770ED00E68F45 /* CoverA.swift in Sources */,
 				81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */,
+				8152DF29217DCCF900E68F45 /* FileViewCell.swift in Sources */,
 				81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */,
 				81D689D72164B44600F569EE /* AudioViewController.swift in Sources */,
 			);

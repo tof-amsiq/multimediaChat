@@ -57,6 +57,10 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionView.register(UINib.init(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
           collectionView.register(UINib.init(nibName: "TextViewCell", bundle: nil), forCellWithReuseIdentifier: "TextViewCell")
         collectionView.register(UINib.init(nibName: "AudioPlayerViewCell", bundle: nil), forCellWithReuseIdentifier: "AudioPlayerViewCell")
+         collectionView.register(UINib.init(nibName: "VideoPlayerViewCell", bundle: nil), forCellWithReuseIdentifier: "VideoPlayerViewCell")
+        collectionView.register(UINib.init(nibName: "FileViewCell", bundle: nil), forCellWithReuseIdentifier: "FileViewCell")
+        
+        
 
         
 //      rows = self.buildRows()
@@ -108,6 +112,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
             print("tobias\(file.displayName)")
+            print("tobias\(file.filePath)")
             
             
             let url = URL(string: "file:///Users/tobiasfrantsen/Downloads/icon.png")!
@@ -214,12 +219,16 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         let messageImage = self.messageArray[indexPath.row].image
         
         
+        
         var cell = UICollectionViewCell()
-        messageType = .video
         switch messageType {
         case .aduio:
-     //setup cell
-            break
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
+                cell = menuCell
+            } else {
+                return UICollectionViewCell()
+            }
+            
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
@@ -246,15 +255,20 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
             break
         case .video:
-            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-//                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: nil)
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoPlayerViewCell", for: indexPath) as? VideoPlayerViewCell  {
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
             }
             break
         case .file:
-            //setup cell
+            let nameOfFile = self.messageArray[indexPath.row].linkToFile
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
+                menuCell.setup(index: indexPath.row, nameOfFile: nameOfFile, path: nameOfFile)
+                cell = menuCell
+            } else {
+                return UICollectionViewCell()
+            }
             break
         }
       
@@ -424,7 +438,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          var messageType = self.messageArray[indexPath.row].type
-        messageType = .video
+       
         switch messageType {
         case .text:
             if let text = self.messageArray[indexPath.row].text {
@@ -448,7 +462,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .aduio:
             break
         case .file:
-            break
+            return CGSize(width: view.frame.width - 50, height: 60)
         }
         return CGSize(width: view.frame.width - 50, height: 150)
     }
