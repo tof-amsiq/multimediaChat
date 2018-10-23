@@ -146,6 +146,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework"
 fi
@@ -153,6 +155,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework"
 fi
