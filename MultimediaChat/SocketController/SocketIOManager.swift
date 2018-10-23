@@ -6,6 +6,7 @@
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
 import SocketIO
+import RxSwift
 import UIKit
 
 class SocketIOManager: NSObject {
@@ -18,16 +19,25 @@ class SocketIOManager: NSObject {
     
     func connectSocket(){
         socket.connect()
-        
     }
     
+    func connectAndGetSocket() -> SocketIOClient  {
+        socket.connect()
+        return socket
+    }
     
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
+        
         socket.emit("connectUser", nickname)
         
         socket.on("userList") { ( dataArray, ack) -> Void in
             completionHandler(dataArray[0] as! [[String: AnyObject]])
         }
+        
+    }
+    
+    func connectToServerWithUserName(nickname: String) {
+        socket.emit("connectUser", nickname) 
         
     }
     
@@ -48,12 +58,24 @@ class SocketIOManager: NSObject {
         }
     }
     
-    func sendMessage(nickName:String, message: String) {
-        socket.emit("chatMessage", nickName, message)
+    
+    func getData() -> Observable<Any> {
+        return Observable.create { observer in
+            self.socket.on("newChatMessage") { (dataArray, socketAck) -> Void in
+                var messageDictionary = [String: AnyObject]()
+                messageDictionary["nickname"] = dataArray[0] as AnyObject
+                messageDictionary["message"] = dataArray[1] as AnyObject
+                messageDictionary["date"] = dataArray[2] as AnyObject
+                
+            }
+            return Disposables.create()
+        }
         
     }
     
     func getChatMessage(completionHandler: @escaping (_ messageInfo: [String: AnyObject]) -> Void) {
+        
+        
         socket.on("newChatMessage") { (dataArray, socketAck) -> Void in
             var messageDictionary = [String: AnyObject]()
             messageDictionary["nickname"] = dataArray[0] as AnyObject
@@ -62,6 +84,7 @@ class SocketIOManager: NSObject {
             
             completionHandler( messageDictionary)
         }
+        
     }
     
     func uploadFile(){

@@ -23,6 +23,9 @@
 		8152DF262178E10E00E68F45 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF252178E10E00E68F45 /* example.mp3 */; };
 		8152DF29217DCCF900E68F45 /* FileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF27217DCCF900E68F45 /* FileViewCell.swift */; };
 		8152DF2A217DCCF900E68F45 /* FileViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8152DF28217DCCF900E68F45 /* FileViewCell.xib */; };
+		8152DF30217DEBD000E68F45 /* SocketMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF2F217DEBD000E68F45 /* SocketMessageController.swift */; };
+		8152DF32217DFCE600E68F45 /* RxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF31217DFCE600E68F45 /* RxExtension.swift */; };
+		8152DF35217F244C00E68F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152DF34217F244B00E68F45 /* LoginViewController.swift */; };
 		81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81834CCB21590D66004D65E2 /* ImageViewController.swift */; };
 		81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81834CCC21590D66004D65E2 /* ImageViewController.xib */; };
 		81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */; };
@@ -82,6 +85,9 @@
 		8152DF252178E10E00E68F45 /* example.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example.mp3; path = ../../../../Downloads/example.mp3; sourceTree = "<group>"; };
 		8152DF27217DCCF900E68F45 /* FileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewCell.swift; sourceTree = "<group>"; };
 		8152DF28217DCCF900E68F45 /* FileViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileViewCell.xib; sourceTree = "<group>"; };
+		8152DF2F217DEBD000E68F45 /* SocketMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageController.swift; sourceTree = "<group>"; };
+		8152DF31217DFCE600E68F45 /* RxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtension.swift; sourceTree = "<group>"; };
+		8152DF34217F244B00E68F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		81834CCB21590D66004D65E2 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		81834CCC21590D66004D65E2 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		81AD2B3021776899006A0493 /* VideoPlayerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				812363C2216E1B0300D224B8 /* SocketIOManager.swift */,
+				8152DF2F217DEBD000E68F45 /* SocketMessageController.swift */,
 			);
 			path = SocketController;
 			sourceTree = "<group>";
@@ -193,11 +200,13 @@
 				81834CCC21590D66004D65E2 /* ImageViewController.xib */,
 				81AE8B6D214A5E56009F8524 /* AppDelegate.swift */,
 				81AE8B6F214A5E56009F8524 /* ViewController.swift */,
+				8152DF31217DFCE600E68F45 /* RxExtension.swift */,
 				81D689CB2160D31800F569EE /* Main.storyboard */,
 				81AE8B74214A5E58009F8524 /* Assets.xcassets */,
 				8152DF252178E10E00E68F45 /* example.mp3 */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
+				8152DF34217F244B00E68F45 /* LoginViewController.swift */,
 				814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */,
 				814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */,
 				81095338215A68F2009291C6 /* imageExtension.swift */,
@@ -465,6 +474,8 @@
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
@@ -475,6 +486,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyCoreSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPlayerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
@@ -491,13 +504,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AE8B70214A5E56009F8524 /* ViewController.swift in Sources */,
+				8152DF32217DFCE600E68F45 /* RxExtension.swift in Sources */,
 				81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */,
+				8152DF30217DEBD000E68F45 /* SocketMessageController.swift in Sources */,
 				81D689DB2164C09B00F569EE /* CameraController.swift in Sources */,
 				81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */,
 				814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
+				8152DF35217F244C00E68F45 /* LoginViewController.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
 				81C1F382216E6721007728C0 /* ImageViewCell.swift in Sources */,
 				8152DF232178D0AE00E68F45 /* AudioPlayerViewCell.swift in Sources */,

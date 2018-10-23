@@ -10,5 +10,7 @@ pod 'GiphyCoreSDK'
 pod 'FileBrowser', '~> 1.0'
 pod 'Socket.IO-Client-Swift'
 pod 'MMPlayerView'
+pod 'RxSwift'
+pod 'RxCocoa'
 
 end

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
 import FileBrowser
+import RxSwift
 import UIKit
 
 enum cellType {
@@ -36,13 +37,41 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
 //    private var rows: [cellType] = []
     private var messageArray: [Message] = []
     
+    public var userName: String = ""
+    
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        SocketIOManager.shared.connectSocket()
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+      
+        
+        _ = SocketIOManager.shared.socket.rx.on("newChatMessage").subscribe { (message) in
+            
+            
+            let date = message.element?[2]
+            let text = message.element?[1] as! String
+            let nickname = message.element?[0] as! String
+            
+          let usernameExists = message.element!.contains(where: { (message) -> Bool in
+                let _message = message as! String
+                if _message == self.userName {
+                    return true
+                }
+                return false
+            })
+            
+            if !usernameExists {
+                let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: nickname , filePath: "", imageTest: nil, messageText: text)!
+                
+                self.addNewMessageToCollectionView(newMessage: newTextMessage)
+            }
+            
+        }
+    
+        
         
 //        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
 //            let collectionView = collectionView {
@@ -100,7 +129,6 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         
 //        self.messageArray = self.getMessage()
-        
         
         
     }
@@ -434,7 +462,10 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "", imageTest: nil, messageText: messageText)!
         self.addNewMessageToCollectionView(newMessage: newTextMessage)
+        SocketIOManager.shared.sendMessage(message: messageText!, withNickname: self.userName)
+        
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          var messageType = self.messageArray[indexPath.row].type
@@ -467,3 +498,4 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         return CGSize(width: view.frame.width - 50, height: 150)
     }
 }
+
