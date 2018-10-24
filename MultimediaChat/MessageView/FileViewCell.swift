@@ -19,20 +19,18 @@ class FileViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.containerView.layer.borderWidth = 2
-        self.containerView.layer.masksToBounds = false
-        self.containerView.layer.borderColor = UIColor.blue.cgColor
-        self.containerView.layer.cornerRadius = 18
-        self.containerView.clipsToBounds = true
+       
     }
 
     
-    func setup(index: Int, nameOfFile: String, path: String) {
+    func setup(isSender: Bool, nameOfFile: String, path: String) {
     
-        if index % 2 == 0 {
+        if isSender {
             self.viewLeadingConstraint.constant = 50
+            self.setupView(withColor: UIColor.blue.cgColor)
         } else {
             self.viewTrailingConstraint.constant = 50
+            self.setupView(withColor: UIColor.green.cgColor)
         }
         let lengthOfText = nameOfFile.count
         let attributedString = NSMutableAttributedString(string: nameOfFile)
@@ -45,5 +43,13 @@ class FileViewCell: UICollectionViewCell {
         
         self.imagView.image = #imageLiteral(resourceName: "icon")
 //        self.textLabel.text = "
+    }
+    
+    func setupView(withColor: CGColor) {
+        self.containerView.layer.borderWidth = 2
+        self.containerView.layer.masksToBounds = false
+        self.containerView.layer.borderColor = withColor
+        self.containerView.layer.cornerRadius = 18
+        self.containerView.clipsToBounds = true
     }
 }

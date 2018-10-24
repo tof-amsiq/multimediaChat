@@ -25,6 +25,12 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 extension UIImage {
     
+        func resize(targetSize: CGSize) -> UIImage {
+            return UIGraphicsImageRenderer(size:targetSize).image { _ in
+                self.draw(in: CGRect(origin: .zero, size: targetSize))
+            }
+        }
+    
     public class func gifImageWithData(_ data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("image doesn't exist")

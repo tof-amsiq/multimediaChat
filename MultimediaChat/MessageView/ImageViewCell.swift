@@ -21,20 +21,18 @@ class ImageViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageView.layer.borderWidth = 3
-        imageView.layer.masksToBounds = false
-        imageView.layer.borderColor = UIColor.blue.cgColor
-        imageView.layer.cornerRadius = 30
-        imageView.clipsToBounds = true
+      
         }
     
     
     
-    func setup(type: messageType, path: String, index: Int, image: UIImage?) {
-        if index % 2 == 0 {
+    func setup(type: messageType, path: String, image: UIImage?, isSender: Bool) {
+        if isSender {
             self.viewLeadingConstraint.constant = 50
+            self.setupView(withColor: UIColor.blue.cgColor)
         } else {
             self.viewTrailingConstraint.constant = 50
+            self.setupView(withColor: UIColor.green.cgColor)
         }
         if type == .gif {
             let imageURL = UIImage.gifImageWithURL(path)
@@ -52,6 +50,14 @@ class ImageViewCell: UICollectionViewCell {
             }
         }
         
+    }
+    
+    func setupView(withColor: CGColor){
+    imageView.layer.borderWidth = 3
+    imageView.layer.masksToBounds = false
+    imageView.layer.borderColor = withColor
+    imageView.layer.cornerRadius = 30
+    imageView.clipsToBounds = true
     }
 
 }

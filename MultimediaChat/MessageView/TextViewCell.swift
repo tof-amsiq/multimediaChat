@@ -18,15 +18,10 @@ class TextViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.textLabel.numberOfLines = 0
         self.textLabel.textColor = .white
-        self.containerTextView.layer.borderWidth = 2
-        self.containerTextView.layer.masksToBounds = false
-        self.containerTextView.layer.borderColor = UIColor.blue.cgColor
-        self.containerTextView.layer.cornerRadius = 18
-        self.containerTextView.clipsToBounds = true
-        self.containerTextView.backgroundColor = .blue
+        // Initialization code
+     
         
     }
   
@@ -43,15 +38,29 @@ class TextViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(text: String, index: Int) {
-        if index % 2 == 0 {
+    func setup(text: String, isSender: Bool) {
+        if isSender {
             self.textLeadingConstraint.constant = 50
+            self.textTrailingConstraint.constant = 0
+            self.setupView(withColor: UIColor.blue.cgColor, secoundColor: .blue)
         } else {
             self.textTrailingConstraint.constant = 50
+            self.textLeadingConstraint.constant = 0
+            self.setupView(withColor: UIColor.green.cgColor, secoundColor: .green)
         }
         
         self.textLabel.text = text
     }
 
+    
+    func setupView(withColor: CGColor, secoundColor: UIColor ) {
+        self.containerTextView.layer.borderWidth = 2
+        self.containerTextView.layer.masksToBounds = false
+        self.containerTextView.layer.borderColor = withColor
+        self.containerTextView.layer.cornerRadius = 18
+        self.containerTextView.clipsToBounds = true
+        self.containerTextView.backgroundColor = secoundColor
+        self.layoutIfNeeded()
+    }
 }
 

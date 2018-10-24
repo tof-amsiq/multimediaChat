@@ -41,8 +41,8 @@ class SocketIOManager: NSObject {
         
     }
     
-    func uploadData(data: NSData, nameOfFile: String){
-        socket.emit("test", data, nameOfFile)
+    func uploadData(data: NSData, nameOfFile: String, userName: String){
+        socket.emit("test", data, nameOfFile, userName)
     }
     
     func sendMessage(message: String, withNickname nickname: String) {

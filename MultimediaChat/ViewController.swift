@@ -64,11 +64,26 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             })
             
             if !usernameExists {
-                let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: nickname , filePath: "", imageTest: nil, messageText: text)!
+                let newTextMessage = Message(messageType: .text, isSender: false, time: Date(), nameSender: nickname , filePath: "", imageTest: nil, messageText: text)!
                 
                 self.addNewMessageToCollectionView(newMessage: newTextMessage)
             }
             
+        }
+        
+        
+        _ = SocketIOManager.shared.socket.rx.on("image").subscribe { (image) in
+            
+            if self.userName != image.element?[1] as? String {
+            if let imageBase64String = image.element?[0] as? String {
+                let imageData = Data(base64Encoded: imageBase64String, options: .ignoreUnknownCharacters)
+            
+            let image = UIImage(data: imageData!)
+
+                let newImageMesssage = Message(messageType: .photo, isSender: false, time: Date(), nameSender: self.userName, filePath: "", imageTest: image, messageText: nil)!
+                self.addNewMessageToCollectionView(newMessage: newImageMesssage)
+            }
+            }
         }
     
         
@@ -172,11 +187,14 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
         CameraController.shared.imagePickedBlock = {(image) in
             debugPrint("Tobias \(image)")
+            
+            let resizeSize = CGSize(width: self.view.frame.width - 50, height: 150)
+            let newResizeImage = image.resize(targetSize: resizeSize)
         
-            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: "Tobias", filePath: "unknow", imageTest: image, messageText: "")!
+            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: self.userName, filePath: "unknow", imageTest: newResizeImage, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
-            let imageData: NSData = UIImagePNGRepresentation(image) as NSData!
-            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate)
+            let imageData: NSData = UIImagePNGRepresentation(newResizeImage) as NSData!
+            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate, userName: self.userName)
         }
         CameraController.shared.imagePickedURL = {(url) in
             debugPrint("Tobias \(url)")
@@ -245,6 +263,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         var messageType = self.messageArray[indexPath.row].type
         let messagePath = self.messageArray[indexPath.row].linkToFile
         let messageImage = self.messageArray[indexPath.row].image
+        var isSender = self.messageArray[indexPath.row].sender
         
         
         
@@ -260,7 +279,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, index: indexPath.row)
+                menuCell.setup(text: messageText!, isSender: isSender)
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {
@@ -268,7 +287,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: nil)
+                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -276,7 +295,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, index: indexPath.row, image: messageImage)
+                menuCell.setup(type: messageType, path: messagePath, image: messageImage, isSender: isSender)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -292,7 +311,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .file:
             let nameOfFile = self.messageArray[indexPath.row].linkToFile
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
-                menuCell.setup(index: indexPath.row, nameOfFile: nameOfFile, path: nameOfFile)
+                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -481,7 +500,8 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
                 
             let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
                 debugPrint("Tobias \(rect.height)")
-                return CGSize(width: view.frame.width - 50 , height: rect.height + 20)
+                let returnSize = CGSize(width: view.frame.width - 50 , height: rect.height + 20)
+                return returnSize
             }
             
         case .gif:
