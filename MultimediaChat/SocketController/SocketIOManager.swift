@@ -49,15 +49,23 @@ class SocketIOManager: NSObject {
         socket.emit("chatMessage", nickname, message)
     }
     
+    func sendGifMessage(giflink: String, nickName: String) {
+        socket.emit("gifMessage", nickName, giflink)
+    }
+    
     func startTypning(_nickName: String) {
         socket.emit("startType", _nickName)
         
-        socket.on("userTypingUpdate") { (message, ack)  -> Void in
-            debugPrint(ack)
-            debugPrint(message)
-        }
+//        socket.on("userTypingUpdate") { (message, ack)  -> Void in
+//            debugPrint(ack)
+//            debugPrint(message)
+//        }
     }
     
+    
+    func stopTypning(nickName: String){
+        socket.emit("stopType", nickName)
+    }
     
     func getData() -> Observable<Any> {
         return Observable.create { observer in

@@ -12,5 +12,5 @@ pod 'Socket.IO-Client-Swift'
 pod 'MMPlayerView'
 pod 'RxSwift'
 pod 'RxCocoa'
-
+pod 'NVActivityIndicatorView'
 end

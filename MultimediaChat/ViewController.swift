@@ -5,6 +5,7 @@
 //  Created by Tobias Frantsen on 13/09/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
+import NVActivityIndicatorView
 import FileBrowser
 import RxSwift
 import UIKit
@@ -16,9 +17,10 @@ enum cellType {
     case input
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GifPickerDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GifPickerDelegate, UITextFieldDelegate {
    
     
+    @IBOutlet weak var indicatorView: NVActivityIndicatorView!
     
     @IBOutlet weak var fileImageView: UIImageView!
     @IBOutlet weak var videoImageView: UIImageView!
@@ -46,7 +48,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionView.dataSource = self
         collectionView.delegate = self
         
-      
+        self.inputTextField.delegate = self
+        
+      self.indicatorView.type = .ballPulse
+      self.indicatorView.color = .red
+        
         
         _ = SocketIOManager.shared.socket.rx.on("newChatMessage").subscribe { (message) in
             
@@ -85,6 +91,37 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
             }
         }
+        
+        _ = SocketIOManager.shared.socket.rx.on("gif").subscribe { (gif) in
+            
+            if self.userName != gif.element?[1] as? String {
+                let path = gif.element![0]
+                let imageURL = UIImage.gifImageWithURL(path as! String)
+                let newGifMessage = Message(messageType: .gif, isSender: false, time: Date(), nameSender: gif.element![1] as! String, filePath: path as! String, imageTest: nil, messageText: nil)!
+                self.addNewMessageToCollectionView(newMessage: newGifMessage)
+                }
+            }
+        
+        _ = SocketIOManager.shared.socket.rx.on("userTypingUpdate").subscribe { (user) in
+           
+            var totalTypingUser = 0
+
+            for (_, typingUser) in user.element!.enumerated() {
+                if let user = typingUser as? [String: AnyObject] {
+                    if (user.first?.key != self.userName) && (user.first?.value as? Int  == 1) {
+                        totalTypingUser += 1
+                    }
+                }
+            }
+            
+            if totalTypingUser > 0 {
+                self.indicatorView.startAnimating()
+            } else {
+                self.indicatorView.stopAnimating()
+            }
+            
+        }
+        
     
         
         
@@ -221,12 +258,14 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     @objc func mircophoneIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
-        let newViewController =  AudioViewController()
-        self.navigationController?.pushViewController(newViewController, animated: true)
-        
+//        let newViewController =  AudioViewController()
+//        self.navigationController?.pushViewController(newViewController, animated: true)
+        let audioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: nil)!
+        self.addNewMessageToCollectionView(newMessage: audioMessage)
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
+    
         if let userInfo = notification.userInfo {
             let keyboardFram = userInfo[UIKeyboardFrameBeginUserInfoKey] as! CGRect
             debugPrint(keyboardFram)
@@ -436,8 +475,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func getLink(_ url: String?) {
         if let _url = url {
-            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: "Tobias", filePath: _url, imageTest: nil, messageText: "")!
+            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newGifMessage)
+            SocketIOManager.shared.sendGifMessage(giflink: _url, nickName: self.userName)
             
         }
     }
@@ -509,13 +549,25 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .photo:
             break
         case .video:
-            CGSize(width: view.frame.width - 50, height: 250)
+            return CGSize(width: view.frame.width - 50, height: 250)
         case .aduio:
             break
         case .file:
             return CGSize(width: view.frame.width - 50, height: 60)
         }
         return CGSize(width: view.frame.width - 50, height: 150)
+    }
+    
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.indicatorView.startAnimating()
+        SocketIOManager.shared.startTypning(_nickName: self.userName)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.indicatorView.stopAnimating()
+        SocketIOManager.shared.stopTypning(nickName: self.userName)
     }
 }
 
