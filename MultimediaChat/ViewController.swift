@@ -5,10 +5,12 @@
 //  Created by Tobias Frantsen on 13/09/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
+import BRYXBanner
 import NVActivityIndicatorView
 import FileBrowser
 import RxSwift
 import UIKit
+
 
 enum cellType {
     case footer
@@ -41,6 +43,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     public var userName: String = ""
     
+    private var chatMessages = [[]]
     
    
     override func viewDidLoad() {
@@ -119,6 +122,19 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             } else {
                 self.indicatorView.stopAnimating()
             }
+            
+        }
+        
+        _ = SocketIOManager.shared.socket.rx.on("userConnectUpdate").subscribe { (user) in
+            
+            let nameJoined = user.element?[1] as! String
+            
+            if nameJoined != self.userName {
+                let banner = Banner(title: "\(nameJoined) has just join the chat", backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:1.000))
+                banner.dismissesOnTap = true
+                banner.show(duration: 2.0)
+            }
+         
             
         }
         
@@ -540,7 +556,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
                 
             let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
                 debugPrint("Tobias \(rect.height)")
-                let returnSize = CGSize(width: view.frame.width - 50 , height: rect.height + 20)
+                let returnSize = CGSize(width: view.frame.width - 50 , height: rect.height + 20 + 20)
                 return returnSize
             }
             
@@ -555,7 +571,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .file:
             return CGSize(width: view.frame.width - 50, height: 60)
         }
-        return CGSize(width: view.frame.width - 50, height: 150)
+        return CGSize(width: view.frame.width - 50, height: 150 + 20)
     }
     
     
@@ -568,6 +584,19 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        self.indicatorView.stopAnimating()
         SocketIOManager.shared.stopTypning(nickName: self.userName)
+    }
+    
+   private func groupedMessagesByDate(){
+   let groupedMessages = Dictionary(grouping: self.messageArray) { (element) -> Date in
+        return element.timestamp
+    }
+    
+    let sortedKeys = groupedMessages.keys.sorted()
+    sortedKeys.forEach { (key) in
+        let values = groupedMessages[key]
+        self.chatMessages.append(values ?? [])
+    }
+    
     }
 }
 

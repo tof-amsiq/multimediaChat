@@ -10,6 +10,7 @@ import UIKit
 
 class ImageViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var viewTrailingConstraint: NSLayoutConstraint!
@@ -27,6 +28,8 @@ class ImageViewCell: UICollectionViewCell {
     
     
     func setup(type: messageType, path: String, image: UIImage?, isSender: Bool) {
+        
+        self.dateLabel.text = "\(Date())"
         if isSender {
             self.viewLeadingConstraint.constant = 50
             self.setupView(withColor: UIColor.blue.cgColor)

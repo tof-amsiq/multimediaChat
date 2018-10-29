@@ -9,6 +9,7 @@ import UIKit
 
 class TextViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var containerTextView: UIView!
     @IBOutlet weak var textTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var textLeadingConstraint: NSLayoutConstraint!
@@ -39,6 +40,10 @@ class TextViewCell: UICollectionViewCell {
     
     
     func setup(text: String, isSender: Bool) {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+       let date = dateFormatterGet.string(from: Date())
+        self.dateLabel.text = date
         if isSender {
             self.textLeadingConstraint.constant = 50
             self.textTrailingConstraint.constant = 0

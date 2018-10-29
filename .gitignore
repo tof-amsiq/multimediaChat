@@ -139,3 +139,12 @@ iOSInjectionProject/
 /Pods/NVActivityIndicatorView/Source/NVActivityIndicatorView/Animations/NVActivityIndicatorAnimationAudioEqualizer.swift
 /Pods/NVActivityIndicatorView/README.md
 /Pods/NVActivityIndicatorView/LICENSE
+/Pods/Target Support Files/BRYXBanner/Info.plist
+/Pods/Target Support Files/BRYXBanner/BRYXBanner.xcconfig
+/Pods/Target Support Files/BRYXBanner/BRYXBanner.modulemap
+/Pods/Target Support Files/BRYXBanner/BRYXBanner-umbrella.h
+/Pods/Target Support Files/BRYXBanner/BRYXBanner-prefix.pch
+/Pods/Target Support Files/BRYXBanner/BRYXBanner-dummy.m
+/Pods/BRYXBanner/README.md
+/Pods/BRYXBanner/Pod/Classes/Banner.swift
+/Pods/BRYXBanner/LICENSE

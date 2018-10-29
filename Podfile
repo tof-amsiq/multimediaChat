@@ -13,4 +13,5 @@ pod 'MMPlayerView'
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'NVActivityIndicatorView'
+pod 'BRYXBanner'
 end
