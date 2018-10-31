@@ -8,9 +8,7 @@
 import AVFoundation
 import UIKit
 
-class AudioPlayerViewCell:
-
-UICollectionViewCell {
+class AudioPlayerViewCell:UICollectionViewCell, AVAudioPlayerDelegate {
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressView: UIProgressView!
@@ -20,6 +18,7 @@ UICollectionViewCell {
     var bombSoundEffect: AVAudioPlayer?
     var songDuration = Timer()
     var isPlaying = false
+    private var audioBase64: String?
     
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -50,19 +49,32 @@ UICollectionViewCell {
         self.progressView.progressTintColor = UIColor(red: 0.1608, green: 0.749, blue: 0.949, alpha: 1.0)
         self.progressView.setProgress(0, animated: true)
         self.progressView.progressViewStyle = .bar
-        self.play()
-        songDuration = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        self.playButton.setImage(#imageLiteral(resourceName: "play_button"), for: .normal)
+       
         
     }
     
+    func setup(base64: String) {
+        self.audioBase64 = base64
+        self.play()
+        self.bombSoundEffect?.delegate = self
+//        songDuration = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+    }
+    
     func play() {
-        let path = Bundle.main.path(forResource: "example.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
-        
+//        let path = Bundle.main.path(forResource: "example1.mp3", ofType:nil)!
+//        let url = URL(fileURLWithPath: path)
+        guard let audioBase64String = self.audioBase64 else {
+            return
+        }
+        let audioData = Data(base64Encoded: audioBase64String)!
+       
+
         do {
-            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-            bombSoundEffect?.play()
-            self.isPlaying = true
+            bombSoundEffect = try AVAudioPlayer(data: audioData)
+//            bombSoundEffect?.play()
+            self.setupProgressView()
+            self.isPlaying = false
       
         } catch {
             // couldn't load file :(
@@ -71,18 +83,27 @@ UICollectionViewCell {
 
     
     @objc func update() {
-        if bombSoundEffect?.currentTime == 0 {
-            songDuration.invalidate()
-        } else {
-        self.progressView.progress = Float(bombSoundEffect!.currentTime) / Float(bombSoundEffect!.duration)
-            let time = self.secondsMinutesSeconds(seconds: Int(bombSoundEffect!.currentTime))
-            let duratuion = self.secondsMinutesSeconds(seconds: Int(bombSoundEffect!.duration ))
-            self.timeLabel.text = "\(time.0) : \(time.1) / \(duratuion.0) : \(duratuion.1)"
-            }
+            self.setupProgressView()
         }
     
     func secondsMinutesSeconds (seconds : Int) -> (Int, Int) {
         return ((seconds % 3600) / 60, (seconds % 3600) % 60)
     }
     
+    func setupProgressView() {
+        self.progressView.progress = Float(bombSoundEffect!.currentTime) / Float(bombSoundEffect!.duration)
+        let time = self.secondsMinutesSeconds(seconds: Int(bombSoundEffect!.currentTime))
+        let duratuion = self.secondsMinutesSeconds(seconds: Int(bombSoundEffect!.duration ))
+        self.timeLabel.text = "\(time.0) : \(time.1) / \(duratuion.0) : \(duratuion.1)"
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if flag {
+            songDuration.invalidate()
+            self.playButton.setImage(#imageLiteral(resourceName: "play_button"), for: .normal)
+            self.isPlaying = false
+            self.setupProgressView()
+            
+        }
+    }
 }

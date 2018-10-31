@@ -46,6 +46,7 @@
 		81D689DB2164C09B00F569EE /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689DA2164C09B00F569EE /* CameraController.swift */; };
 		81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC82782175F40F002B40D4 /* TextViewCell.swift */; };
 		81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81DC82792175F40F002B40D4 /* TextViewCell.xib */; };
+		81E56F5E2189CF3200F8E263 /* example1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 81E56F5D2189CF3200F8E263 /* example1.mp3 */; };
 		C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = CameraController/CameraController.swift; sourceTree = "<group>"; };
 		81DC82782175F40F002B40D4 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		81DC82792175F40F002B40D4 /* TextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
+		81E56F5D2189CF3200F8E263 /* example1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example1.mp3; path = ../../../../Downloads/example1.mp3; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
 		F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				81D689CB2160D31800F569EE /* Main.storyboard */,
 				81AE8B74214A5E58009F8524 /* Assets.xcassets */,
 				8152DF252178E10E00E68F45 /* example.mp3 */,
+				81E56F5D2189CF3200F8E263 /* example1.mp3 */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
 				8152DF34217F244B00E68F45 /* LoginViewController.swift */,
@@ -412,6 +415,7 @@
 				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
 				8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */,
+				81E56F5E2189CF3200F8E263 /* example1.mp3 in Resources */,
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,

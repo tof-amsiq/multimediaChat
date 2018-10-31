@@ -37,8 +37,11 @@ class SocketIOManager: NSObject {
     }
     
     func connectToServerWithUserName(nickname: String) {
-        socket.emit("connectUser", nickname) 
-        
+        socket.emit("connectUser", nickname)
+    }
+    
+    func checkUserName(nickname: String) {
+        socket.emit("checkUsername", nickname)
     }
     
     func uploadData(data: NSData, nameOfFile: String, userName: String){

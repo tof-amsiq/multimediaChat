@@ -19,8 +19,7 @@ enum cellType {
     case input
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GifPickerDelegate, UITextFieldDelegate {
-   
+class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GifPickerDelegate, UITextFieldDelegate, AudioPickerDelegate {
     
     @IBOutlet weak var indicatorView: NVActivityIndicatorView!
     
@@ -78,6 +77,18 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
                 self.addNewMessageToCollectionView(newMessage: newTextMessage)
             }
             
+        }
+        
+        
+        _ = SocketIOManager.shared.socket.rx.on("audio").subscribe { (audio) in
+            
+            if self.userName != audio.element?[1] as? String {
+                if let imageBase64String = audio.element?[0] as? String {
+     
+                    let newAudioMessage = Message(messageType: .aduio, isSender: false, time: Date(), nameSender: self.userName, filePath: imageBase64String, imageTest: nil, messageText: nil)!
+                    self.addNewMessageToCollectionView(newMessage: newAudioMessage)
+                }
+            }
         }
         
         
@@ -274,10 +285,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     @objc func mircophoneIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
-//        let newViewController =  AudioViewController()
-//        self.navigationController?.pushViewController(newViewController, animated: true)
-        let audioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: nil)!
-        self.addNewMessageToCollectionView(newMessage: audioMessage)
+        let newViewController =  AudioViewController()
+        newViewController.delegate = self
+        self.navigationController?.pushViewController(newViewController, animated: true)
+//        let audioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: nil)!
+//        self.addNewMessageToCollectionView(newMessage: audioMessage)
     }
     
     @objc func handleKeyboardNotification(notification: NSNotification) {
@@ -326,6 +338,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         switch messageType {
         case .aduio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
+                menuCell.setup(base64: messagePath)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -498,6 +511,18 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         }
     }
     
+    
+    func getAudioBase64(_ url: String?) {
+        if let _url = url {
+            let newAudioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
+            self.addNewMessageToCollectionView(newMessage: newAudioMessage)
+             let audioData = NSData(base64Encoded: _url)!
+            
+            SocketIOManager.shared.uploadData(data: audioData, nameOfFile: "joi", userName: self.userName)
+        }
+    }
+    
+    
     func addNewMessageToCollectionView(newMessage: Message){
         self.messageArray.append(newMessage)
         let item = self.messageArray.count - 1
@@ -567,7 +592,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .video:
             return CGSize(width: view.frame.width - 50, height: 250)
         case .aduio:
-            break
+            return CGSize(width: view.frame.width - 50, height: 65)
         case .file:
             return CGSize(width: view.frame.width - 50, height: 60)
         }

@@ -9,11 +9,20 @@
 import AVFoundation
 import UIKit
 
+protocol AudioPickerDelegate: class {
+    func getAudioBase64(_ url: String?)
+}
+
 class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordButton: UIButton!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    
+    weak var delegate: AudioPickerDelegate?
+    
+    private var audioBase64 : String?
+    private var audioFilePath: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +54,13 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatterGet.string(from: Date())
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("\(date)recording.m4a")
+        
+        self.audioFilePath = audioFilename
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -76,6 +91,14 @@ class AudioViewController: UIViewController, AVAudioRecorderDelegate {
         
         if success {
             recordButton.setTitle("Tap to Re-record", for: .normal)
+            
+            if let audioURL = self.audioFilePath {
+                let dataURL = NSData(contentsOf: audioURL)
+                
+                let base64String = dataURL?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+              delegate?.getAudioBase64(base64String)
+            }
+           
         } else {
             recordButton.setTitle("Tap to Record", for: .normal)
             // recording failed :(
