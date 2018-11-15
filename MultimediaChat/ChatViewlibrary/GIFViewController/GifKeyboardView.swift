@@ -6,6 +6,8 @@
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
 import GiphyCoreSDK
+import RxSwift
+import RxCocoa
 import UIKit
 
 protocol GifPickerDelegate: class {
@@ -23,6 +25,8 @@ class GifKeyboardView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     @IBOutlet var contentView: UIView!
     
     let kCONTENT_XIB_NAME = "GifKeyboardView"
+    
+    let disposeBag = DisposeBag() // Bag of disposables to release them when view is being deallocated
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +50,11 @@ class GifKeyboardView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func setup(){
+        // Do any additional setup after loading the view.
+        GiphyCore.configure(apiKey: "NYpq6j1X5wXDZYYslFFsBmA8A2OF7nIk")
+       
         
+      
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
@@ -54,14 +62,36 @@ class GifKeyboardView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         
         self.collectionView.layer.borderColor = UIColor(red:7/255, green:7/255, blue:7/255, alpha: 1).cgColor
         self.collectionView.register(UINib.init(nibName: "GifCell", bundle: nil), forCellWithReuseIdentifier: "GifCell")
-        // Do any additional setup after loading the view.
-        GiphyCore.configure(apiKey: "NYpq6j1X5wXDZYYslFFsBmA8A2OF7nIk")
-        self.getGifArray()
+       
+        self.showDefaultGifs()
+        
+        self.textField
+            .rx.text // Observable property thanks to RxCocoa
+            .orEmpty // Make it non-optional
+            .debounce(0.5, scheduler: MainScheduler.instance) // Wait 0.5 for changes.
+            .distinctUntilChanged() // If they didn't occur, check if the new value is the same as old.
+//            .filter { !$0.isEmpty } // If the new value is really new, filter for non-empty query.
+            .subscribe(onNext: { [unowned self] query in // Here we subscribe to every new value, that is not empty (thanks to filter above).
+                // We now do our "API Request" to find cities.
+                // And reload table view data.
+                if query.isEmpty{
+                    self.showDefaultGifs()
+                } else {
+                    self.getGifArray(query: query)
+                }
+                
+            })
+            .disposed(by: disposeBag)
+       
+
     }
 
-    func getGifArray() {
-        /// Gif Search
-        _ = GiphyCore.shared.search("cats") { (response, error) in
+    func getGifArray(query: String) {
+        self.gifArray.removeAll()
+        
+        
+        // Gif Search
+        _ = GiphyCore.shared.search(query) { (response, error) in
             
             if (error as NSError?) != nil {
                 // Do what you want with the error
@@ -86,6 +116,33 @@ class GifKeyboardView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         }
     }
     
+    
+    func showDefaultGifs() {
+        self.gifArray.removeAll()
+        _ = GiphyCore.shared.trending() { (response, error) in
+            
+            if (error as NSError?) != nil {
+                // Do what you want with the error
+            }
+            
+            if let response = response, let data = response.data, let pagination = response.pagination {
+                print(response.meta)
+                print(pagination)
+                for result in data {
+                    if let gifUrl = result.images?.original?.gifUrl {
+                        self.gifArray.append(gifUrl)
+                        
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+            } else {
+                print("No Results Found")
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -118,7 +175,7 @@ class GifKeyboardView: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let url = self.gifArray[indexPath.row]
-        self.textField.text = ""
         delegate?.getLink(url)
+        self.textField.text = ""
     }
 }
