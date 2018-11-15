@@ -5,7 +5,8 @@
 //  Created by Tobias Frantsen on 10/10/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
-
+import Nuke
+import Gifu
 import UIKit
 
 class ImageViewCell: UICollectionViewCell {
@@ -14,7 +15,7 @@ class ImageViewCell: UICollectionViewCell {
     @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var viewTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: GIFImageView!
     class var reuseableCellidentifier: String {
         return String(describing: self)
     }
@@ -38,10 +39,18 @@ class ImageViewCell: UICollectionViewCell {
             self.setupView(withColor: UIColor.green.cgColor)
         }
         if type == .gif {
-            let imageURL = UIImage.gifImageWithURL(path)
+//            let imageURL = UIImage.gifImageWithURL(path)
+//            self.imageView.image = imageURL
+//            self.layoutIfNeeded()
             
-            self.imageView.image = imageURL
-            self.layoutIfNeeded()
+            if let url = URL(string: path ) {
+                Nuke.loadImage(
+                    with: url,
+                    options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)),
+                    into: imageView,
+                    completion: { [weak self] _, _ in
+                })
+            }
         } else if type == .photo {
             
             let dataDecoded : Data = Data(base64Encoded: path, options: .ignoreUnknownCharacters)!

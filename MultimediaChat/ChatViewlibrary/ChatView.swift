@@ -15,8 +15,6 @@ protocol typningMessageDelegate: class {
 
 class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate {
    
-    
-   
     @IBOutlet var gifkeyboardView: GifKeyboardView!
     
     func keybordButtonTapped(type: messageType) {

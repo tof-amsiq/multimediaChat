@@ -20,8 +20,6 @@
 		8120DA1A2199BDF5001B7B7F /* KeyboardTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */; };
 		8120DA1E219C5F06001B7B7F /* GifKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */; };
 		8120DA20219C5F1B001B7B7F /* GifKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */; };
-		8120DA23219C7A9B001B7B7F /* GifImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */; };
-		8120DA24219C7A9B001B7B7F /* GifImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */; };
 		8120DA28219C7FD1001B7B7F /* ImageViewExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */; };
 		8120DA2C219CB2A7001B7B7F /* GifuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */; };
 		812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812363C2216E1B0300D224B8 /* SocketIOManager.swift */; };
@@ -85,8 +83,8 @@
 		559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultimediaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8106082E215B90B10073E3DB /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifView.swift; path = GifController/GifView.swift; sourceTree = "<group>"; };
 		8106082F215B90B10073E3DB /* GifView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifView.xib; path = GifController/GifView.xib; sourceTree = "<group>"; };
-		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifCell.swift; path = GifController/GifCell.swift; sourceTree = "<group>"; };
-		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifCell.xib; path = GifController/GifCell.xib; sourceTree = "<group>"; };
+		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
+		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifCell.xib; sourceTree = "<group>"; };
 		81095338215A68F2009291C6 /* imageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
 		8120DA0B2199A7D3001B7B7F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		8120DA0D2199A82B001B7B7F /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
@@ -96,8 +94,6 @@
 		8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardTabView.xib; sourceTree = "<group>"; };
 		8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifKeyboardView.swift; path = ../GIFViewController/GifKeyboardView.swift; sourceTree = "<group>"; };
 		8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifKeyboardView.xib; path = ../GIFViewController/GifKeyboardView.xib; sourceTree = "<group>"; };
-		8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifImageViewCell.swift; path = ../GIFViewController/GifImageViewCell.swift; sourceTree = "<group>"; };
-		8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifImageViewCell.xib; path = ../GIFViewController/GifImageViewCell.xib; sourceTree = "<group>"; };
 		8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageViewExtension .swift"; path = "MultimediaChat/ChatViewlibrary/GIFViewController/ImageViewExtension .swift"; sourceTree = SOURCE_ROOT; };
 		8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifuExtension.swift; sourceTree = "<group>"; };
 		812363C2216E1B0300D224B8 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
@@ -178,8 +174,6 @@
 			children = (
 				8106082E215B90B10073E3DB /* GifView.swift */,
 				8106082F215B90B10073E3DB /* GifView.xib */,
-				81060832215B95060073E3DB /* GifCell.swift */,
-				81060833215B95060073E3DB /* GifCell.xib */,
 			);
 			name = GifController;
 			sourceTree = "<group>";
@@ -202,10 +196,10 @@
 			children = (
 				8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */,
 				8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */,
-				8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */,
-				8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */,
 				8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */,
 				8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */,
+				81060832215B95060073E3DB /* GifCell.swift */,
+				81060833215B95060073E3DB /* GifCell.xib */,
 			);
 			path = GIFViewController;
 			sourceTree = "<group>";
@@ -475,7 +469,6 @@
 				81AD2B3321776899006A0493 /* VideoPlayerViewCell.xib in Resources */,
 				81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */,
 				8152DF2A217DCCF900E68F45 /* FileViewCell.xib in Resources */,
-				8120DA24219C7A9B001B7B7F /* GifImageViewCell.xib in Resources */,
 				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
 				8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */,
@@ -593,7 +586,6 @@
 				8152DF30217DEBD000E68F45 /* SocketMessageController.swift in Sources */,
 				81D689DB2164C09B00F569EE /* CameraController.swift in Sources */,
 				81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */,
-				8120DA23219C7A9B001B7B7F /* GifImageViewCell.swift in Sources */,
 				814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
