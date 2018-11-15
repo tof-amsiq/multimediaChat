@@ -121,11 +121,20 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.userName = name 
     }
     
+    //TODO: Make to array, so you can insert array of messages
     func addNewMessageToCollectionView(newMessage: Message){
         self.messageArray.append(newMessage)
         let item = self.messageArray.count - 1
         let insertIndexPath = IndexPath(item: item, section: 0)
         self.collectionView.insertItems(at: [insertIndexPath])
+        
+        let section = 0
+        let lastItemIndex = self.collectionView.numberOfItems(inSection: section) - 1
+        let indexPath:NSIndexPath = NSIndexPath.init(item: lastItemIndex, section: section)
+        self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: false)
+        
+
+        
     }
     
     
@@ -252,7 +261,10 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
                 self.layoutIfNeeded()
             }) { (completed) in
-                //
+                if isKeyboardShowing {
+                    let indexpath = IndexPath(item: self.messageArray.count - 1, section: 0)
+                    self.collectionView.scrollToItem(at: indexpath, at: .bottom, animated: true)
+                }
             }
         }
     }
