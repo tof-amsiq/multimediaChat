@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Uq4-CS-dpF">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="pej-CC-gjG">
+                    <rect key="frame" x="66" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="8Uu-Dp-JOJ"/>
+                        <constraint firstAttribute="width" constant="25" id="Xaf-G7-Xhy"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="OtR-S2-oCr">
+                    <rect key="frame" x="16" y="7" width="25" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="VU1-Ks-5lq"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gif" translatesAutoresizingMaskIntoConstraints="NO" id="9jg-yV-voJ">
+                    <rect key="frame" x="116" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="4fw-i4-2YV"/>
+                        <constraint firstAttribute="width" constant="25" id="6HM-7Y-uVu"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-camera" translatesAutoresizingMaskIntoConstraints="NO" id="zPL-6u-eE5">
+                    <rect key="frame" x="166" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="G59-fu-dIf"/>
+                        <constraint firstAttribute="height" constant="25" id="vuH-na-CVn"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="t31-nW-w68">
+                    <rect key="frame" x="216" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="1Gm-dO-Wji"/>
+                        <constraint firstAttribute="width" constant="25" id="4nS-aM-zqH"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="JK5-5u-ZIc">
+                    <rect key="frame" x="266" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="50g-nZ-9uo"/>
+                        <constraint firstAttribute="height" constant="25" id="5uK-Sv-bCO"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="JK5-5u-ZIc" secondAttribute="bottom" constant="7.5" id="ANE-C8-kri"/>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="zPL-6u-eE5" secondAttribute="bottom" constant="7.5" id="DTi-3F-fyF"/>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="OtR-S2-oCr" secondAttribute="bottom" constant="7" id="IAL-k1-R1F"/>
+                <constraint firstItem="OtR-S2-oCr" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7" id="KKK-xw-CuU"/>
+                <constraint firstItem="t31-nW-w68" firstAttribute="leading" secondItem="zPL-6u-eE5" secondAttribute="trailing" constant="25" id="PM7-ed-Fi3"/>
+                <constraint firstItem="9jg-yV-voJ" firstAttribute="leading" secondItem="pej-CC-gjG" secondAttribute="trailing" constant="25" id="Qkc-i6-wPK"/>
+                <constraint firstItem="JK5-5u-ZIc" firstAttribute="leading" secondItem="t31-nW-w68" secondAttribute="trailing" constant="25" id="SM0-lY-fE6"/>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="t31-nW-w68" secondAttribute="bottom" constant="7.5" id="VKS-tJ-XN1"/>
+                <constraint firstItem="t31-nW-w68" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7.5" id="aYg-g3-EN1"/>
+                <constraint firstItem="pej-CC-gjG" firstAttribute="leading" secondItem="OtR-S2-oCr" secondAttribute="trailing" constant="25" id="ah0-QN-d11"/>
+                <constraint firstItem="zPL-6u-eE5" firstAttribute="leading" secondItem="9jg-yV-voJ" secondAttribute="trailing" constant="25" id="eeo-xk-33w"/>
+                <constraint firstItem="9jg-yV-voJ" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7.5" id="fyg-vp-2OX"/>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="pej-CC-gjG" secondAttribute="bottom" constant="7.5" id="lAW-rM-0rZ"/>
+                <constraint firstItem="pej-CC-gjG" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7.5" id="mLB-7K-6lS"/>
+                <constraint firstItem="zPL-6u-eE5" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7.5" id="muM-ub-yUz"/>
+                <constraint firstItem="z2O-ON-oB1" firstAttribute="bottom" secondItem="9jg-yV-voJ" secondAttribute="bottom" constant="7.5" id="o9h-rX-6Vc"/>
+                <constraint firstItem="OtR-S2-oCr" firstAttribute="leading" secondItem="z2O-ON-oB1" secondAttribute="leading" constant="16" id="wJ6-Am-KDx"/>
+                <constraint firstItem="JK5-5u-ZIc" firstAttribute="top" secondItem="z2O-ON-oB1" secondAttribute="top" constant="7.5" id="yfA-wx-bge"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="z2O-ON-oB1"/>
+            <point key="canvasLocation" x="79" y="-35"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gif" width="512" height="512"/>
+        <image name="icon" width="512" height="512"/>
+        <image name="microphone" width="512" height="512"/>
+        <image name="photo" width="512" height="512"/>
+        <image name="photo-camera" width="512" height="512"/>
+        <image name="video-camera" width="512" height="512"/>
+    </resources>
+</document>

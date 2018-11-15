@@ -12,12 +12,12 @@ import RxSwift
 import UIKit
 
 
-enum cellType {
-    case footer
-    case receiver
-    case sender
-    case input
-}
+//enum cellType {
+//    case footer
+//    case receiver
+//    case sender
+//    case input
+//}
 
 class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GifPickerDelegate, UITextFieldDelegate, AudioPickerDelegate {
     
@@ -179,6 +179,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
           NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        
+        
         inputTextField.inputAccessoryView = self.keyboardTabBar
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -315,6 +318,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.inputTextField.endEditing(true)
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messageArray.count

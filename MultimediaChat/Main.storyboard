@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ula-7l-eid">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ula-7l-eid">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -239,6 +239,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7V6-DZ-in6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="486" y="-527"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="coU-jb-bCH">
+            <objects>
+                <viewController storyboardIdentifier="testViewController" id="TQf-gM-eLQ" customClass="TestViewController" customModule="MultimediaChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s82-u7-EUd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ili-kP-PZp" customClass="ChatView" customModule="MultimediaChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ili-kP-PZp" firstAttribute="leading" secondItem="UyQ-8s-LRf" secondAttribute="leading" id="AXB-Vd-lDY"/>
+                            <constraint firstItem="UyQ-8s-LRf" firstAttribute="trailing" secondItem="Ili-kP-PZp" secondAttribute="trailing" id="KUN-Yr-7MY"/>
+                            <constraint firstItem="Ili-kP-PZp" firstAttribute="top" secondItem="s82-u7-EUd" secondAttribute="top" id="R8c-SO-0rT"/>
+                            <constraint firstItem="UyQ-8s-LRf" firstAttribute="bottom" secondItem="Ili-kP-PZp" secondAttribute="bottom" id="rk7-5p-ofN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UyQ-8s-LRf"/>
+                    </view>
+                    <connections>
+                        <outlet property="test" destination="Ili-kP-PZp" id="hhD-LY-zTk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S35-m7-AHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="-564"/>
         </scene>
     </scenes>
     <resources>

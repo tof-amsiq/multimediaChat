@@ -9,9 +9,9 @@
 import GiphyCoreSDK
 import UIKit
 
-protocol GifPickerDelegate: class {
-    func getLink(_ url: String?)
-}
+//protocol GifPickerDelegate: class {
+//    func getLink(_ url: String?)
+//}
 
 class GifView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -33,6 +33,7 @@ class GifView: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         // Do any additional setup after loading the view.
         GiphyCore.configure(apiKey: "NYpq6j1X5wXDZYYslFFsBmA8A2OF7nIk")
         self.getGifArray()
+        
     }
     
     
@@ -50,6 +51,7 @@ class GifView: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     for result in data {
                         if let gifUrl = result.images?.original?.gifUrl {
                             self.gifArray.append(gifUrl)
+                         
                         }
                     }
                     DispatchQueue.main.async {
@@ -73,21 +75,30 @@ class GifView: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.gifArray.count
+        if self.gifArray.isEmpty {
+            return 5
+        } else {
+            return self.gifArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GifCell", for: indexPath) as! GifCell
-        let URL = self.gifArray[indexPath.row] 
-            cell.setup(gifURL: URL)
-//        self.gifLink = URL
         
+        if self.gifArray.isEmpty {
+            cell.setup(gifURL: "")
+        }else {
+            let URL = self.gifArray[indexPath.row]
+            cell.setup(gifURL: URL)
+            //        self.gifLink = URL
+        }
+
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let url = self.gifArray[indexPath.row]
-        delegate?.getLink(url)
+        self.delegate?.getLink(url)
         self.navigationController?.popViewController(animated: true)
     }
 

@@ -5,7 +5,7 @@
 //  Created by Tobias Frantsen on 13/09/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
-
+import Nuke
 import UIKit
 
 @UIApplicationMain
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
         return true
     }
 

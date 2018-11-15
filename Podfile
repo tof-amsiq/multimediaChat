@@ -14,4 +14,6 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'NVActivityIndicatorView'
 pod 'BRYXBanner'
+pod 'Nuke', '~> 7.0'
+pod 'Gifu'
 end

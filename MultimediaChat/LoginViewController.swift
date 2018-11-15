@@ -37,9 +37,9 @@ class LoginViewController: UIViewController {
         SocketIOManager.shared.connectToServerWithUserName(nickname: userName)
         
         
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainViewController") as? ViewController {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "testViewController") as? TestViewController {
             if let navigator = navigationController {
-                viewController.userName = self.userNameTextField.text!
+//                viewController.userName = self.userNameTextField.text!
                 navigator.pushViewController(viewController, animated: true)
             }
     }

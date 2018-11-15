@@ -12,7 +12,20 @@
 		81060834215B95060073E3DB /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81060832215B95060073E3DB /* GifCell.swift */; };
 		81060835215B95060073E3DB /* GifCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81060833215B95060073E3DB /* GifCell.xib */; };
 		81095339215A68F2009291C6 /* imageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81095338215A68F2009291C6 /* imageExtension.swift */; };
+		8120DA0C2199A7D3001B7B7F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA0B2199A7D3001B7B7F /* ChatView.swift */; };
+		8120DA0E2199A82B001B7B7F /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA0D2199A82B001B7B7F /* ChatView.xib */; };
+		8120DA102199AC4B001B7B7F /* KeyboardTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */; };
+		8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA112199B0FF001B7B7F /* TestViewController.swift */; };
+		8120DA182199B4A2001B7B7F /* extensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA172199B4A2001B7B7F /* extensionUIView.swift */; };
+		8120DA1A2199BDF5001B7B7F /* KeyboardTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */; };
+		8120DA1E219C5F06001B7B7F /* GifKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */; };
+		8120DA20219C5F1B001B7B7F /* GifKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */; };
+		8120DA23219C7A9B001B7B7F /* GifImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */; };
+		8120DA24219C7A9B001B7B7F /* GifImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */; };
+		8120DA28219C7FD1001B7B7F /* ImageViewExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */; };
+		8120DA2C219CB2A7001B7B7F /* GifuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */; };
 		812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812363C2216E1B0300D224B8 /* SocketIOManager.swift */; };
+		8132AC8F21946D5200A97A17 /* keyboardTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8132AC8E21946D5200A97A17 /* keyboardTapView.xib */; };
 		814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */; };
 		814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */; };
 		814C75CD214BB5A7007C07E8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75CC214BB5A7007C07E8 /* Message.swift */; };
@@ -75,7 +88,20 @@
 		81060832215B95060073E3DB /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifCell.swift; path = GifController/GifCell.swift; sourceTree = "<group>"; };
 		81060833215B95060073E3DB /* GifCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifCell.xib; path = GifController/GifCell.xib; sourceTree = "<group>"; };
 		81095338215A68F2009291C6 /* imageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageExtension.swift; sourceTree = "<group>"; };
+		8120DA0B2199A7D3001B7B7F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		8120DA0D2199A82B001B7B7F /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
+		8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTabView.swift; sourceTree = "<group>"; };
+		8120DA112199B0FF001B7B7F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8120DA172199B4A2001B7B7F /* extensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIView.swift; sourceTree = "<group>"; };
+		8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardTabView.xib; sourceTree = "<group>"; };
+		8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifKeyboardView.swift; path = ../GIFViewController/GifKeyboardView.swift; sourceTree = "<group>"; };
+		8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifKeyboardView.xib; path = ../GIFViewController/GifKeyboardView.xib; sourceTree = "<group>"; };
+		8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifImageViewCell.swift; path = ../GIFViewController/GifImageViewCell.swift; sourceTree = "<group>"; };
+		8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GifImageViewCell.xib; path = ../GIFViewController/GifImageViewCell.xib; sourceTree = "<group>"; };
+		8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ImageViewExtension .swift"; path = "MultimediaChat/ChatViewlibrary/GIFViewController/ImageViewExtension .swift"; sourceTree = SOURCE_ROOT; };
+		8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifuExtension.swift; sourceTree = "<group>"; };
 		812363C2216E1B0300D224B8 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		8132AC8E21946D5200A97A17 /* keyboardTapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = keyboardTapView.xib; sourceTree = "<group>"; };
 		814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverViewCell.swift; sourceTree = "<group>"; };
 		814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverViewCell.xib; sourceTree = "<group>"; };
 		814C75CC214BB5A7007C07E8 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = DataController/Message.swift; sourceTree = "<group>"; };
@@ -158,6 +184,32 @@
 			name = GifController;
 			sourceTree = "<group>";
 		};
+		8120DA0A2199A386001B7B7F /* ChatViewlibrary */ = {
+			isa = PBXGroup;
+			children = (
+				8120DA26219C7B7E001B7B7F /* GIFViewController */,
+				8120DA0B2199A7D3001B7B7F /* ChatView.swift */,
+				8120DA0D2199A82B001B7B7F /* ChatView.xib */,
+				8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */,
+				8120DA172199B4A2001B7B7F /* extensionUIView.swift */,
+				8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */,
+			);
+			path = ChatViewlibrary;
+			sourceTree = "<group>";
+		};
+		8120DA26219C7B7E001B7B7F /* GIFViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */,
+				8120DA1F219C5F1B001B7B7F /* GifKeyboardView.xib */,
+				8120DA21219C7A9B001B7B7F /* GifImageViewCell.swift */,
+				8120DA22219C7A9B001B7B7F /* GifImageViewCell.xib */,
+				8120DA27219C7FD1001B7B7F /* ImageViewExtension .swift */,
+				8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */,
+			);
+			path = GIFViewController;
+			sourceTree = "<group>";
+		};
 		812363C1216E18BB00D224B8 /* SocketController */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +217,14 @@
 				8152DF2F217DEBD000E68F45 /* SocketMessageController.swift */,
 			);
 			path = SocketController;
+			sourceTree = "<group>";
+		};
+		8132AC8D21946D3D00A97A17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8132AC8E21946D5200A97A17 /* keyboardTapView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		81AE8B61214A5E56009F8524 = {
@@ -192,6 +252,7 @@
 		81AE8B6C214A5E56009F8524 /* MultimediaChat */ = {
 			isa = PBXGroup;
 			children = (
+				8120DA0A2199A386001B7B7F /* ChatViewlibrary */,
 				81C1F37F216E62B8007728C0 /* MessageView */,
 				812363C1216E18BB00D224B8 /* SocketController */,
 				81D689D92164C07E00F569EE /* CameraController */,
@@ -201,6 +262,7 @@
 				81834CCB21590D66004D65E2 /* ImageViewController.swift */,
 				81834CCC21590D66004D65E2 /* ImageViewController.xib */,
 				81AE8B6D214A5E56009F8524 /* AppDelegate.swift */,
+				8132AC8D21946D3D00A97A17 /* Views */,
 				81AE8B6F214A5E56009F8524 /* ViewController.swift */,
 				8152DF31217DFCE600E68F45 /* RxExtension.swift */,
 				81D689CB2160D31800F569EE /* Main.storyboard */,
@@ -208,6 +270,7 @@
 				8152DF252178E10E00E68F45 /* example.mp3 */,
 				81E56F5D2189CF3200F8E263 /* example1.mp3 */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
+				8120DA112199B0FF001B7B7F /* TestViewController.swift */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
 				8152DF34217F244B00E68F45 /* LoginViewController.swift */,
 				814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */,
@@ -412,18 +475,23 @@
 				81AD2B3321776899006A0493 /* VideoPlayerViewCell.xib in Resources */,
 				81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */,
 				8152DF2A217DCCF900E68F45 /* FileViewCell.xib in Resources */,
+				8120DA24219C7A9B001B7B7F /* GifImageViewCell.xib in Resources */,
 				81C1F383216E6721007728C0 /* ImageViewCell.xib in Resources */,
 				81060831215B90B10073E3DB /* GifView.xib in Resources */,
 				8152DF242178D0AE00E68F45 /* AudioPlayerViewCell.xib in Resources */,
 				81E56F5E2189CF3200F8E263 /* example1.mp3 in Resources */,
+				8120DA0E2199A82B001B7B7F /* ChatView.xib in Resources */,
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,
 				81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */,
 				81D689D82164B44600F569EE /* AudioViewController.xib in Resources */,
+				8120DA20219C5F1B001B7B7F /* GifKeyboardView.xib in Resources */,
+				8132AC8F21946D5200A97A17 /* keyboardTapView.xib in Resources */,
 				81834CCE21590D66004D65E2 /* ImageViewController.xib in Resources */,
 				8152DF262178E10E00E68F45 /* example.mp3 in Resources */,
 				8152DF1C2177710A00E68F45 /* CoverA.xib in Resources */,
+				8120DA1A2199BDF5001B7B7F /* KeyboardTabView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,12 +542,14 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -491,9 +561,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyCoreSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPlayerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
@@ -501,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -511,15 +583,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8120DA182199B4A2001B7B7F /* extensionUIView.swift in Sources */,
 				81AE8B70214A5E56009F8524 /* ViewController.swift in Sources */,
 				8152DF32217DFCE600E68F45 /* RxExtension.swift in Sources */,
+				8120DA0C2199A7D3001B7B7F /* ChatView.swift in Sources */,
 				81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */,
+				8120DA1E219C5F06001B7B7F /* GifKeyboardView.swift in Sources */,
+				8120DA2C219CB2A7001B7B7F /* GifuExtension.swift in Sources */,
 				8152DF30217DEBD000E68F45 /* SocketMessageController.swift in Sources */,
 				81D689DB2164C09B00F569EE /* CameraController.swift in Sources */,
 				81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */,
+				8120DA23219C7A9B001B7B7F /* GifImageViewCell.swift in Sources */,
 				814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
+				8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
 				8152DF35217F244C00E68F45 /* LoginViewController.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
@@ -529,6 +607,8 @@
 				812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */,
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
 				8152DF1A217770ED00E68F45 /* CoverA.swift in Sources */,
+				8120DA102199AC4B001B7B7F /* KeyboardTabView.swift in Sources */,
+				8120DA28219C7FD1001B7B7F /* ImageViewExtension .swift in Sources */,
 				81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */,
 				8152DF29217DCCF900E68F45 /* FileViewCell.swift in Sources */,
 				81834CCD21590D66004D65E2 /* ImageViewController.swift in Sources */,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,25 +19,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="235" height="158"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dYz-0k-xLq">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dYz-0k-xLq" customClass="GIFImageView" customModule="Gifu">
                         <rect key="frame" x="16" y="16" width="203" height="126"/>
-                        <color key="backgroundColor" red="0.33286723499999998" green="0.73370709199999995" blue="0.22260315059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="203" id="eGG-ac-bF0"/>
                         </constraints>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TbC-SG-O2u">
+                        <rect key="frame" x="107.5" y="69" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="TbC-SG-O2u" firstAttribute="centerY" secondItem="dYz-0k-xLq" secondAttribute="centerY" id="5Zq-Hi-x0w"/>
                 <constraint firstAttribute="bottom" secondItem="dYz-0k-xLq" secondAttribute="bottom" constant="16" id="Cn4-0B-AQY"/>
                 <constraint firstItem="dYz-0k-xLq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="fFI-NP-qxV"/>
+                <constraint firstItem="TbC-SG-O2u" firstAttribute="centerX" secondItem="dYz-0k-xLq" secondAttribute="centerX" id="gZm-Ag-sw1"/>
                 <constraint firstAttribute="trailing" secondItem="dYz-0k-xLq" secondAttribute="trailing" constant="16" id="lJi-E4-5I4"/>
                 <constraint firstItem="dYz-0k-xLq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="pQe-Ok-2rO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="235" height="158"/>
             <connections>
-                <outlet property="imageView" destination="dYz-0k-xLq" id="J3o-gA-7wx"/>
+                <outlet property="activityIndicator" destination="TbC-SG-O2u" id="KoU-VU-vbt"/>
+                <outlet property="imageView" destination="dYz-0k-xLq" id="lt5-EL-rVb"/>
             </connections>
             <point key="canvasLocation" x="116" y="120.53973013493254"/>
         </collectionViewCell>

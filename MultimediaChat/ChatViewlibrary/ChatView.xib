@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="MultimediaChat" customModuleProvider="target">
+            <connections>
+                <outlet property="ContentView" destination="44r-M7-Gzz" id="Ord-rh-TkH"/>
+                <outlet property="bottomConstarint" destination="vt2-mm-H5P" id="fd1-5t-5xn"/>
+                <outlet property="collectionView" destination="Zc9-Pi-WIT" id="hR0-ax-nIi"/>
+                <outlet property="gifkeyboardView" destination="HZK-IE-1DP" id="2ZC-Hh-d60"/>
+                <outlet property="indicatorView" destination="CrI-oS-Wq1" id="eMy-7E-GSZ"/>
+                <outlet property="inputTextField" destination="BLr-rQ-ihr" id="yiE-NU-rfm"/>
+                <outlet property="keyBoardTabView" destination="nmN-1y-9sr" id="6Eq-4V-MkJ"/>
+                <outlet property="messageInputContainerView" destination="7mp-1d-142" id="m5A-d4-1CB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="44r-M7-Gzz">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-Pi-WIT">
+                    <rect key="frame" x="16" y="20" width="343" height="587"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QwB-3k-d2b">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells>
+                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CZ3-j9-8pg">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </view>
+                        </collectionViewCell>
+                    </cells>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mp-1d-142">
+                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLr-rQ-ihr">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-Ww-EW5">
+                            <rect key="frame" x="325" y="9" width="38" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="Send">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="sendButtonTapped:" destination="-1" eventType="touchUpInside" id="SJk-e9-HZh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.33286723499999998" green="0.73370709199999995" blue="0.22260315059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="BLr-rQ-ihr" firstAttribute="leading" secondItem="7mp-1d-142" secondAttribute="leading" id="3pQ-1K-aba"/>
+                        <constraint firstItem="BLr-rQ-ihr" firstAttribute="top" secondItem="7mp-1d-142" secondAttribute="top" id="3y9-IX-Yjx"/>
+                        <constraint firstAttribute="height" constant="40" id="6Up-gE-rUJ"/>
+                        <constraint firstAttribute="bottom" secondItem="BLr-rQ-ihr" secondAttribute="bottom" id="A1Q-SR-Yvc"/>
+                        <constraint firstAttribute="trailing" secondItem="BLr-rQ-ihr" secondAttribute="trailing" id="naR-Sp-vz0"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CrI-oS-Wq1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="0.0" y="607" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7mp-1d-142" firstAttribute="top" secondItem="CrI-oS-Wq1" secondAttribute="bottom" id="PQy-Rm-2h1"/>
+                <constraint firstItem="7mp-1d-142" firstAttribute="top" secondItem="Zc9-Pi-WIT" secondAttribute="bottom" constant="20" id="bPE-KE-3hy"/>
+                <constraint firstItem="CrI-oS-Wq1" firstAttribute="leading" secondItem="ISd-bi-Olq" secondAttribute="leading" id="buU-54-2xP"/>
+                <constraint firstItem="7mp-1d-142" firstAttribute="trailing" secondItem="ISd-bi-Olq" secondAttribute="trailing" id="ilC-8h-j9b"/>
+                <constraint firstItem="Zc9-Pi-WIT" firstAttribute="top" secondItem="ISd-bi-Olq" secondAttribute="top" id="jZO-pn-6N0"/>
+                <constraint firstItem="CrI-oS-Wq1" firstAttribute="top" secondItem="Zc9-Pi-WIT" secondAttribute="bottom" id="mpT-zZ-bPF"/>
+                <constraint firstItem="Zc9-Pi-WIT" firstAttribute="trailing" secondItem="44r-M7-Gzz" secondAttribute="trailingMargin" id="puu-60-5t4"/>
+                <constraint firstItem="ISd-bi-Olq" firstAttribute="trailing" secondItem="CrI-oS-Wq1" secondAttribute="trailing" id="qrO-ya-l8c"/>
+                <constraint firstItem="Zc9-Pi-WIT" firstAttribute="leading" secondItem="44r-M7-Gzz" secondAttribute="leadingMargin" id="rC3-vY-8Be"/>
+                <constraint firstItem="7mp-1d-142" firstAttribute="bottom" secondItem="ISd-bi-Olq" secondAttribute="bottom" id="vt2-mm-H5P"/>
+                <constraint firstItem="7mp-1d-142" firstAttribute="leading" secondItem="ISd-bi-Olq" secondAttribute="leading" id="xNU-9s-yDd"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ISd-bi-Olq"/>
+            <point key="canvasLocation" x="234" y="152"/>
+        </view>
+        <view contentMode="scaleToFill" id="nmN-1y-9sr" customClass="KeyboardTabView" customModule="MultimediaChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="9XG-pe-ox8"/>
+            <point key="canvasLocation" x="-2598" y="10"/>
+        </view>
+        <view contentMode="scaleToFill" id="HZK-IE-1DP" customClass="GifKeyboardView" customModule="MultimediaChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="ZC3-d5-Aj2"/>
+            <point key="canvasLocation" x="-1291" y="-440"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardTabView" customModule="MultimediaChat" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="Yok-oY-6kT" id="FsG-A4-SQg"/>
+                <outlet property="fileImageView" destination="Zn8-TO-Nek" id="7yc-p7-fUo"/>
+                <outlet property="gifImageView" destination="oGH-3m-CTb" id="fmF-An-nOj"/>
+                <outlet property="imageView" destination="ceA-ag-6IV" id="ais-OB-loT"/>
+                <outlet property="microphoneImageView" destination="cOX-9F-3gS" id="Ynn-Un-mXK"/>
+                <outlet property="photoalbumImageView" destination="wp9-LQ-Qro" id="wSH-CQ-SKX"/>
+                <outlet property="videoImageView" destination="tAB-Jp-Z6u" id="xOs-z9-Z32"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Yok-oY-6kT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="wp9-LQ-Qro">
+                    <rect key="frame" x="66" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="chE-g9-GY4"/>
+                        <constraint firstAttribute="height" constant="25" id="kFg-uw-Amv"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-ag-6IV">
+                    <rect key="frame" x="16" y="7" width="25" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="6JP-2x-ccF"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gif" translatesAutoresizingMaskIntoConstraints="NO" id="oGH-3m-CTb">
+                    <rect key="frame" x="116" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="52P-R4-bV2"/>
+                        <constraint firstAttribute="width" constant="25" id="Pb8-En-SWR"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-camera" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-Jp-Z6u">
+                    <rect key="frame" x="166" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Mxe-ZO-IAa"/>
+                        <constraint firstAttribute="height" constant="25" id="jSM-DE-T7U"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="microphone" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-9F-3gS">
+                    <rect key="frame" x="216" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Iaf-2X-BNw"/>
+                        <constraint firstAttribute="width" constant="25" id="igl-t9-03j"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Zn8-TO-Nek">
+                    <rect key="frame" x="266" y="7.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="ALN-8i-i8z"/>
+                        <constraint firstAttribute="height" constant="25" id="Z2A-U4-6QE"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cOX-9F-3gS" firstAttribute="leading" secondItem="tAB-Jp-Z6u" secondAttribute="trailing" constant="25" id="3Ce-Te-9p7"/>
+                <constraint firstItem="tAB-Jp-Z6u" firstAttribute="leading" secondItem="oGH-3m-CTb" secondAttribute="trailing" constant="25" id="4uO-Ct-fZW"/>
+                <constraint firstItem="ceA-ag-6IV" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7" id="7kK-KN-3C7"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="tAB-Jp-Z6u" secondAttribute="bottom" constant="7.5" id="Ior-w9-uYO"/>
+                <constraint firstItem="oGH-3m-CTb" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7.5" id="Izf-Hy-phL"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="Zn8-TO-Nek" secondAttribute="bottom" constant="7.5" id="J6u-o2-y3C"/>
+                <constraint firstItem="wp9-LQ-Qro" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7.5" id="Pbl-uI-ls4"/>
+                <constraint firstItem="ceA-ag-6IV" firstAttribute="leading" secondItem="wqp-bj-GRh" secondAttribute="leading" constant="16" id="Q6g-5b-ccp"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="cOX-9F-3gS" secondAttribute="bottom" constant="7.5" id="QoS-p6-Z8f"/>
+                <constraint firstItem="wp9-LQ-Qro" firstAttribute="leading" secondItem="ceA-ag-6IV" secondAttribute="trailing" constant="25" id="Wj6-B9-460"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="oGH-3m-CTb" secondAttribute="bottom" constant="7.5" id="bYX-uc-nIK"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="ceA-ag-6IV" secondAttribute="bottom" constant="7" id="cRm-gi-uDS"/>
+                <constraint firstItem="Zn8-TO-Nek" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7.5" id="jaL-o2-mXh"/>
+                <constraint firstItem="Zn8-TO-Nek" firstAttribute="leading" secondItem="cOX-9F-3gS" secondAttribute="trailing" constant="25" id="kei-J6-mQe"/>
+                <constraint firstItem="oGH-3m-CTb" firstAttribute="leading" secondItem="wp9-LQ-Qro" secondAttribute="trailing" constant="25" id="lE1-YT-ekz"/>
+                <constraint firstItem="wqp-bj-GRh" firstAttribute="bottom" secondItem="wp9-LQ-Qro" secondAttribute="bottom" constant="7.5" id="lxO-ni-D0u"/>
+                <constraint firstItem="cOX-9F-3gS" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7.5" id="pFv-UY-Ayc"/>
+                <constraint firstItem="tAB-Jp-Z6u" firstAttribute="top" secondItem="wqp-bj-GRh" secondAttribute="top" constant="7.5" id="z4B-X7-iCW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="wqp-bj-GRh"/>
+            <point key="canvasLocation" x="190" y="-235"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gif" width="512" height="512"/>
+        <image name="icon" width="512" height="512"/>
+        <image name="microphone" width="512" height="512"/>
+        <image name="photo" width="512" height="512"/>
+        <image name="photo-camera" width="512" height="512"/>
+        <image name="video-camera" width="512" height="512"/>
+    </resources>
+</document>

@@ -148,3 +148,58 @@ iOSInjectionProject/
 /Pods/BRYXBanner/README.md
 /Pods/BRYXBanner/Pod/Classes/Banner.swift
 /Pods/BRYXBanner/LICENSE
+/Pods/Target Support Files/Starscream/Starscream.xcconfig
+/Pods/Target Support Files/Starscream/Starscream-Info.plist
+/Pods/Target Support Files/Socket.IO-Client-Swift/Socket.IO-Client-Swift.xcconfig
+/Pods/Target Support Files/Socket.IO-Client-Swift/Socket.IO-Client-Swift-Info.plist
+/Pods/Target Support Files/RxSwift/RxSwift.xcconfig
+/Pods/Target Support Files/RxSwift/RxSwift-Info.plist
+/Pods/Target Support Files/RxCocoa/RxCocoa.xcconfig
+/Pods/Target Support Files/RxCocoa/RxCocoa-Info.plist
+/Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-Info.plist
+/Pods/Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView-Info.plist
+/Pods/Target Support Files/Nuke/Nuke.xcconfig
+/Pods/Target Support Files/Nuke/Nuke.modulemap
+/Pods/Target Support Files/Nuke/Nuke-umbrella.h
+/Pods/Target Support Files/Nuke/Nuke-prefix.pch
+/Pods/Target Support Files/Nuke/Nuke-Info.plist
+/Pods/Target Support Files/Nuke/Nuke-dummy.m
+/Pods/Target Support Files/MMPlayerView/MMPlayerView.xcconfig
+/Pods/Target Support Files/MMPlayerView/MMPlayerView-Info.plist
+/Pods/Target Support Files/GiphyCoreSDK/GiphyCoreSDK.xcconfig
+/Pods/Target Support Files/GiphyCoreSDK/GiphyCoreSDK-Info.plist
+/Pods/Target Support Files/Gifu/Gifu.xcconfig
+/Pods/Target Support Files/Gifu/Gifu.modulemap
+/Pods/Target Support Files/Gifu/Gifu-umbrella.h
+/Pods/Target Support Files/Gifu/Gifu-prefix.pch
+/Pods/Target Support Files/Gifu/Gifu-Info.plist
+/Pods/Target Support Files/Gifu/Gifu-dummy.m
+/Pods/Target Support Files/FileBrowser/FileBrowser.xcconfig
+/Pods/Target Support Files/FileBrowser/FileBrowser-Info.plist
+/Pods/Target Support Files/BRYXBanner/BRYXBanner-Info.plist
+/Pods/Nuke/Sources/Internal.swift
+/Pods/Nuke/Sources/ImageView.swift
+/Pods/Nuke/Sources/ImageTaskMetrics.swift
+/Pods/Nuke/Sources/ImageRequest.swift
+/Pods/Nuke/Sources/ImageProcessing.swift
+/Pods/Nuke/Sources/ImagePreheater.swift
+/Pods/Nuke/Sources/ImagePipeline.swift
+/Pods/Nuke/Sources/ImageDecoding.swift
+/Pods/Nuke/Sources/ImageCache.swift
+/Pods/Nuke/Sources/DataLoader.swift
+/Pods/Nuke/Sources/DataCache.swift
+/Pods/Nuke/README.md
+/Pods/Nuke/LICENSE
+/Pods/Gifu/Source/Helpers/ImageSourceHelpers.swift
+/Pods/Gifu/Source/Gifu.h
+/Pods/Gifu/Source/Extensions/UIImageView.swift
+/Pods/Gifu/Source/Extensions/UIImage.swift
+/Pods/Gifu/Source/Extensions/CGSize.swift
+/Pods/Gifu/Source/Extensions/Array.swift
+/Pods/Gifu/Source/Classes/GIFImageView.swift
+/Pods/Gifu/Source/Classes/GIFAnimatable.swift
+/Pods/Gifu/Source/Classes/FrameStore.swift
+/Pods/Gifu/Source/Classes/Animator.swift
+/Pods/Gifu/Source/Classes/AnimatedFrame.swift
+/Pods/Gifu/README.md
+/Pods/Gifu/LICENSE

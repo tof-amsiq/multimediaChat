@@ -44,13 +44,17 @@ class ImageViewCell: UICollectionViewCell {
             self.layoutIfNeeded()
         } else if type == .photo {
             
-            if FileManager.default.fileExists(atPath: path) {
-                let url = URL(string: path)!
-                let data = try? Data(contentsOf: url)
-                imageView.image = UIImage(data: data!)
-            } else {
-                imageView.image = image!
-            }
+            let dataDecoded : Data = Data(base64Encoded: path, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            imageView.image = decodedimage
+            
+//            if FileManager.default.fileExists(atPath: path) {
+//                let url = URL(string: path)!
+//                let data = try? Data(contentsOf: url)
+//                imageView.image = UIImage(data: data!)
+//            } else {
+//                imageView.image = image!
+//            }
         }
         
     }
