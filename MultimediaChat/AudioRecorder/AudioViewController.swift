@@ -9,9 +9,9 @@
 import AVFoundation
 import UIKit
 
-protocol AudioPickerDelegate: class {
-    func getAudioBase64(_ url: String?)
-}
+//protocol AudioPickerDelegate: class {
+//    func getAudioBase64(_ url: String?)
+//}
 
 class AudioViewController: UIViewController, AVAudioRecorderDelegate {
     

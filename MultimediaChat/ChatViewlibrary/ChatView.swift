@@ -13,16 +13,25 @@ protocol typningMessageDelegate: class {
     func getTypningStatus(isEditning: Bool)
 }
 
-class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate {
+class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate {
    
+   
+    @IBOutlet var audioRecorderKeyboardView: AudioRecorder!
     @IBOutlet var gifkeyboardView: GifKeyboardView!
     
     func keybordButtonTapped(type: messageType) {
-        self.gifkeyboardView.delegate = self
-        inputTextField.inputAccessoryView = self.gifkeyboardView
-        inputTextField.reloadInputViews()
-        self.gifkeyboardView.textField.becomeFirstResponder()
-        self.messageInputContainerView.isHidden = true 
+        if type == .gif {
+            self.gifkeyboardView.delegate = self
+            inputTextField.inputAccessoryView = self.gifkeyboardView
+            inputTextField.reloadInputViews()
+            self.gifkeyboardView.textField.becomeFirstResponder()
+        } else if type == .aduio {
+            self.audioRecorderKeyboardView.delegate = self
+            inputTextField.inputAccessoryView =  self.audioRecorderKeyboardView
+            inputTextField.reloadInputViews()
+        }
+        self.messageInputContainerView.isHidden = true
+      
     }
     
     
@@ -33,6 +42,17 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.inputTextField.reloadInputViews()
         if let _url = url {
             self.newMessage(messageType: .gif, filePath: _url)
+        }
+    }
+    
+    func getAudioBase64(_ url: String?) {
+        self.dismissKeyboard()
+        self.messageInputContainerView.isHidden = false
+        self.inputTextField.inputAccessoryView = self.keyBoardTabView
+        self.inputTextField.reloadInputViews()
+        
+        if let _url = url {
+            self.newMessage(messageType: .aduio, filePath: _url)
         }
     }
     

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioRecorder" customModule="MultimediaChat" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonView" destination="euG-b7-Tno" id="Gs8-Rd-Iub"/>
+                <outlet property="contentView" destination="gnc-4B-Bgz" id="Rnf-qh-fGq"/>
+                <outlet property="progressView" destination="Xyq-wL-ntl" id="ucw-Np-wk4"/>
+                <outlet property="timeLabel" destination="bd6-tU-tZq" id="ZHx-UX-e39"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="gnc-4B-Bgz">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xyq-wL-ntl">
+                    <rect key="frame" x="8" y="110" width="351" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="0cD-Ks-3db"/>
+                    </constraints>
+                </progressView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euG-b7-Tno">
+                    <rect key="frame" x="10" y="48" width="355" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd6-tU-tZq">
+                    <rect key="frame" x="367" y="130" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Xyq-wL-ntl" firstAttribute="leading" secondItem="gnc-4B-Bgz" secondAttribute="leading" constant="8" id="9bT-wc-mNX"/>
+                <constraint firstItem="Xyq-wL-ntl" firstAttribute="top" secondItem="euG-b7-Tno" secondAttribute="bottom" constant="32" id="Did-Hq-UgD"/>
+                <constraint firstItem="bd6-tU-tZq" firstAttribute="trailing" secondItem="0le-x3-Zgg" secondAttribute="trailing" constant="-8" id="LxY-VT-Og8"/>
+                <constraint firstItem="0le-x3-Zgg" firstAttribute="bottom" secondItem="bd6-tU-tZq" secondAttribute="bottom" constant="20" id="R8E-z7-kbj"/>
+                <constraint firstItem="euG-b7-Tno" firstAttribute="leading" secondItem="0le-x3-Zgg" secondAttribute="leading" constant="10" id="WKZ-8B-C06"/>
+                <constraint firstItem="0le-x3-Zgg" firstAttribute="trailing" secondItem="euG-b7-Tno" secondAttribute="trailing" constant="10" id="Xxz-NH-ikb"/>
+                <constraint firstItem="0le-x3-Zgg" firstAttribute="bottom" secondItem="Xyq-wL-ntl" secondAttribute="bottom" constant="20" id="r8f-Gd-Zyb"/>
+                <constraint firstItem="bd6-tU-tZq" firstAttribute="leading" secondItem="Xyq-wL-ntl" secondAttribute="trailing" constant="8" id="sbd-gK-wI5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="0le-x3-Zgg"/>
+            <point key="canvasLocation" x="-186" y="-155"/>
+        </view>
+    </objects>
+</document>

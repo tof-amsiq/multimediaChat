@@ -38,6 +38,11 @@ class AudioPlayerViewCell:UICollectionViewCell, AVAudioPlayerDelegate {
         }
         
     }
+    
+    @objc func update() {
+        self.setupProgressView()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -82,9 +87,6 @@ class AudioPlayerViewCell:UICollectionViewCell, AVAudioPlayerDelegate {
     }
 
     
-    @objc func update() {
-            self.setupProgressView()
-        }
     
     func secondsMinutesSeconds (seconds : Int) -> (Int, Int) {
         return ((seconds % 3600) / 60, (seconds % 3600) % 60)

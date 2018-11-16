@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="MultimediaChat" customModuleProvider="target">
             <connections>
                 <outlet property="ContentView" destination="44r-M7-Gzz" id="Ord-rh-TkH"/>
+                <outlet property="audioRecorderKeyboardView" destination="dfb-2a-u8p" id="DDA-49-KXo"/>
                 <outlet property="bottomConstarint" destination="vt2-mm-H5P" id="fd1-5t-5xn"/>
                 <outlet property="collectionView" destination="Zc9-Pi-WIT" id="hR0-ax-nIi"/>
                 <outlet property="gifkeyboardView" destination="HZK-IE-1DP" id="2ZC-Hh-d60"/>
@@ -106,7 +107,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="9XG-pe-ox8"/>
-            <point key="canvasLocation" x="-2598" y="10"/>
+            <point key="canvasLocation" x="-476" y="151"/>
         </view>
         <view contentMode="scaleToFill" id="HZK-IE-1DP" customClass="GifKeyboardView" customModule="MultimediaChat" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -114,7 +115,15 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ZC3-d5-Aj2"/>
-            <point key="canvasLocation" x="-1291" y="-440"/>
+            <point key="canvasLocation" x="-476" y="-40"/>
+        </view>
+        <view contentMode="scaleToFill" id="dfb-2a-u8p" customClass="AudioRecorder" customModule="MultimediaChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="dQR-ha-qFD"/>
+            <point key="canvasLocation" x="-476" y="315"/>
         </view>
     </objects>
 </document>

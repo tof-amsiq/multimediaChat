@@ -195,9 +195,10 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //                let audioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: nil)!
 //                self.addNewMessageToCollectionView(newMessage: audioMessage)
       
-        let newViewController = AudioViewController()
-        newViewController.delegate = self
-        self.pushToViewController(viewController: newViewController)
+//        let newViewController = AudioViewController()
+//        newViewController.delegate = self
+//        self.pushToViewController(viewController: newViewController)
+        self.keyboardDelegate?.keybordButtonTapped(type: .aduio)
        
     }
     
