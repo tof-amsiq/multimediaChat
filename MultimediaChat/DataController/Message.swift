@@ -13,8 +13,9 @@ enum messageType: String, RawRepresentable {
     case gif
     case photo
     case video
-    case aduio
+    case audio
     case file
+    case linkPreView
 }
 
 class Message: NSObject {
