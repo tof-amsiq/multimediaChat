@@ -15,14 +15,12 @@ class TextViewCell: UICollectionViewCell {
     @IBOutlet weak var textLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var textLabel: UILabel!
     
-   
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.textLabel.numberOfLines = 0
         self.textLabel.textColor = .white
         // Initialization code
-     
         
     }
   
