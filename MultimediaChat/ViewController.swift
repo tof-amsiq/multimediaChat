@@ -85,7 +85,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             if self.userName != audio.element?[1] as? String {
                 if let imageBase64String = audio.element?[0] as? String {
      
-                    let newAudioMessage = Message(messageType: .aduio, isSender: false, time: Date(), nameSender: self.userName, filePath: imageBase64String, imageTest: nil, messageText: nil)!
+                    let newAudioMessage = Message(messageType: .audio, isSender: false, time: Date(), nameSender: self.userName, filePath: imageBase64String, imageTest: nil, messageText: nil)!
                     self.addNewMessageToCollectionView(newMessage: newAudioMessage)
                 }
             }
@@ -340,7 +340,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         var cell = UICollectionViewCell()
         switch messageType {
-        case .aduio:
+        case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
                 menuCell.setup(base64: messagePath)
                 cell = menuCell
@@ -388,6 +388,8 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             } else {
                 return UICollectionViewCell()
             }
+            break
+        case .linkPreView:
             break
         }
       
@@ -518,7 +520,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func getAudioBase64(_ url: String?) {
         if let _url = url {
-            let newAudioMessage = Message(messageType: .aduio, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
+            let newAudioMessage = Message(messageType: .audio, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newAudioMessage)
              let audioData = NSData(base64Encoded: _url)!
             
@@ -575,7 +577,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
          var messageType = self.messageArray[indexPath.row].type
        
         switch messageType {
-        case .text:
+        case .text, .linkPreView:
             if let text = self.messageArray[indexPath.row].text {
               let apporximateWitdhOfTextView = 250
               
@@ -584,7 +586,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
                 let attribues = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
                 
             let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
-                debugPrint("Tobias \(rect.height)")
+             
                 let returnSize = CGSize(width: view.frame.width - 50 , height: rect.height + 20 + 20)
                 return returnSize
             }
@@ -595,10 +597,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             break
         case .video:
             return CGSize(width: view.frame.width - 50, height: 250)
-        case .aduio:
+        case .audio:
             return CGSize(width: view.frame.width - 50, height: 65)
         case .file:
             return CGSize(width: view.frame.width - 50, height: 60)
+      
+       
         }
         return CGSize(width: view.frame.width - 50, height: 150 + 20)
     }

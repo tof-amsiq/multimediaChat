@@ -27,9 +27,9 @@ class CoverA: UIView, MMPlayerCoverViewProtocol {
     func currentPlayer(status: MMPlayerPlayStatus) {
         switch status {
         case .playing:
-            self.btnPlay.setImage(#imageLiteral(resourceName: "gif"), for: .normal)
+            self.btnPlay.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         default:
-            self.btnPlay.setImage(#imageLiteral(resourceName: "gif"), for: .normal)
+            self.btnPlay.setImage(#imageLiteral(resourceName: "play_button"), for: .normal)
         }
     }
     

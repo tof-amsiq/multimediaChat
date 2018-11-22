@@ -50,7 +50,7 @@ class ReceiverViewCell: UICollectionViewCell {
             }
         case .video:
             data = "this is video"
-        case .aduio:
+        case .audio:
             data = "this is aduio"
         case .file:
             
@@ -63,6 +63,8 @@ class ReceiverViewCell: UICollectionViewCell {
             }
             
             
+        case .linkPreView:
+            break
         }
         imageView.backgroundColor = .black
         if type == .file {
