@@ -5,7 +5,7 @@
 //  Created by Tobias Frantsen on 12/11/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
-
+import MobileCoreServices
 import FileBrowser
 import UIKit
 
@@ -59,7 +59,6 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     
     
     private func setup(){
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
@@ -118,10 +117,28 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     @objc func videoIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
-        CameraController.shared.authorisationStatus(attachmentTypeEnum: .video, vc: self.getCurrentViewController()!)
-        CameraController.shared.imagePickedBlock = {(image) in
-            debugPrint(image)
+      
+        DispatchQueue.main.async {
+            CameraController.shared.authorisationStatus(attachmentTypeEnum: .video, vc: self.getCurrentViewController()!)
+            CameraController.shared.videoPickedBlock = {(video) in
+                debugPrint("Tobias \(video)")
+                var urlString = video.absoluteString
+                self.messageDelegate?.newMessage(messageType: .video, filePath: urlString ?? "")
+            }
         }
+        
+        
+//        CameraController.shared.authorisationStatus(attachmentTypeEnum: .video, vc: self.getCurrentViewController()!)
+//        CameraController.shared.imagePickedBlock = {(image) in
+//
+//
+//                let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+//                let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+//
+//                self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
+//
+//
+//        }
     }
     @objc func photoAlbumIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -137,7 +154,15 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
         
         CameraController.shared.imagePickedBlock = {(image) in
             debugPrint("Tobias \(image)")
-        
+            
+//            let crop = image.getCropRation()
+//
+//            let size = CGSize(width: 100 * crop, height: 100 / crop)
+//            let scaleImage = UIImage.scaleImageToSize(img: image, size: size)
+//
+//
+//            let newImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300)!
+//            debugPrint("bif newscale \(newImage.size)")
             let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
             let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             
@@ -166,7 +191,35 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
-        CameraController.shared.authorisationStatus(attachmentTypeEnum: .camera, vc: self.getCurrentViewController()!)
+        DispatchQueue.main.async {
+             CameraController.shared.authorisationStatus(attachmentTypeEnum: .camera, vc: self.getCurrentViewController()!)
+            
+            CameraController.shared.imagePickedURL = {(url) in
+                self.messageDelegate?.newMessage(messageType: .photo, filePath: url)
+            }
+        }
+//            CameraController.shared.imagePickedBlock = {(image) in
+//                if let fixedImage = image.fixedOrientation() {
+//
+////                    let crop = fixedImage.getCropRation()
+////                    let maxWidth = self.getCurrentViewController()!.view.frame.width - 50
+////                    let size = CGSize(width: 100 * crop, height: 100 / crop)
+////                    let scaleImage = UIImage.scaleImageToSize(img: fixedImage, size: size)
+////
+////                    let newImage = image.resize(targetSize: size)
+////                    let newImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300)!
+//
+//                    let imageData:NSData = UIImagePNGRepresentation(fixedImage)! as NSData
+//                    let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+//
+//                    self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
+//                }
+//
+//            }
+//        }
+        
+        
+       
     }
     
     @objc func gifIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -198,7 +251,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //        let newViewController = AudioViewController()
 //        newViewController.delegate = self
 //        self.pushToViewController(viewController: newViewController)
-        self.keyboardDelegate?.keybordButtonTapped(type: .aduio)
+        self.keyboardDelegate?.keybordButtonTapped(type: .audio)
        
     }
     
@@ -235,7 +288,36 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     
     func getAudioBase64(_ url: String?) {
         if let _url = url {
-            self.messageDelegate?.newMessage(messageType: .aduio, filePath: _url)
+            self.messageDelegate?.newMessage(messageType: .audio, filePath: _url)
         }
     }
+    
+    @objc func video(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo info: AnyObject) {
+        let title = (error == nil) ? "Success" : "Error"
+        let message = (error == nil) ? "Video was saved" : "Video failed to save"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        self.getCurrentViewController()!.present(alert, animated: true, completion: nil)
+    }
+    
+    func resizeImageWithAspect(image: UIImage,scaledToMaxWidth width:CGFloat,maxHeight height :CGFloat)->UIImage? {
+        let oldWidth = image.size.width;
+        let oldHeight = image.size.height;
+        
+        let scaleFactor = (oldWidth > oldHeight) ? width / oldWidth : height / oldHeight;
+        
+        let newHeight = oldHeight * scaleFactor;
+        let newWidth = oldWidth * scaleFactor;
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize,false,UIScreen.main.scale);
+        
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height));
+        let newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return newImage
+    }
+    
 }
+

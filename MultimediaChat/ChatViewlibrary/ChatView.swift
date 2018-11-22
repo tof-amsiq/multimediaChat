@@ -25,7 +25,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             inputTextField.inputAccessoryView = self.gifkeyboardView
             inputTextField.reloadInputViews()
             self.gifkeyboardView.textField.becomeFirstResponder()
-        } else if type == .aduio {
+        } else if type == .audio {
             self.audioRecorderKeyboardView.delegate = self
             inputTextField.inputAccessoryView =  self.audioRecorderKeyboardView
             inputTextField.reloadInputViews()
@@ -52,7 +52,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.inputTextField.reloadInputViews()
         
         if let _url = url {
-            self.newMessage(messageType: .aduio, filePath: _url)
+            self.newMessage(messageType: .audio, filePath: _url)
         }
     }
     
@@ -118,7 +118,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.collectionView.register(UINib.init(nibName: "TextViewCell", bundle: nil), forCellWithReuseIdentifier: "TextViewCell")
         self.collectionView.register(UINib.init(nibName: "AudioPlayerViewCell", bundle: nil), forCellWithReuseIdentifier: "AudioPlayerViewCell")
         self.collectionView.register(UINib.init(nibName: "VideoPlayerViewCell", bundle: nil), forCellWithReuseIdentifier: "VideoPlayerViewCell")
-        collectionView.register(UINib.init(nibName: "FileViewCell", bundle: nil), forCellWithReuseIdentifier: "FileViewCell")
+        self.collectionView.register(UINib.init(nibName: "FileViewCell", bundle: nil), forCellWithReuseIdentifier: "FileViewCell")
+        self.collectionView.register(UINib.init(nibName: "TextLinkPreviewViewCell", bundle: nil), forCellWithReuseIdentifier: "TextLinkPreviewViewCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -131,7 +132,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     @objc func dismissKeyboard() {
-        self.endEditing(true)
+//        self.endEditing(true)
         self.gifkeyboardView.textField.endEditing(true)
         self.inputTextField.endEditing(true)
     }
@@ -176,7 +177,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         
         var cell = UICollectionViewCell()
         switch messageType {
-        case .aduio:
+        case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
                 menuCell.setup(base64: messagePath)
                 cell = menuCell
@@ -211,6 +212,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .video:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoPlayerViewCell", for: indexPath) as? VideoPlayerViewCell  {
+                menuCell.setup(urlString: messagePath)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -225,6 +227,12 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 return UICollectionViewCell()
             }
             break
+        case .linkPreView:
+            if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextLinkPreviewViewCell", for: indexPath) as? TextLinkPreviewViewCell  {
+                let messageText = self.messageArray[indexPath.row].text ?? ""
+                menuCell.setup(url: messagePath, fullText: messageText)
+                cell = menuCell
+            }
         }
         return cell
     }
@@ -237,7 +245,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         let messageType = self.messageArray[indexPath.row].type
         
         switch messageType {
-        case .text:
+        case .text, .linkPreView:
             if let text = self.messageArray[indexPath.row].text {
                 let apporximateWitdhOfTextView = 250
                 
@@ -246,21 +254,29 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 let attribues = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
                 
                 let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
-                debugPrint("Tobias \(rect.height)")
+                
                 let returnSize = CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20)
-                return returnSize
+                if messageType == .linkPreView {
+                    return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20 + 100)
+                } else {
+                    return returnSize
+                }
             }
             
         case .gif:
             break
         case .photo:
-            break
+           return CGSize(width: self.frame.width - 50, height: 300)
         case .video:
             return CGSize(width: self.frame.width - 50, height: 250)
-        case .aduio:
+        case .audio:
             return CGSize(width: self.frame.width - 50, height: 65)
         case .file:
             return CGSize(width: self.frame.width - 50, height: 60)
+    
+            
+            
+        
         }
         return CGSize(width: self.frame.width - 50, height: 150 + 20)
     }
@@ -279,7 +295,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             
             
             UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
-                self.layoutIfNeeded()
+//                self.layoutIfNeeded()
             }) { (completed) in
                 if isKeyboardShowing {
                     let indexpath = IndexPath(item: self.messageArray.count - 1, section: 0)
@@ -299,13 +315,45 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     @IBAction func sendButtonTapped(_ sender: Any) {
         
-        let messageText = self.inputTextField.text
+        guard let messageText = self.inputTextField.text else {
+            return
+        }
+        
+        var shouldShowLinkView = false
+        var URL = ""
+        
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(in: messageText, options: [], range: NSRange(location: 0, length: messageText.utf16.count))
+        
+        for match in matches {
+            guard let range = Range(match.range, in: messageText) else { continue }
+            let url = messageText[range]
+            print(url)
+            URL = String(url)
+            shouldShowLinkView = self.verifyUrl(urlString: String(url))
+        }
+        if shouldShowLinkView {
+           let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true, time: Date(), nameSender: self.userName, filePath: URL, imageTest: nil, messageText: messageText)!
+            self.addNewMessageToCollectionView(newMessage: newlinkPreViewMessage)
+        } else {
+             let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: messageText)!
+             self.addNewMessageToCollectionView(newMessage: newTextMessage)
+        }
+        
        
-        let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: messageText)!
-        self.addNewMessageToCollectionView(newMessage: newTextMessage)
+        
         self.dismissKeyboard()
         self.inputTextField.text = ""
     }
     
+    
+    func verifyUrl(urlString: String?) -> Bool {
+        if let urlString = urlString {
+            if let url = URL(string: urlString) {
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        return false
+    }
     
 }

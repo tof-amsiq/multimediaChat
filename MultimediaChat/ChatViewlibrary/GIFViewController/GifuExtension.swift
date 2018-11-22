@@ -16,9 +16,14 @@ extension Gifu.GIFImageView {
     public override func display(image: Image?) {
         prepareForReuse()
         if let data = image?.animatedImageData {
-            animate(withGIFData: data)
+//            animate(withGIFData: data)
+            animate(withGIFData: data, loopCount: 2, completionHandler: nil)
         } else {
             self.image = image
         }
     }
+    
+    
 }
+
+

@@ -37,7 +37,7 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
                 photoLibrary()
             }
             if attachmentTypeEnum == AttachmentType.video{
-                videoLibrary()
+                videoCamera()
             }
         case .denied:
             print("permission denied")
@@ -54,7 +54,7 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
                         self.photoLibrary()
                     }
                     if attachmentTypeEnum == AttachmentType.video{
-                        self.videoLibrary()
+                        self.videoCamera()
                     }
                 }else{
                     print("restriced manually")
@@ -85,12 +85,13 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
-    func videoLibrary(){
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+    func videoCamera(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
-            myPickerController.sourceType = .photoLibrary
-            myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+            myPickerController.sourceType = .camera
+            myPickerController.mediaTypes = [kUTTypeMovie as String]
+            myPickerController.allowsEditing = true
             currentVC?.present(myPickerController, animated: true, completion: nil)
         }
     }
@@ -106,16 +107,18 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         
         // To handle image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imagePickedBlock?(image)
-            
-            if let imgUrl = info[UIImagePickerControllerImageURL] as? URL{
-                let imgName = imgUrl.lastPathComponent
-                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-                if let localPath = documentDirectory?.appending(imgName){
-                    self.imagePickedURL?(localPath)
-                }
+            if let scaleImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300) {
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "yyyy-MM-ddHHmmss"
+                let date = dateFormatterGet.string(from: Date())
+                let path = self.saveImage(imageName: "\(date).png",  image: scaleImage)
+                debugPrint("noob \(path)")
                 
+                //            self.imagePickedBlock?(image)
+                self.imagePickedURL?(path)
             }
+      
+            
         } else{
             print("Something went wrong in  image")
         }
@@ -133,6 +136,11 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         }
         currentVC?.dismiss(animated: true, completion: nil)
     }
+    
+    
+//    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+//        debugPrint(image)
+//    }
     
     func compressVideo(inputURL: URL, outputURL: URL, handler:@escaping (_ exportSession: AVAssetExportSession?)-> Void) {
         let urlAsset = AVURLAsset(url: inputURL, options: nil)
@@ -188,5 +196,51 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
             currentVC?.dismiss(animated: true, completion: nil)
         }
+    
+    func saveImage(imageName: String, image: UIImage) -> String{
+        //create an instance of the FileManager
+        let fileManager = FileManager.default
+        //get the image path
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        //get the image we took with camera
+        let _image = image
+        //get the PNG data for this image
+        let data = UIImagePNGRepresentation(_image)
+        //store it in the document directory
+        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+        
+        return self.getImagePath(imageName: imageName)
+        
+    }
+
+    
+    func getImagePath(imageName: String) ->  String{
+        let fileManager = FileManager.default
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        if fileManager.fileExists(atPath: imagePath){
+           return imagePath
+        }else{
+            print("Panic! No Image!")
+        }
+        return ""
+    }
+    
+    private func resizeImageWithAspect(image: UIImage,scaledToMaxWidth width:CGFloat,maxHeight height :CGFloat)->UIImage? {
+        let oldWidth = image.size.width;
+        let oldHeight = image.size.height;
+        
+        let scaleFactor = (oldWidth > oldHeight) ? width / oldWidth : height / oldHeight;
+        
+        let newHeight = oldHeight * scaleFactor;
+        let newWidth = oldWidth * scaleFactor;
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize,false,UIScreen.main.scale);
+        
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height));
+        let newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return newImage
+    }
     
 }

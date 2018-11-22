@@ -5,18 +5,28 @@
 //  Created by Tobias Frantsen on 26/09/2018.
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
-import Nuke
-import Gifu
+
 import UIKit
+import Nuke
+import NukeFLAnimatedImagePlugin
+import FLAnimatedImage
 
 class GifCell: UICollectionViewCell {
    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var imageView: GIFImageView!
+    @IBOutlet weak var imageView: FLAnimatedImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageView.display(image: nil)
+        
     }
 
     public func setup (gifURL: String?) {

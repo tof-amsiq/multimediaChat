@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGx-Oa-7ZZ">
                         <rect key="frame" x="0.0" y="30" width="343" height="314"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqs-wB-k0Y" customClass="GIFImageView" customModule="Gifu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqs-wB-k0Y" customClass="FLAnimatedImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="314"/>
                             </imageView>
                         </subviews>

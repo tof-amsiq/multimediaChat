@@ -23,6 +23,11 @@
 		8120DA2C219CB2A7001B7B7F /* GifuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */; };
 		8120DA31219ECD2B001B7B7F /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA30219ECD2B001B7B7F /* AudioRecorder.swift */; };
 		8120DA33219ECD57001B7B7F /* AudioRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA32219ECD57001B7B7F /* AudioRecorderView.xib */; };
+		8120DA3621A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA3421A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift */; };
+		8120DA3721A2C3AE001B7B7F /* TextLinkPreviewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA3521A2C3AE001B7B7F /* TextLinkPreviewViewCell.xib */; };
+		8120DA3921A307A5001B7B7F /* ExtensionCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA3821A307A5001B7B7F /* ExtensionCALayer.swift */; };
+		8120DA3B21A30DD2001B7B7F /* ExtensionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA3A21A30DD2001B7B7F /* ExtensionLabel.swift */; };
+		8120DA3D21A474DE001B7B7F /* ExtensionUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA3C21A474DE001B7B7F /* ExtensionUIImageView.swift */; };
 		812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812363C2216E1B0300D224B8 /* SocketIOManager.swift */; };
 		8132AC8F21946D5200A97A17 /* keyboardTapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8132AC8E21946D5200A97A17 /* keyboardTapView.xib */; };
 		814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */; };
@@ -98,6 +103,11 @@
 		8120DA2B219CB2A7001B7B7F /* GifuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifuExtension.swift; sourceTree = "<group>"; };
 		8120DA30219ECD2B001B7B7F /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		8120DA32219ECD57001B7B7F /* AudioRecorderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioRecorderView.xib; sourceTree = "<group>"; };
+		8120DA3421A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLinkPreviewViewCell.swift; sourceTree = "<group>"; };
+		8120DA3521A2C3AE001B7B7F /* TextLinkPreviewViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextLinkPreviewViewCell.xib; sourceTree = "<group>"; };
+		8120DA3821A307A5001B7B7F /* ExtensionCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCALayer.swift; sourceTree = "<group>"; };
+		8120DA3A21A30DD2001B7B7F /* ExtensionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLabel.swift; sourceTree = "<group>"; };
+		8120DA3C21A474DE001B7B7F /* ExtensionUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIImageView.swift; sourceTree = "<group>"; };
 		812363C2216E1B0300D224B8 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		8132AC8E21946D5200A97A17 /* keyboardTapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = keyboardTapView.xib; sourceTree = "<group>"; };
 		814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverViewCell.swift; sourceTree = "<group>"; };
@@ -190,6 +200,9 @@
 				8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */,
 				8120DA172199B4A2001B7B7F /* extensionUIView.swift */,
 				8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */,
+				8120DA3821A307A5001B7B7F /* ExtensionCALayer.swift */,
+				8120DA3A21A30DD2001B7B7F /* ExtensionLabel.swift */,
+				8120DA3C21A474DE001B7B7F /* ExtensionUIImageView.swift */,
 			);
 			path = ChatViewlibrary;
 			sourceTree = "<group>";
@@ -320,6 +333,8 @@
 				8152DF222178D0AE00E68F45 /* AudioPlayerViewCell.xib */,
 				8152DF27217DCCF900E68F45 /* FileViewCell.swift */,
 				8152DF28217DCCF900E68F45 /* FileViewCell.xib */,
+				8120DA3421A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift */,
+				8120DA3521A2C3AE001B7B7F /* TextLinkPreviewViewCell.xib */,
 			);
 			path = MessageView;
 			sourceTree = "<group>";
@@ -488,6 +503,7 @@
 				81060835215B95060073E3DB /* GifCell.xib in Resources */,
 				81D689CC2160D31800F569EE /* Main.storyboard in Resources */,
 				814C75CB214BAB43007C07E8 /* ReceiverViewCell.xib in Resources */,
+				8120DA3721A2C3AE001B7B7F /* TextLinkPreviewViewCell.xib in Resources */,
 				81AE8B75214A5E58009F8524 /* Assets.xcassets in Resources */,
 				81D689D82164B44600F569EE /* AudioViewController.xib in Resources */,
 				8120DA33219ECD57001B7B7F /* AudioRecorderView.xib in Resources */,
@@ -549,32 +565,38 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BRYXBanner/BRYXBanner.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FileBrowser/FileBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/Gifu/Gifu.framework",
 				"${BUILT_PRODUCTS_DIR}/GiphyCoreSDK/GiphyCoreSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPlayerView/MMPlayerView.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke-FLAnimatedImage-Plugin/NukeFLAnimatedImagePlugin.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRYXBanner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gifu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GiphyCoreSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPlayerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NukeFLAnimatedImagePlugin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -595,14 +617,18 @@
 				81D689D22163CF2B00F569EE /* AudioRecorderViewController.swift in Sources */,
 				8120DA1E219C5F06001B7B7F /* GifKeyboardView.swift in Sources */,
 				8120DA2C219CB2A7001B7B7F /* GifuExtension.swift in Sources */,
+				8120DA3D21A474DE001B7B7F /* ExtensionUIImageView.swift in Sources */,
 				8152DF30217DEBD000E68F45 /* SocketMessageController.swift in Sources */,
 				81D689DB2164C09B00F569EE /* CameraController.swift in Sources */,
 				81AD2B3221776899006A0493 /* VideoPlayerViewCell.swift in Sources */,
 				814C75CA214BAB43007C07E8 /* ReceiverViewCell.swift in Sources */,
 				8120DA31219ECD2B001B7B7F /* AudioRecorder.swift in Sources */,
+				8120DA3B21A30DD2001B7B7F /* ExtensionLabel.swift in Sources */,
+				8120DA3621A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
 				8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */,
+				8120DA3921A307A5001B7B7F /* ExtensionCALayer.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
 				8152DF35217F244C00E68F45 /* LoginViewController.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
