@@ -13,6 +13,10 @@ protocol typningMessageDelegate: class {
     func getTypningStatus(isEditning: Bool)
 }
 
+protocol MessageDelegate: class {
+    func userSendNewMessage(text: String, user: String)
+}
+
 class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate {
    
    
@@ -58,14 +62,15 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
  
     func newMessage(messageType: messageType, filePath: String) {
-        if let message = self.createMessage(type: messageType, filePath: filePath, messageText: nil) {
+        if let message = self.createMessage(user: "", date: Date(), type: messageType, filePath: filePath, messageText: nil) {
             self.addNewMessageToCollectionView(newMessage: message)
         }
     }
     
-    func createMessage(type: messageType, filePath: String,  messageText: String?) -> Message?{
-      
-        return Message(messageType: type, isSender: true, time: Date(), nameSender: self.userName, filePath: filePath, imageTest: nil, messageText: messageText)
+    func createMessage(user: String, date: Date, type: messageType, filePath: String,  messageText: String?) -> Message?{
+        
+      let isSender = user == self.userName
+        return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, imageTest: nil, messageText: messageText)
     }
 
     @IBOutlet var keyBoardTabView: KeyboardTabView!
@@ -88,6 +93,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     let kCONTENT_XIB_NAME = "ChatView"
     
     weak var delegate: typningMessageDelegate?
+    
+    weak var messageDelegate: MessageDelegate?
 
     
     override init(frame: CGRect) {
@@ -172,6 +179,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         let messagePath = self.messageArray[indexPath.row].linkToFile
 //        let messageImage = self.messageArray[indexPath.row].image
         let isSender = self.messageArray[indexPath.row].sender
+        let date = self.messageArray[indexPath.row].timestamp
         
         
         
@@ -188,7 +196,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, isSender: isSender)
+                menuCell.setup(text: messageText!, isSender: isSender, date: date)
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {
@@ -340,6 +348,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
              self.addNewMessageToCollectionView(newMessage: newTextMessage)
         }
         
+        self.messageDelegate?.userSendNewMessage(text: messageText, user: self.userName)
        
         
         self.dismissKeyboard()

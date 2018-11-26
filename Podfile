@@ -18,4 +18,5 @@ pod 'Nuke', '~> 7.0'
 pod 'Gifu'
 pod 'SwiftLinkPreview', '~> 2.3.1'
 pod 'Nuke-FLAnimatedImage-Plugin'
+pod 'SwiftyJSON', '~> 4.0'
 end

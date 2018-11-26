@@ -65,6 +65,10 @@ class SocketIOManager: NSObject {
 //        }
     }
     
+    func getChatHistory(last: Int) {
+        socket.emit("getChatHistory", last)
+        
+    }
     
     func stopTypning(nickName: String){
         socket.emit("stopType", nickName)

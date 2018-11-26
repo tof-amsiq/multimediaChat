@@ -351,7 +351,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, isSender: isSender)
+                menuCell.setup(text: messageText!, isSender: isSender, date: Date())
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {

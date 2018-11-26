@@ -203,3 +203,12 @@ iOSInjectionProject/
 /Pods/Gifu/Source/Classes/AnimatedFrame.swift
 /Pods/Gifu/README.md
 /Pods/Gifu/LICENSE
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.xcconfig
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.modulemap
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist
+/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-dummy.m
+/Pods/SwiftyJSON/Source/SwiftyJSON.swift
+/Pods/SwiftyJSON/README.md
+/Pods/SwiftyJSON/LICENSE

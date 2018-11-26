@@ -37,10 +37,10 @@ class TextViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(text: String, isSender: Bool) {
+    func setup(text: String, isSender: Bool, date: Date) {
         let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
-       let date = dateFormatterGet.string(from: Date())
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+       let date = dateFormatterGet.string(from: date)
         self.dateLabel.text = date
         if isSender {
             self.textLeadingConstraint.constant = 50
