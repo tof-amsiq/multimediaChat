@@ -52,12 +52,18 @@ class SocketIOManager: NSObject {
         socket.emit("chatMessage", nickname, message)
     }
     
-    func sendNewMessage(message: Message ){
+    func sendNewMessage(message: Message ) -> OnAckCallback? {
+        
         if let jsonObject = self.convertToJson(message: message) {
-              socket.emit("newMessage", jsonObject)
+//            socket.emit("newMessage", jsonObject)
+       
+           return socket.emitWithAck("newMessage", jsonObject)
+           
         }
-      
+    return nil
     }
+    
+    
     
     func sendGifMessage(giflink: String, nickName: String) {
         socket.emit("gifMessage", nickName, giflink)

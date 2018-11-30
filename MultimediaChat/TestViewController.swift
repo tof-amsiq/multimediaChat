@@ -21,7 +21,18 @@ class TestViewController: UIViewController, MessageDelegate {
             }
         }
         
-        SocketIOManager.shared.sendNewMessage(message: newMessage)
+     let ack = SocketIOManager.shared.sendNewMessage(message: newMessage)
+        ack?.timingOut(after: 5, callback: { (response) -> Void in
+            if let ackString = response.first as? String {
+                if ackString == "NO ACK" {
+                    self.test.setOfflineMessage(message: message)
+                }
+                if ackString == "true" {
+                  
+                    
+                }
+            }
+        })
     }
     
     func userSendNewMessage(text: String, user: String) {

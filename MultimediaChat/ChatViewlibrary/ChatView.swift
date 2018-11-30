@@ -416,6 +416,15 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
      
     }
     
+    func setOfflineMessage (message : Message) {
+        let row = self.messageArray.lastIndex(of: message)
+        let section = 0
+        let indexpath = IndexPath(row: row!, section: section)
+        if let cell = self.collectionView.cellForItem(at: indexpath) {
+            cell.alpha = 0.3
+        }
+    }
+    
     
 }
 
