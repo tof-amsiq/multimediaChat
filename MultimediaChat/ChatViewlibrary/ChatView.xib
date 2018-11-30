@@ -18,7 +18,8 @@
                 <outlet property="collectionView" destination="Zc9-Pi-WIT" id="hR0-ax-nIi"/>
                 <outlet property="gifkeyboardView" destination="HZK-IE-1DP" id="2ZC-Hh-d60"/>
                 <outlet property="indicatorView" destination="CrI-oS-Wq1" id="eMy-7E-GSZ"/>
-                <outlet property="inputTextField" destination="BLr-rQ-ihr" id="yiE-NU-rfm"/>
+                <outlet property="inputTextField" destination="qyD-h4-5cW" id="FHe-xo-6m4"/>
+                <outlet property="inputTextHeightConstraint" destination="6Up-gE-rUJ" id="ku0-6a-MeV"/>
                 <outlet property="keyBoardTabView" destination="nmN-1y-9sr" id="6Eq-4V-MkJ"/>
                 <outlet property="messageInputContainerView" destination="7mp-1d-142" id="m5A-d4-1CB"/>
             </connections>
@@ -51,15 +52,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mp-1d-142">
                     <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BLr-rQ-ihr">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-Ww-EW5">
-                            <rect key="frame" x="325" y="9" width="38" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-Ww-EW5">
+                            <rect key="frame" x="325" y="3" width="38" height="32"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="Send">
@@ -69,14 +63,22 @@
                                 <action selector="sendButtonTapped:" destination="-1" eventType="touchUpInside" id="SJk-e9-HZh"/>
                             </connections>
                         </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qyD-h4-5cW">
+                            <rect key="frame" x="0.0" y="0.0" width="325" height="40"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" red="0.33286723499999998" green="0.73370709199999995" blue="0.22260315059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="BLr-rQ-ihr" firstAttribute="leading" secondItem="7mp-1d-142" secondAttribute="leading" id="3pQ-1K-aba"/>
-                        <constraint firstItem="BLr-rQ-ihr" firstAttribute="top" secondItem="7mp-1d-142" secondAttribute="top" id="3y9-IX-Yjx"/>
                         <constraint firstAttribute="height" constant="40" id="6Up-gE-rUJ"/>
-                        <constraint firstAttribute="bottom" secondItem="BLr-rQ-ihr" secondAttribute="bottom" id="A1Q-SR-Yvc"/>
-                        <constraint firstAttribute="trailing" secondItem="BLr-rQ-ihr" secondAttribute="trailing" id="naR-Sp-vz0"/>
+                        <constraint firstItem="qyD-h4-5cW" firstAttribute="top" secondItem="7mp-1d-142" secondAttribute="top" id="AgE-0l-CDe"/>
+                        <constraint firstAttribute="trailing" secondItem="jlw-Ww-EW5" secondAttribute="trailing" constant="12" id="Agj-EW-Wvn"/>
+                        <constraint firstAttribute="bottom" secondItem="qyD-h4-5cW" secondAttribute="bottom" id="Dze-iJ-VcO"/>
+                        <constraint firstAttribute="bottom" secondItem="jlw-Ww-EW5" secondAttribute="bottom" constant="5" id="l2m-r1-O28"/>
+                        <constraint firstItem="qyD-h4-5cW" firstAttribute="leading" secondItem="7mp-1d-142" secondAttribute="leading" id="lxY-Cg-EDA"/>
+                        <constraint firstItem="jlw-Ww-EW5" firstAttribute="leading" secondItem="qyD-h4-5cW" secondAttribute="trailing" id="uDO-OE-gqQ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CrI-oS-Wq1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
@@ -99,7 +101,7 @@
                 <constraint firstItem="7mp-1d-142" firstAttribute="leading" secondItem="ISd-bi-Olq" secondAttribute="leading" id="xNU-9s-yDd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ISd-bi-Olq"/>
-            <point key="canvasLocation" x="234" y="152"/>
+            <point key="canvasLocation" x="232.80000000000001" y="151.57421289355324"/>
         </view>
         <view contentMode="scaleToFill" id="nmN-1y-9sr" customClass="KeyboardTabView" customModule="MultimediaChat" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>

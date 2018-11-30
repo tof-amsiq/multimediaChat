@@ -15,6 +15,7 @@ protocol typningMessageDelegate: class {
 
 protocol MessageDelegate: class {
     func userSendNewMessage(text: String, user: String)
+    func newMessagdeAdded(message: Message)
 }
 
 class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate {
@@ -64,6 +65,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     func newMessage(messageType: messageType, filePath: String) {
         if let message = self.createMessage(user: "", date: Date(), type: messageType, filePath: filePath, messageText: nil) {
             self.addNewMessageToCollectionView(newMessage: message)
+            self.messageDelegate?.newMessagdeAdded(message: message)
         }
     }
     
@@ -73,13 +75,15 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, imageTest: nil, messageText: messageText)
     }
 
+    @IBOutlet weak var inputTextHeightConstraint: NSLayoutConstraint!
     @IBOutlet var keyBoardTabView: KeyboardTabView!
 
     @IBOutlet weak var indicatorView: NVActivityIndicatorView!
     
     @IBOutlet var ContentView: UIView!
     
-    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputTextField: UITextView!
+   
     @IBOutlet weak var bottomConstarint: NSLayoutConstraint!
     @IBOutlet weak var messageInputContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -89,6 +93,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     public var userName: String = ""
     
     private var chatMessages = [[]]
+    
+    private var estamitedInputTextHeight : CGFloat = 0
     
     let kCONTENT_XIB_NAME = "ChatView"
     
@@ -115,6 +121,14 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func setup(){
+        let size = CGSize(width: self.inputTextField.frame.width, height: .infinity)
+        let estimatedSize = self.inputTextField.sizeThatFits(size)
+        self.estamitedInputTextHeight = estimatedSize.height
+        self.inputTextHeightConstraint.constant = estimatedSize.height
+        
+        self.inputTextField.delegate = self
+        self.inputTextField.isScrollEnabled = false
+        self.collectionView?.isPrefetchingEnabled = false
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.keyBoardTabView.messageDelegate = self
@@ -132,8 +146,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        self.addGestureRecognizer(tap)
 
         
     }
@@ -187,7 +201,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         switch messageType {
         case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-                menuCell.setup(base64: messagePath)
+                menuCell.setup(url: messagePath)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -238,7 +252,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .linkPreView:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextLinkPreviewViewCell", for: indexPath) as? TextLinkPreviewViewCell  {
                 let messageText = self.messageArray[indexPath.row].text ?? ""
-                menuCell.setup(url: messagePath, fullText: messageText)
+                menuCell.setup(url: messagePath, fullText: messageText, isSender: isSender)
                 cell = menuCell
             }
         }
@@ -265,7 +279,23 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 
                 let returnSize = CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20)
                 if messageType == .linkPreView {
-                    return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20 + 100)
+                    
+//                    if let cell = collectionView.cellForItem(at: indexPath) as? TextLinkPreviewViewCell {
+//
+//                        let text = cell.textLabel.text
+//                        let titel = cell.textTitle.text
+//                        let description = cell.textDescriptionView.text
+//
+//                        let textHeight = self.getTextHeight(text: text)
+//                        let titelHeight = self.getTextHeight(text: titel)
+//                        let descriptionHeight = self.getTextHeight(text: description)
+//
+//                         return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 120 + textHeight + titelHeight + descriptionHeight)
+//
+//                    }
+
+                    
+                    return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20 + 120)
                 } else {
                     return returnSize
                 }
@@ -340,19 +370,24 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             URL = String(url)
             shouldShowLinkView = self.verifyUrl(urlString: String(url))
         }
+        let newMessage : Message
         if shouldShowLinkView {
            let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true, time: Date(), nameSender: self.userName, filePath: URL, imageTest: nil, messageText: messageText)!
             self.addNewMessageToCollectionView(newMessage: newlinkPreViewMessage)
+            newMessage = newlinkPreViewMessage
         } else {
              let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: messageText)!
              self.addNewMessageToCollectionView(newMessage: newTextMessage)
+            newMessage = newTextMessage
         }
         
         self.messageDelegate?.userSendNewMessage(text: messageText, user: self.userName)
+        self.messageDelegate?.newMessagdeAdded(message: newMessage)
        
         
         self.dismissKeyboard()
         self.inputTextField.text = ""
+        self.inputTextHeightConstraint.constant = self.estamitedInputTextHeight
     }
     
     
@@ -365,4 +400,40 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         return false
     }
     
+    func getTextHeight(text: String?) -> CGFloat {
+        if let _text = text {
+            let apporximateWitdhOfTextView = 250
+            
+            let size = CGSize(width: apporximateWitdhOfTextView, height: 1000)
+            
+            let attribues = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
+            
+            let rect = NSString(string: _text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
+            
+            return rect.height
+        }
+        return 0.0
+     
+    }
+    
+    
+}
+
+
+
+extension ChatView: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        debugPrint(textView.text)
+        // if textView gets 5 time bigger active scroll and make static height
+        if self.inputTextField.frame.height < 135 {
+            let size = CGSize(width: self.inputTextField.frame.width, height: .infinity)
+            let estimatedSize = textView.sizeThatFits(size)
+            self.inputTextHeightConstraint.constant = estimatedSize.height
+        } else if !self.inputTextField.isScrollEnabled {
+            self.inputTextField.isScrollEnabled = true
+        }
+        
+    }
+   
 }

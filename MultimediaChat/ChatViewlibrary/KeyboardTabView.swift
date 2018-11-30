@@ -144,17 +144,31 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     {
         // Your action
         
-        let d = Date()
-        let df = DateFormatter()
-        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
-        
-        let stringDate = df.string(from: d)
+//        let d = Date()
+//        let df = DateFormatter()
+//        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+//
+//        let stringDate = df.string(from: d)
         CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self.getCurrentViewController()!)
         
-        
-        CameraController.shared.imagePickedBlock = {(image) in
-            debugPrint("Tobias \(image)")
+        CameraController.shared.imageLibraryPickedBlock = {(image, url) in
+            let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             
+            self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
+        }
+        
+        CameraController.shared.videoLibraryPickedBlock = {(url) in
+//            if let data = NSData(contentsOf: url) {
+//                let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
+//                self.messageDelegate?.newMessage(messageType: .video, filePath: strBase64)
+//            }
+            self.messageDelegate?.newMessage(messageType: .video, filePath: url.absoluteString)
+        }
+        
+//        CameraController.shared.imagePickedBlock = {(image) in
+//            debugPrint("Tobias \(image)")
+        
 //            let crop = image.getCropRation()
 //
 //            let size = CGSize(width: 100 * crop, height: 100 / crop)
@@ -163,10 +177,10 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //
 //            let newImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300)!
 //            debugPrint("bif newscale \(newImage.size)")
-            let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
-            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-            
-            self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
+//            let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+//            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+//
+//            self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
 
             
 //            let resizeSize = CGSize(width: self.frame.width - 50, height: 150)
@@ -180,7 +194,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //            self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
 //            let imageData: NSData = UIImagePNGRepresentation(newResizeImage) as NSData!
 //            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate, userName: self.userName)
-        }
+//        }
 //        CameraController.shared.imagePickedURL = {(url) in
 //            debugPrint("Bif \(url)")
 //            self.delegate?.newMessage(messageType: .photo, filePath: String(url))

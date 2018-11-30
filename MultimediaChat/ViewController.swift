@@ -197,9 +197,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         self.microphoneImageView.addGestureRecognizer(microphoneTapGestureRecognizer)
        
         
-        let photoAlbumTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoAlbumIconTapped(tapGestureRecognizer:)))
-        self.photoalbumImageView.isUserInteractionEnabled = true
-        self.photoalbumImageView.addGestureRecognizer(photoAlbumTapGestureRecognizer)
+//        let photoAlbumTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoAlbumIconTapped(tapGestureRecognizer:)))
+//        self.photoalbumImageView.isUserInteractionEnabled = true
+//        self.photoalbumImageView.addGestureRecognizer(photoAlbumTapGestureRecognizer)
         
         let videoTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(videoIconTapped(tapGestureRecognizer:)))
         self.videoImageView.isUserInteractionEnabled = true
@@ -237,37 +237,37 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     @objc func videoIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         // Your action
-        CameraController.shared.authorisationStatus(attachmentTypeEnum: .video, vc: self)
-        CameraController.shared.imagePickedBlock = {(image) in
-            debugPrint(image)
-        }
+//        CameraController.shared.authorisationStatus(attachmentTypeEnum: .video, vc: self)
+//        CameraController.shared.imagePickedBlock = {(image) in
+//            debugPrint(image)
+//        }
     }
-    @objc func photoAlbumIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        // Your action
-        
-        let d = Date()
-        let df = DateFormatter()
-        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
-        
-        let stringDate = df.string(from: d)
-        CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
-        CameraController.shared.imagePickedBlock = {(image) in
-            debugPrint("Tobias \(image)")
-            
-            let resizeSize = CGSize(width: self.view.frame.width - 50, height: 150)
-            let newResizeImage = image.resize(targetSize: resizeSize)
-        
-            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: self.userName, filePath: "unknow", imageTest: newResizeImage, messageText: "")!
-            self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
-            let imageData: NSData = UIImagePNGRepresentation(newResizeImage) as NSData!
-            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate, userName: self.userName)
-        }
-        CameraController.shared.imagePickedURL = {(url) in
-            debugPrint("Tobias \(url)")
-           
-        }
-    }
+//    @objc func photoAlbumIconTapped(tapGestureRecognizer: UITapGestureRecognizer)
+//    {
+//        // Your action
+//
+//        let d = Date()
+//        let df = DateFormatter()
+//        df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+//
+//        let stringDate = df.string(from: d)
+//        CameraController.shared.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self)
+//        CameraController.shared.imagePickedBlock = {(image) in
+//            debugPrint("Tobias \(image)")
+//
+//            let resizeSize = CGSize(width: self.view.frame.width - 50, height: 150)
+//            let newResizeImage = image.resize(targetSize: resizeSize)
+//
+//            let newPhotoMessage = Message(messageType:.photo , isSender: true, time: Date(), nameSender: self.userName, filePath: "unknow", imageTest: newResizeImage, messageText: "")!
+//            self.addNewMessageToCollectionView(newMessage: newPhotoMessage)
+//            let imageData: NSData = UIImagePNGRepresentation(newResizeImage) as NSData!
+//            SocketIOManager.shared.uploadData(data: imageData, nameOfFile: stringDate, userName: self.userName)
+//        }
+//        CameraController.shared.imagePickedURL = {(url) in
+//            debugPrint("Tobias \(url)")
+//
+//        }
+//    }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -342,7 +342,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         switch messageType {
         case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-                menuCell.setup(base64: messagePath)
+                menuCell.setup(url: messagePath)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()

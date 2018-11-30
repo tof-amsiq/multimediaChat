@@ -30,6 +30,8 @@ class VideoPlayerViewCell: UICollectionViewCell {
         super.prepareForReuse()
         self.playButton.isHidden = false
         self.videoPlayerView.player?.pause()
+        videoPlayerView.set(url: nil, state: nil)
+        
     }
     
     func setup(urlString: String) {
@@ -37,7 +39,8 @@ class VideoPlayerViewCell: UICollectionViewCell {
         let url = URL.init(string: urlString)!
         videoPlayerView.replace(cover: CoverA.instantiateFromNib())
 //        videoPlayerView.set(url: url, state: nil)
-        let thubImage = self.videoPreviewUiimage(filePath: urlString)!
+        let thubImage = self.videoPreviewUiimage(filePath: urlString) ?? UIImage(named: "unknow")!
+        
         videoPlayerView.set(url: url, thumbImage: thubImage, state: { (MMPlayerPlayStatus) in
             switch MMPlayerPlayStatus {
                 

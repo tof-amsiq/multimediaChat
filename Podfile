@@ -19,4 +19,7 @@ pod 'Gifu'
 pod 'SwiftLinkPreview', '~> 2.3.1'
 pod 'Nuke-FLAnimatedImage-Plugin'
 pod 'SwiftyJSON', '~> 4.0'
+pod 'ReadMoreTextView'
+pod 'URLEmbeddedView'
+pod 'MisterFusion'
 end

@@ -10,8 +10,22 @@ import SwiftyJSON
 import UIKit
 
 class TestViewController: UIViewController, MessageDelegate {
+    
+    func newMessagdeAdded(message: Message) {
+        let newMessage = message
+        if newMessage.type == .video {
+            
+            if let url = URL(string: message.linkToFile), let data = NSData(contentsOf: url) {
+                let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
+                newMessage.linkToFile = strBase64
+            }
+        }
+        
+        SocketIOManager.shared.sendNewMessage(message: newMessage)
+    }
+    
     func userSendNewMessage(text: String, user: String) {
-         SocketIOManager.shared.sendMessage(message: text, withNickname: user)
+//         SocketIOManager.shared.sendMessage(message: text, withNickname: user)
     }
     
     
@@ -24,11 +38,13 @@ class TestViewController: UIViewController, MessageDelegate {
         super.viewDidLoad()
         self.test.messageDelegate = self
         self.test.setUsername(name: "halfdan")
+      
+        
         SocketIOManager.shared.getChatHistory(last: 0)
 
         // Do any additional setup after loading the view.
-        _ = SocketIOManager.shared.socket.rx.on("userConnectUpdate").subscribe { (user) in
-            
+        _ = SocketIOManager.shared.socket.rx.on("testnewChatMessage").subscribe { (message) in
+            debugPrint(message)
             
             }
         
@@ -38,20 +54,33 @@ class TestViewController: UIViewController, MessageDelegate {
                 if let responseString = jsonArray.element?[0] as? String, let dataFromString = responseString.data(using: String.Encoding.utf8, allowLossyConversion: false) {
                     
                     let json = try? JSON(data: dataFromString)
-                   
-                    debugPrint(json?[0]["text"].stringValue)
+                    debugPrint("plen\(json)")
+//                    debugPrint(json?[0]["text"].stringValue)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                   
                     for (message) in json ?? [] {
-                        debugPrint(message.1["text"].stringValue)
+//                        debugPrint(message.1["text"].stringValue)
+//                        let user = message.1["user"].stringValue
+//                        let date = message.1["date"].stringValue
+//                        let text = message.1["text"].stringValue
+//
+//                        let datevalue = dateFormatter.date(from: date)
+//                        let newMessage = self.test.createMessage(user: user, date: datevalue!, type: .text, filePath: "", messageText: text)!
+//                        self.test.addNewMessageToCollectionView(newMessage: newMessage)
+                    
                         let user = message.1["user"].stringValue
                         let date = message.1["date"].stringValue
-                        let text = message.1["text"].stringValue
+                        let text = message.1["messageText"].stringValue
+                        let type = messageType(rawValue: message.1["messageType"].stringValue) ?? messageType.text
+                        let path = message.1["path"].stringValue
                         
-                        let datevalue = dateFormatter.date(from: date)
-                        let newMessage = self.test.createMessage(user: user, date: datevalue!, type: .text, filePath: "", messageText: text)!
-                        self.test.addNewMessageToCollectionView(newMessage: newMessage)
+                       let datevalue = dateFormatter.date(from: date) ?? Date()
+                        
+                        if  let newMessage = self.test.createMessage(user: user, date: datevalue, type: type, filePath: path, messageText: text) {
+                              self.test.addNewMessageToCollectionView(newMessage: newMessage)
+                        }
+                      
                     }
                     
                
@@ -60,10 +89,7 @@ class TestViewController: UIViewController, MessageDelegate {
                 
                 
         }
-        _ = SocketIOManager.shared.socket.rx.on("test").subscribe { (audio) in
-            
-            debugPrint("MY MAN")
-        }
+      
     }
     
    

@@ -16,17 +16,19 @@ enum AttachmentType: String{
 class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate {
     
     static let shared = CameraController()
-    
+    private var attachmentType : AttachmentType?
     private var currentVC: UIViewController?
     //MARK: - Internal Properties
-    var imagePickedBlock: ((UIImage) -> Void)?
+    var imagePickedBlock: ((UIImage, URL) -> Void)?
     var videoPickedBlock: ((NSURL) -> Void)?
     var filePickedBlock: ((URL) -> Void)?
     var imagePickedURL: ((String) -> Void)?
+    var imageLibraryPickedBlock: ((UIImage, URL) -> Void)?
+    var videoLibraryPickedBlock: (( URL) -> Void)?
     
     func authorisationStatus(attachmentTypeEnum: AttachmentType, vc: UIViewController){
         currentVC = vc
-        
+        self.attachmentType = attachmentTypeEnum
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .authorized:
@@ -81,6 +83,7 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
             myPickerController.sourceType = .photoLibrary
+            myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String, kUTTypeImage as String, kUTTypePNG as String]
             currentVC?.present(myPickerController, animated: true, completion: nil)
         }
     }
@@ -96,7 +99,7 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     
-    func documentPicker(){
+    func documentPicker() {
         let importMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypePDF)], in: .import)
         importMenu.delegate = self
         importMenu.modalPresentationStyle = .formSheet
@@ -108,19 +111,30 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
         // To handle image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             if let scaleImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300) {
-                let dateFormatterGet = DateFormatter()
-                dateFormatterGet.dateFormat = "yyyy-MM-ddHHmmss"
-                let date = dateFormatterGet.string(from: Date())
-                let path = self.saveImage(imageName: "\(date).png",  image: scaleImage)
-                debugPrint("noob \(path)")
-                
-                //            self.imagePickedBlock?(image)
-                self.imagePickedURL?(path)
+                if self.attachmentType == . photoLibrary {
+                    let imageUrl          = info[UIImagePickerControllerReferenceURL] as? NSURL
+                    let imageName         = imageUrl?.lastPathComponent
+                    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+                    let photoURL          = NSURL(fileURLWithPath: documentDirectory)
+                    if let localPath         = photoURL.appendingPathComponent(imageName!) {
+                         self.imageLibraryPickedBlock?(scaleImage, localPath)
+                    }
+                } else {
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "yyyy-MM-ddHHmmss"
+                    let date = dateFormatterGet.string(from: Date())
+                    let path = self.saveImage(imageName: "\(date).png",  image: scaleImage)
+                    debugPrint("noob \(path)")
+                    self.imagePickedURL?(path)
+                }
             }
       
             
         } else{
-            print("Something went wrong in  image")
+//            if info[UIImagePickerControllerMediaType] as? String  == String(kUTTypeMovie) {
+//              debugPrint("NOOB I GO THIS")
+//            }
+//            print("Something went wrong in  image")
         }
         // To handle video
         
@@ -130,6 +144,7 @@ class CameraController: NSObject, UIImagePickerControllerDelegate, UINavigationC
             let data = NSData(contentsOf: videoUrl as URL)!
             print("File size before compression: \(Double(data.length / 1048576)) mb")
             compressWithSessionStatusFunc(videoUrl)
+            self.videoLibraryPickedBlock?(videoUrl as URL)
         }
         else{
             print("Something went wrong in  video")

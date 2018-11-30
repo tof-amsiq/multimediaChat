@@ -52,6 +52,13 @@ class SocketIOManager: NSObject {
         socket.emit("chatMessage", nickname, message)
     }
     
+    func sendNewMessage(message: Message ){
+        if let jsonObject = self.convertToJson(message: message) {
+              socket.emit("newMessage", jsonObject)
+        }
+      
+    }
+    
     func sendGifMessage(giflink: String, nickName: String) {
         socket.emit("gifMessage", nickName, giflink)
     }
@@ -115,5 +122,37 @@ class SocketIOManager: NSObject {
         socket.emit("start", strBase64)
         
     }
+    
+    func convertToJson(message: Message) -> [String: Any]? {
+        
+//        public var type: messageType
+//        public let sender: Bool
+//        public var timestamp: Date
+//        public var nameOfSender: String
+//        public var linkToFile: String
+//        public var image: UIImage?
+//        public var text: String?
+        let type = message.type.rawValue
+        let user = message.nameOfSender
+        let path = message.linkToFile
+        let text = message.text ?? ""
+        
+        
+        let jsonObject: [String: Any] = [
+            "type": type,
+            "userName": user,
+            "path": path,
+            "text": text
+        ]
+        let valid = JSONSerialization.isValidJSONObject(jsonObject)
+//        debugPrint(jsonObject)
+        debugPrint(valid)
+        if valid {
+              return jsonObject
+        } else {
+            return nil
+        }
+    
+   }
     
 }

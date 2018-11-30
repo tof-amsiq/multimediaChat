@@ -72,9 +72,12 @@ class ImageViewCell: UICollectionViewCell {
                
             }
         } else if type == .photo {
-            if FileManager.default.fileExists(atPath: path) {
+            
+            if let decodedData = Data(base64Encoded: path, options: .ignoreUnknownCharacters) {
+                let image = UIImage(data: decodedData)
+                self.imageView.image = image
+            } else if FileManager.default.fileExists(atPath: path) {
                 let image = UIImage(contentsOfFile: path)
-                debugPrint("test \(path)")
                 self.imageView.image = image
             } else {
                 if let url = URL(string: path){
