@@ -39,7 +39,10 @@ class AudioPlayerViewCell:UICollectionViewCell {
         
     }
     
-    func setup(url: String) {
+    func setup(url: String, isSent: Bool?) {
+        if let _isSent = isSent, _isSent == false {
+            self.alpha = 0.1
+        }
         self.audioURL = url
         self.play()
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer?.currentItem)

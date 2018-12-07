@@ -31,11 +31,15 @@ class VideoPlayerViewCell: UICollectionViewCell {
         self.playButton.isHidden = false
         self.videoPlayerView.player?.pause()
         videoPlayerView.set(url: nil, state: nil)
+        self.videoPlayerView.alpha = 1
         
     }
     
-    func setup(urlString: String) {
+    func setup(urlString: String, isSent: Bool?) {
 
+        if let _isSent = isSent, _isSent == false {
+            self.videoPlayerView.alpha = 0.1
+        }
         let url = URL.init(string: urlString)!
         videoPlayerView.replace(cover: CoverA.instantiateFromNib())
 //        videoPlayerView.set(url: url, state: nil)

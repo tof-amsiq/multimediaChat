@@ -22,14 +22,15 @@ class TestViewController: UIViewController, MessageDelegate {
         }
         
      let ack = SocketIOManager.shared.sendNewMessage(message: newMessage)
-        ack?.timingOut(after: 5, callback: { (response) -> Void in
+        ack?.timingOut(after: 3, callback: { (response) -> Void in
             if let ackString = response.first as? String {
                 if ackString == "NO ACK" {
-                    self.test.setOfflineMessage(message: message)
+//                    self.test.setOfflineMessage(message: message)
+                    message.isSent = false
+                    self.test.collectionView.reloadData()
                 }
                 if ackString == "true" {
-                  
-                    
+                    message.isSent = true
                 }
             }
         })

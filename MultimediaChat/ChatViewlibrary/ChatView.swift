@@ -194,14 +194,13 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 //        let messageImage = self.messageArray[indexPath.row].image
         let isSender = self.messageArray[indexPath.row].sender
         let date = self.messageArray[indexPath.row].timestamp
-        
-        
-        
+        let isSent = self.messageArray[indexPath.row].isSent
+       
         var cell = UICollectionViewCell()
         switch messageType {
         case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-                menuCell.setup(url: messagePath)
+                menuCell.setup(url: messagePath, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -210,7 +209,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, isSender: isSender, date: date)
+                menuCell.setup(text: messageText!, isSender: isSender, date: date, isSent: isSent)
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {
@@ -218,7 +217,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender)
+                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -226,7 +225,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender)
+                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -234,7 +233,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .video:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoPlayerViewCell", for: indexPath) as? VideoPlayerViewCell  {
-                menuCell.setup(urlString: messagePath)
+                menuCell.setup(urlString: messagePath, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -243,7 +242,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .file:
             let nameOfFile = self.messageArray[indexPath.row].linkToFile
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
-                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile)
+                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -252,7 +251,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .linkPreView:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextLinkPreviewViewCell", for: indexPath) as? TextLinkPreviewViewCell  {
                 let messageText = self.messageArray[indexPath.row].text ?? ""
-                menuCell.setup(url: messagePath, fullText: messageText, isSender: isSender)
+                menuCell.setup(url: messagePath, fullText: messageText, isSender: isSender, isSent: isSent)
                 cell = menuCell
             }
         }
@@ -416,14 +415,16 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
      
     }
     
-    func setOfflineMessage (message : Message) {
-        let row = self.messageArray.lastIndex(of: message)
-        let section = 0
-        let indexpath = IndexPath(row: row!, section: section)
-        if let cell = self.collectionView.cellForItem(at: indexpath) {
-            cell.alpha = 0.3
-        }
-    }
+//    func setOfflineMessage (message : Message) {
+//        message.isSent = false
+//        let row = self.messageArray.lastIndex(of: message)
+//        let section = 0
+//        let indexpath = IndexPath(row: row!, section: section)
+//        if let cell = self.collectionView.cellForItem(at: indexpath) {
+//            cell.alpha = 0.1
+//            cell.layoutIfNeeded()
+//        }
+//    }
     
     
 }

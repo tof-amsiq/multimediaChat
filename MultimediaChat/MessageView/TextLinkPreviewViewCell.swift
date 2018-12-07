@@ -109,8 +109,10 @@ class TextLinkPreviewViewCell: UICollectionViewCell {
     }
 
     
-    func setup(url: String, fullText: String, isSender: Bool) {
-        
+    func setup(url: String, fullText: String, isSender: Bool, isSent: Bool?) {
+        if let _isSent = isSent, _isSent == false {
+            self.containerView.alpha = 0.1
+        }
         if isSender {
            self.viewLeadingConstraint.constant = 50
            self.viewTrailingConstraint.constant = 0

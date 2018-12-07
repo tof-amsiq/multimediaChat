@@ -23,8 +23,10 @@ class FileViewCell: UICollectionViewCell {
     }
 
     
-    func setup(isSender: Bool, nameOfFile: String, path: String) {
-    
+    func setup(isSender: Bool, nameOfFile: String, path: String, isSent: Bool?) {
+        if let _isSent = isSent, _isSent == false {
+            self.containerView.alpha = 0.1
+        }
         if isSender {
             self.viewLeadingConstraint.constant = 50
             self.setupView(withColor: UIColor.blue.cgColor)

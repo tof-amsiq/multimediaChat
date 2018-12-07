@@ -342,7 +342,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         switch messageType {
         case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-                menuCell.setup(url: messagePath)
+                menuCell.setup(url: messagePath, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -351,7 +351,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, isSender: isSender, date: Date())
+                menuCell.setup(text: messageText!, isSender: isSender, date: Date(), isSent: true)
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {
@@ -359,7 +359,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender)
+                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -367,7 +367,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: messageImage, isSender: isSender)
+                menuCell.setup(type: messageType, path: messagePath, image: messageImage, isSender: isSender, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -383,7 +383,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         case .file:
             let nameOfFile = self.messageArray[indexPath.row].linkToFile
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
-                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile)
+                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()

@@ -27,6 +27,7 @@ class Message: NSObject {
     public var linkToFile: String
     public var image: UIImage?
     public var text: String?
+    public var isSent: Bool?
     
     init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, imageTest: UIImage?, messageText: String?) {
         
@@ -38,7 +39,10 @@ class Message: NSObject {
         self.image = imageTest
         self.text = messageText
        
+       
     }
+    
+    
     
     
 }

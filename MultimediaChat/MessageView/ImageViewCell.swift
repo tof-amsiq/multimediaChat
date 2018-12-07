@@ -27,6 +27,7 @@ class ImageViewCell: UICollectionViewCell {
         super.prepareForReuse()
        
         imageView.display(image: nil)
+        self.imageView.alpha = 1
         
     }
     override func awakeFromNib() {
@@ -46,7 +47,11 @@ class ImageViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(type: messageType, path: String, image: UIImage?, isSender: Bool) {
+    func setup(type: messageType, path: String, image: UIImage?, isSender: Bool, isSent: Bool?) {
+        
+        if let _isSent = isSent, _isSent == false {
+            self.imageView.alpha = 0.1
+        }
         
         self.dateLabel.text = "\(Date())"
         if isSender {

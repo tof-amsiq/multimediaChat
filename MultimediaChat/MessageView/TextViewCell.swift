@@ -37,7 +37,10 @@ class TextViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(text: String, isSender: Bool, date: Date) {
+    func setup(text: String, isSender: Bool, date: Date, isSent: Bool?) {
+        if let _isSent = isSent, _isSent == false {
+            self.containerTextView.alpha = 0.1
+        }
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
        let date = dateFormatterGet.string(from: date)
@@ -64,6 +67,11 @@ class TextViewCell: UICollectionViewCell {
         self.containerTextView.clipsToBounds = true
         self.containerTextView.backgroundColor = secoundColor
         self.layoutIfNeeded()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.containerTextView.alpha = 1
     }
 }
 
