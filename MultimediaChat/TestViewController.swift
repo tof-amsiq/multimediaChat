@@ -12,8 +12,9 @@ import UIKit
 class TestViewController: UIViewController, MessageDelegate {
     
     func newMessagdeAdded(message: Message) {
-        let newMessage = message
-        if newMessage.type == .video {
+        let newMessage = message.copy() as! Message
+        
+        if (newMessage.type == .video ) || (newMessage.type == .file) {
             
             if let url = URL(string: message.linkToFile), let data = NSData(contentsOf: url) {
                 let strBase64 = data.base64EncodedString(options: .lineLength64Characters)

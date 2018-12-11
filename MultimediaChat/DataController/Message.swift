@@ -18,7 +18,10 @@ enum messageType: String, RawRepresentable {
     case linkPreView
 }
 
-class Message: NSObject {
+class Message: NSObject, NSCopying {
+    
+   
+    
     
     public var type: messageType
     public let sender: Bool
@@ -42,7 +45,10 @@ class Message: NSObject {
        
     }
     
-    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Message(messageType: type, isSender: sender, time: timestamp, nameSender: nameOfSender, filePath: linkToFile, imageTest: image, messageText: text)
+        return copy!
+    }
     
     
 }

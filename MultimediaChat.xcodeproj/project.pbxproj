@@ -63,6 +63,7 @@
 		81D689DB2164C09B00F569EE /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D689DA2164C09B00F569EE /* CameraController.swift */; };
 		81DC827A2175F40F002B40D4 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC82782175F40F002B40D4 /* TextViewCell.swift */; };
 		81DC827B2175F40F002B40D4 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81DC82792175F40F002B40D4 /* TextViewCell.xib */; };
+		81DD127821BEBBC90061005B /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD127721BEBBC90061005B /* DownloadController.swift */; };
 		81E56F5E2189CF3200F8E263 /* example1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 81E56F5D2189CF3200F8E263 /* example1.mp3 */; };
 		C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */; };
 /* End PBXBuildFile section */
@@ -149,6 +150,7 @@
 		81D689DA2164C09B00F569EE /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = CameraController/CameraController.swift; sourceTree = "<group>"; };
 		81DC82782175F40F002B40D4 /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		81DC82792175F40F002B40D4 /* TextViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
+		81DD127721BEBBC90061005B /* DownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
 		81E56F5D2189CF3200F8E263 /* example1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example1.mp3; path = ../../../../Downloads/example1.mp3; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		8120DA0A2199A386001B7B7F /* ChatViewlibrary */ = {
 			isa = PBXGroup;
 			children = (
+				81DD127621BE952C0061005B /* DownloadController */,
 				8120DA2F219ECCFC001B7B7F /* AudioRecorder */,
 				8120DA26219C7B7E001B7B7F /* GIFViewController */,
 				8120DA0B2199A7D3001B7B7F /* ChatView.swift */,
@@ -364,6 +367,14 @@
 				81D689DA2164C09B00F569EE /* CameraController.swift */,
 			);
 			name = CameraController;
+			sourceTree = "<group>";
+		};
+		81DD127621BE952C0061005B /* DownloadController */ = {
+			isa = PBXGroup;
+			children = (
+				81DD127721BEBBC90061005B /* DownloadController.swift */,
+			);
+			path = DownloadController;
 			sourceTree = "<group>";
 		};
 		C1B91A85E2B38684FA7581A9 /* Frameworks */ = {
@@ -635,6 +646,7 @@
 				8120DA3621A2C3AE001B7B7F /* TextLinkPreviewViewCell.swift in Sources */,
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
+				81DD127821BEBBC90061005B /* DownloadController.swift in Sources */,
 				8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */,
 				8120DA3921A307A5001B7B7F /* ExtensionCALayer.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,

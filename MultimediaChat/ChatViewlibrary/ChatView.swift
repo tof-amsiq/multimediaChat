@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import QuickLook
 
 protocol typningMessageDelegate: class {
     func getTypningStatus(isEditning: Bool)
@@ -18,11 +19,39 @@ protocol MessageDelegate: class {
     func newMessagdeAdded(message: Message)
 }
 
-class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate {
+class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate, QLPreviewControllerDataSource {
+    
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        
+        guard let url = self.quickLookLink else {
+            fatalError("no url")
+        }
+        
+        return url as QLPreviewItem
+//
+//        guard let url = Bundle.main.url(forResource: "example", withExtension: "mp3") else {
+//            fatalError("Could not load \(index).pdf")
+//        }
+        
+        
+//        let url = URL(string:  "file:///Users/tobiasfrantsen/Library/Developer/CoreSimulator/Devices/A5357B1C-93FB-4087-B67F-879A70BEA08B/data/Containers/Data/Application/A2BF3744-D94B-4977-9506-9E5FC81C784D/Documents/2018-11-28132153.png")
+//        let urltest = URL(string: "http://localhost:3000/uploads/2018-12-1016:16:15.m4a")!
+//        return urltest as QLPreviewItem
+    }
+    
    
    
     @IBOutlet var audioRecorderKeyboardView: AudioRecorder!
     @IBOutlet var gifkeyboardView: GifKeyboardView!
+    
+    let previewController = QLPreviewController()
+    
+    var quickLookLink = URL(string: "")
     
     func keybordButtonTapped(type: messageType) {
         if type == .gif {
@@ -181,6 +210,51 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? FileViewCell {
+            if let path =  cell.path, let url = URL(string: path){
+//                Downloader.testLoad(url: path)
+                let isWebURL = !url.isFileURL
+                
+                self.previewController.dataSource = self
+                if isWebURL {
+                    
+                    Downloader.testLoad(url: path) { (url) in
+                        DispatchQueue.main.async {
+                        self.quickLookLink = url
+                        if let naviagtionController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                            let currentController = naviagtionController.topViewController
+                            currentController!.present(self.previewController, animated: true)
+                        }
+                        }
+                        
+                    }
+                    
+                   
+                } else {
+                    DispatchQueue.main.async {
+                        self.quickLookLink = url
+                        if let naviagtionController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                            let currentController = naviagtionController.topViewController
+                            currentController!.present(self.previewController, animated: true)
+                        }
+                    }                }
+                
+//                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+//                Downloader.load(url: path, to: URL(string: documentsPath)!) {
+//                    debugPrint("FUNNY")
+//                }
+//                let item = path as QLPreviewItem
+//                let value = QLPreviewController.canPreview(item)
+//                debugPrint("mr\(value)")
+                
+            }
+            
+          
+            
+           
+           
+        }
+        
         self.inputTextField.endEditing(true)
     }
     
@@ -414,18 +488,15 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         return 0.0
      
     }
-    
-//    func setOfflineMessage (message : Message) {
-//        message.isSent = false
-//        let row = self.messageArray.lastIndex(of: message)
-//        let section = 0
-//        let indexpath = IndexPath(row: row!, section: section)
-//        if let cell = self.collectionView.cellForItem(at: indexpath) {
-//            cell.alpha = 0.1
-//            cell.layoutIfNeeded()
-//        }
-//    }
-    
+
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        var VC = UIViewController()
+        if let naviagtionController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+            let currentController = naviagtionController.topViewController
+            VC = currentController!
+        }
+        return VC
+    }
     
 }
 

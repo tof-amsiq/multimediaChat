@@ -97,6 +97,9 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //         present(fileBrowser, animated: true, completion: nil)
         
         fileBrowser.didSelectFile = { (file: FBFile) -> Void in
+            
+//            let fileArray = file.filePath.absoluteString.components(separatedBy: ".")
+//            let fileType = fileArray.last
 //            print("tobias\(file.displayName)")
 //            print("tobias\(file.filePath)")
 //
@@ -104,12 +107,28 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //            let url = URL(string: "file:///Users/tobiasfrantsen/Downloads/icon.png")!
 //
 //            let imageData:NSData = NSData.init(contentsOf: url)!
+            let name = file.displayName
+            let type = file.type
+            
+            switch type {
+                
+            case .Directory, .JSON, .PDF, .ZIP, .PLIST:
+                self.messageDelegate?.newMessage(messageType: .file, filePath: file.filePath.absoluteString)
+            case .GIF:
+                self.messageDelegate?.newMessage(messageType: .gif, filePath: file.filePath.absoluteString)
+            case .JPG, .PNG:
+                self.messageDelegate?.newMessage(messageType: .photo, filePath: file.filePath.absoluteString)
+            case .Default:
+                break
+            }
+            
             
             let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, imageTest: nil, messageText: "")!
 //            self.addNewMessageToCollectionView(newMessage: newFileMessage)
             currentController?.dismiss(animated: true)
-            
-            self.messageDelegate?.newMessage(messageType: .file, filePath: file.displayName)
+//
+//
+//            self.messageDelegate?.newMessage(messageType: .file, filePath: file.filePath.absoluteString)
 //            self.delegate?.newMessage(message: newFileMessage)
 //            self.dismiss(animated: true)
         }

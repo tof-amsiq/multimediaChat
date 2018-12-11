@@ -15,6 +15,8 @@ class FileViewCell: UICollectionViewCell {
     @IBOutlet weak var viewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var imagView: UIImageView!
+    
+    public var path: String?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +26,7 @@ class FileViewCell: UICollectionViewCell {
 
     
     func setup(isSender: Bool, nameOfFile: String, path: String, isSent: Bool?) {
+        self.path = path 
         if let _isSent = isSent, _isSent == false {
             self.containerView.alpha = 0.1
         }
