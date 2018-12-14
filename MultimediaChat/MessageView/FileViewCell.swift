@@ -25,8 +25,9 @@ class FileViewCell: UICollectionViewCell {
     }
 
     
-    func setup(isSender: Bool, nameOfFile: String, path: String, isSent: Bool?) {
-        self.path = path 
+    func setup(isSender: Bool, nameOfFile: String?, path: String, isSent: Bool?) {
+        self.path = path
+        let _nameOfFile = nameOfFile ?? ""
         if let _isSent = isSent, _isSent == false {
             self.containerView.alpha = 0.1
         }
@@ -37,12 +38,12 @@ class FileViewCell: UICollectionViewCell {
             self.viewTrailingConstraint.constant = 50
             self.setupView(withColor: UIColor.green.cgColor)
         }
-        let lengthOfText = nameOfFile.count
-        let attributedString = NSMutableAttributedString(string: nameOfFile)
+        let lengthOfText = _nameOfFile.count
+        let attributedString = NSMutableAttributedString(string: _nameOfFile)
         attributedString.addAttribute(.link, value: path, range: NSRange(location: 0, length: lengthOfText))
         
 
-        
+        self.textLabel.numberOfLines = 0
         textLabel.attributedText = attributedString
         textLabel.textColor = .white
         

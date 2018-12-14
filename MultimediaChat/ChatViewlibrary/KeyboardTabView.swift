@@ -10,7 +10,7 @@ import FileBrowser
 import UIKit
 
 protocol newMessageDelegate: class {
-    func newMessage(messageType: messageType, filePath: String)
+    func newMessage(messageType: messageType, filePath: String, fileName: String?)
 }
 
 protocol keyboardIconTappedDelegate: class {
@@ -55,6 +55,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
         Bundle.main.loadNibNamed(kCONTENT_XIB_NAME, owner: self, options: nil)
         contentView.fixInView(self)
         self.setup()
+        
     }
     
     
@@ -113,13 +114,49 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
             switch type {
                 
             case .Directory, .JSON, .PDF, .ZIP, .PLIST:
-                self.messageDelegate?.newMessage(messageType: .file, filePath: file.filePath.absoluteString)
+                self.messageDelegate?.newMessage(messageType: .file, filePath: file.filePath.absoluteString, fileName: name)
             case .GIF:
-                self.messageDelegate?.newMessage(messageType: .gif, filePath: file.filePath.absoluteString)
+                self.messageDelegate?.newMessage(messageType: .gif, filePath: file.filePath.absoluteString, fileName: nil)
             case .JPG, .PNG:
-                self.messageDelegate?.newMessage(messageType: .photo, filePath: file.filePath.absoluteString)
+                self.messageDelegate?.newMessage(messageType: .photo, filePath: file.filePath.absoluteString, fileName: nil)
             case .Default:
-                break
+               
+                let audioAndVideoTypes = [
+                    "mid":  messageType.audio,
+                    "midi": messageType.audio,
+                    "kar":  messageType.audio,
+                    "mp3":  messageType.audio,
+                    "ogg":  messageType.audio,
+                    "m4a":  messageType.audio,
+                    "ra":  messageType.audio,
+                    "3gpp":  messageType.video,
+                    "3gp": messageType.video,
+                    "ts": messageType.video,
+                    "mp4": messageType.video,
+                    "mpeg": messageType.video,
+                    "mpg": messageType.video,
+                    "mov": messageType.video,
+                    "webm": messageType.video,
+                    "flv": messageType.video,
+                    "m4v": messageType.video,
+                    "mng": messageType.video,
+                    "asx": messageType.video,
+                    "asf": messageType.video,
+                    "wmv": messageType.video,
+                    "avi": messageType.video
+                    ]
+
+                
+                let _extension = NSURL(fileURLWithPath: file.filePath.absoluteString).pathExtension
+                
+                if let type = audioAndVideoTypes[_extension ?? ""] {
+                    if type  == .audio {
+                        self.messageDelegate?.newMessage(messageType: .audio, filePath: file.filePath.absoluteString, fileName: nil)
+                    } else if type == .video {
+                        self.messageDelegate?.newMessage(messageType: .video, filePath: file.filePath.absoluteString, fileName: nil)
+                    }
+                }
+               
             }
             
             
@@ -142,7 +179,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
             CameraController.shared.videoPickedBlock = {(video) in
                 debugPrint("Tobias \(video)")
                 var urlString = video.absoluteString
-                self.messageDelegate?.newMessage(messageType: .video, filePath: urlString ?? "")
+                self.messageDelegate?.newMessage(messageType: .video, filePath: urlString ?? "", fileName: nil)
             }
         }
         
@@ -174,7 +211,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
             let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
             let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             
-            self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64)
+            self.messageDelegate?.newMessage(messageType: .photo, filePath: strBase64, fileName: nil)
         }
         
         CameraController.shared.videoLibraryPickedBlock = {(url) in
@@ -182,7 +219,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
 //                let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
 //                self.messageDelegate?.newMessage(messageType: .video, filePath: strBase64)
 //            }
-            self.messageDelegate?.newMessage(messageType: .video, filePath: url.absoluteString)
+            self.messageDelegate?.newMessage(messageType: .video, filePath: url.absoluteString, fileName: nil)
         }
         
 //        CameraController.shared.imagePickedBlock = {(image) in
@@ -228,7 +265,7 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
              CameraController.shared.authorisationStatus(attachmentTypeEnum: .camera, vc: self.getCurrentViewController()!)
             
             CameraController.shared.imagePickedURL = {(url) in
-                self.messageDelegate?.newMessage(messageType: .photo, filePath: url)
+                self.messageDelegate?.newMessage(messageType: .photo, filePath: url, fileName: nil)
             }
         }
 //            CameraController.shared.imagePickedBlock = {(image) in
@@ -315,13 +352,13 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
     
     func getLink(_ url: String?) {
         if let _url = url {
-            self.messageDelegate?.newMessage(messageType: .gif, filePath: _url)
+            self.messageDelegate?.newMessage(messageType: .gif, filePath: _url, fileName: nil)
         }
     }
     
     func getAudioBase64(_ url: String?) {
         if let _url = url {
-            self.messageDelegate?.newMessage(messageType: .audio, filePath: _url)
+            self.messageDelegate?.newMessage(messageType: .audio, filePath: _url, fileName: nil)
         }
     }
     

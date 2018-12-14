@@ -54,6 +54,7 @@ class AudioPlayerViewCell:UICollectionViewCell {
             if let _audioURL = self.audioURL, let soundUrl = URL(string: _audioURL) {
                 let playerItem = AVPlayerItem(url: soundUrl)
                 audioPlayer =  AVPlayer(playerItem:playerItem)
+               
                 self.setupProgressView()
                 self.isPlaying = false
             }

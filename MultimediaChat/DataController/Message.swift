@@ -20,9 +20,6 @@ enum messageType: String, RawRepresentable {
 
 class Message: NSObject, NSCopying {
     
-   
-    
-    
     public var type: messageType
     public let sender: Bool
     public var timestamp: Date
@@ -31,8 +28,9 @@ class Message: NSObject, NSCopying {
     public var image: UIImage?
     public var text: String?
     public var isSent: Bool?
+    public var fileName: String?
     
-    init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, imageTest: UIImage?, messageText: String?) {
+    init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, imageTest: UIImage?, messageText: String?, fileName:String? = "") {
         
         self.type = messageType
         self.sender = isSender
@@ -41,6 +39,7 @@ class Message: NSObject, NSCopying {
         self.linkToFile = filePath
         self.image = imageTest
         self.text = messageText
+        self.fileName = fileName
        
        
     }

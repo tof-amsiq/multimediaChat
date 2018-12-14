@@ -20,6 +20,7 @@ protocol MessageDelegate: class {
 }
 
 class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate, QLPreviewControllerDataSource {
+   
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
@@ -75,7 +76,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.inputTextField.inputAccessoryView = self.keyBoardTabView
         self.inputTextField.reloadInputViews()
         if let _url = url {
-            self.newMessage(messageType: .gif, filePath: _url)
+            self.newMessage(messageType: .gif, filePath: _url, fileName: nil)
         }
     }
     
@@ -86,22 +87,24 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         self.inputTextField.reloadInputViews()
         
         if let _url = url {
-            self.newMessage(messageType: .audio, filePath: _url)
+            self.newMessage(messageType: .audio, filePath: _url, fileName: nil)
         }
     }
     
  
-    func newMessage(messageType: messageType, filePath: String) {
-        if let message = self.createMessage(user: "", date: Date(), type: messageType, filePath: filePath, messageText: nil) {
+    func newMessage(messageType: messageType, filePath: String, fileName: String?) {
+        if let message = self.createMessage(user: self.userName, date: Date(), type: messageType, filePath: filePath, messageText: nil, fileName: fileName) {
             self.addNewMessageToCollectionView(newMessage: message)
             self.messageDelegate?.newMessagdeAdded(message: message)
         }
     }
     
-    func createMessage(user: String, date: Date, type: messageType, filePath: String,  messageText: String?) -> Message?{
+    func createMessage(user: String, date: Date, type: messageType, filePath: String,  messageText: String?, fileName: String?) -> Message?{
         
       let isSender = user == self.userName
-        return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, imageTest: nil, messageText: messageText)
+        return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, imageTest: nil, messageText: messageText, fileName: fileName )
+        
+        
     }
 
     @IBOutlet weak var inputTextHeightConstraint: NSLayoutConstraint!
@@ -314,9 +317,10 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             }
             break
         case .file:
-            let nameOfFile = self.messageArray[indexPath.row].linkToFile
+            let nameOfFile = self.messageArray[indexPath.row].fileName
+            let path = self.messageArray[indexPath.row].linkToFile
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
-                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: nameOfFile, isSent: isSent)
+                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: path, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -352,22 +356,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 
                 let returnSize = CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20)
                 if messageType == .linkPreView {
-                    
-//                    if let cell = collectionView.cellForItem(at: indexPath) as? TextLinkPreviewViewCell {
-//
-//                        let text = cell.textLabel.text
-//                        let titel = cell.textTitle.text
-//                        let description = cell.textDescriptionView.text
-//
-//                        let textHeight = self.getTextHeight(text: text)
-//                        let titelHeight = self.getTextHeight(text: titel)
-//                        let descriptionHeight = self.getTextHeight(text: description)
-//
-//                         return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 120 + textHeight + titelHeight + descriptionHeight)
-//
-//                    }
-
-                    
+  
                     return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20 + 120)
                 } else {
                     return returnSize

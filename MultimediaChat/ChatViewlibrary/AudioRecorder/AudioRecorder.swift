@@ -177,10 +177,7 @@ class AudioRecorder: UIView, AVAudioRecorderDelegate {
         if audioRecorder == nil {
             if isSendButtonActive {
                 if let audioURL = self.audioFilePath {
-                    let dataURL = NSData(contentsOf: audioURL)
-                    
-                    let base64String = dataURL?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-                    delegate?.getAudioBase64(base64String)
+                    delegate?.getAudioBase64(audioURL.absoluteString)
                     self.reset()
                 }
             } else {

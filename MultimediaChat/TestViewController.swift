@@ -11,11 +11,14 @@ import UIKit
 
 class TestViewController: UIViewController, MessageDelegate {
     
+ 
+    
     func newMessagdeAdded(message: Message) {
         let newMessage = message.copy() as! Message
         
-        if (newMessage.type == .video ) || (newMessage.type == .file) {
+        if (newMessage.type == .video ) || (newMessage.type == .file) || (newMessage.type == .audio) {
             
+            newMessage.fileName = message.fileName
             if let url = URL(string: message.linkToFile), let data = NSData(contentsOf: url) {
                 let strBase64 = data.base64EncodedString(options: .lineLength64Characters)
                 newMessage.linkToFile = strBase64
@@ -47,10 +50,11 @@ class TestViewController: UIViewController, MessageDelegate {
    
 
     @IBOutlet weak var test: ChatView!
+       var userName: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.test.messageDelegate = self
-        self.test.setUsername(name: "halfdan")
+        self.test.setUsername(name: self.userName!)
       
         
         SocketIOManager.shared.getChatHistory(last: 0)
@@ -87,10 +91,12 @@ class TestViewController: UIViewController, MessageDelegate {
                         let text = message.1["messageText"].stringValue
                         let type = messageType(rawValue: message.1["messageType"].stringValue) ?? messageType.text
                         let path = message.1["path"].stringValue
+                        let nameOfFile = message.1["fileName"].stringValue
+                        
                         
                        let datevalue = dateFormatter.date(from: date) ?? Date()
                         
-                        if  let newMessage = self.test.createMessage(user: user, date: datevalue, type: type, filePath: path, messageText: text) {
+                        if  let newMessage = self.test.createMessage(user: user, date: datevalue, type: type, filePath: path, messageText: text, fileName: nameOfFile) {
                               self.test.addNewMessageToCollectionView(newMessage: newMessage)
                         }
                       

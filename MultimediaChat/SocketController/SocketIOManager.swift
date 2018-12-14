@@ -142,14 +142,19 @@ class SocketIOManager: NSObject {
         let user = message.nameOfSender
         let path = message.linkToFile
         let text = message.text ?? ""
+        let fileName = message.fileName ?? ""
+        
+        
         
         
         let jsonObject: [String: Any] = [
             "type": type,
             "userName": user,
             "path": path,
-            "text": text
+            "text": text,
+            "fileName": fileName
         ]
+        
         let valid = JSONSerialization.isValidJSONObject(jsonObject)
 //        debugPrint(jsonObject)
         debugPrint(valid)
