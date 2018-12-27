@@ -107,6 +107,11 @@ class AudioPlayerViewCell:UICollectionViewCell {
         self.setupProgressView()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.audioPlayer?.pause()
+        
+    }
     
     deinit {
         print("Remove NotificationCenter Deinit")

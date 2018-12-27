@@ -47,18 +47,24 @@ class ImageViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(type: messageType, path: String, image: UIImage?, isSender: Bool, isSent: Bool?) {
-        
+    func setup(type: messageType, path: String, isSender: Bool, isSent: Bool?) {
+        var constantSize: CGFloat = 0.0
         if let _isSent = isSent, _isSent == false {
             self.imageView.alpha = 0.1
         }
         
+        if ( UIDevice.current.model.range(of: "iPad") != nil){
+           constantSize = 200
+        } else {
+            constantSize = 50
+        }
+        
         self.dateLabel.text = "\(Date())"
         if isSender {
-            self.viewLeadingConstraint.constant = 50
+            self.viewLeadingConstraint.constant = constantSize
             self.setupView(withColor: UIColor.blue.cgColor)
         } else {
-            self.viewTrailingConstraint.constant = 50
+            self.viewTrailingConstraint.constant = constantSize
             self.setupView(withColor: UIColor.green.cgColor)
         }
         if type == .gif {
@@ -78,14 +84,9 @@ class ImageViewCell: UICollectionViewCell {
             }
         } else if type == .photo {
             
-            if let decodedData = Data(base64Encoded: path, options: .ignoreUnknownCharacters) {
-                let image = UIImage(data: decodedData)
-                self.imageView.image = image
-            } else if FileManager.default.fileExists(atPath: path) {
-                let image = UIImage(contentsOfFile: path)
-                self.imageView.image = image
-            } else {
+            if self.verifyUrl(urlString: path) {
                 if let url = URL(string: path){
+                    debugPrint("URL")
                     Nuke.loadImage(
                         with: url,
                         options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)),
@@ -93,8 +94,18 @@ class ImageViewCell: UICollectionViewCell {
                         completion: { [weak self] _, _ in
                     })
                 }
-               
+                
+            } else if let decodedData = Data(base64Encoded: path, options: .ignoreUnknownCharacters) {
+                debugPrint("decodedData")
+                let image = UIImage(data: decodedData)
+                self.imageView.image = image
+            } else if FileManager.default.fileExists(atPath: path) {
+                debugPrint("FileManager")
+                let image = UIImage(contentsOfFile: path)
+                self.imageView.image = image
             }
+            
+            
             
 //            let dataDecoded : Data = Data(base64Encoded: path, options: .ignoreUnknownCharacters)!
 //            let decodedimage = UIImage(data: dataDecoded)
@@ -130,6 +141,18 @@ class ImageViewCell: UICollectionViewCell {
 //            }
         }
         
+    }
+    
+    func verifyUrl (urlString: String?) -> Bool {
+        //Check for nil
+        if let urlString = urlString {
+            // create NSURL instance
+            if let url = URL(string: urlString) {
+                // check if your application can open the NSURL instance
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        return false
     }
     
     func setupView(withColor: CGColor){

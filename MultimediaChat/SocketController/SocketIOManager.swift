@@ -12,8 +12,8 @@ import UIKit
 class SocketIOManager: NSObject {
     
     static let shared = SocketIOManager()
-    
-    static let manager = SocketManager(socketURL: URL (string: "http://localhost:3000")!)
+    //"https://fathomless-ocean-79169.herokuapp.com/
+    static let manager = SocketManager(socketURL: URL (string: "http://localhost:3000/")!)
     let socket = manager.defaultSocket
     
     
@@ -24,6 +24,9 @@ class SocketIOManager: NSObject {
     func connectAndGetSocket() -> SocketIOClient  {
         socket.connect()
         return socket
+    }
+    func connectAndGetValue() -> Bool  {
+       return socket.status.active
     }
     
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
@@ -44,7 +47,7 @@ class SocketIOManager: NSObject {
         socket.emit("checkUsername", nickname)
     }
     
-    func uploadData(data: NSData, nameOfFile: String, userName: String){
+    func uploadData(data: NSData, nameOfFile: String, userName: String) {
         socket.emit("test", data, nameOfFile, userName)
     }
     
@@ -55,8 +58,6 @@ class SocketIOManager: NSObject {
     func sendNewMessage(message: Message ) -> OnAckCallback? {
         
         if let jsonObject = self.convertToJson(message: message) {
-//            socket.emit("newMessage", jsonObject)
-       
            return socket.emitWithAck("newMessage", jsonObject)
            
         }
@@ -71,11 +72,7 @@ class SocketIOManager: NSObject {
     
     func startTypning(_nickName: String) {
         socket.emit("startType", _nickName)
-        
-//        socket.on("userTypingUpdate") { (message, ack)  -> Void in
-//            debugPrint(ack)
-//            debugPrint(message)
-//        }
+
     }
     
     func getChatHistory(last: Int) {
@@ -131,21 +128,11 @@ class SocketIOManager: NSObject {
     
     func convertToJson(message: Message) -> [String: Any]? {
         
-//        public var type: messageType
-//        public let sender: Bool
-//        public var timestamp: Date
-//        public var nameOfSender: String
-//        public var linkToFile: String
-//        public var image: UIImage?
-//        public var text: String?
         let type = message.type.rawValue
         let user = message.nameOfSender
         let path = message.linkToFile
         let text = message.text ?? ""
         let fileName = message.fileName ?? ""
-        
-        
-        
         
         let jsonObject: [String: Any] = [
             "type": type,
@@ -156,8 +143,7 @@ class SocketIOManager: NSObject {
         ]
         
         let valid = JSONSerialization.isValidJSONObject(jsonObject)
-//        debugPrint(jsonObject)
-        debugPrint(valid)
+
         if valid {
               return jsonObject
         } else {

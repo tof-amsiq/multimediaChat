@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="MultimediaChat" customModuleProvider="target">
             <connections>
                 <outlet property="ContentView" destination="44r-M7-Gzz" id="Ord-rh-TkH"/>
-                <outlet property="audioRecorderKeyboardView" destination="dfb-2a-u8p" id="DDA-49-KXo"/>
+                <outlet property="audioRecorderKeyboardView" destination="dfb-2a-u8p" id="oqK-1u-eDD"/>
                 <outlet property="bottomConstarint" destination="vt2-mm-H5P" id="fd1-5t-5xn"/>
                 <outlet property="collectionView" destination="Zc9-Pi-WIT" id="hR0-ax-nIi"/>
-                <outlet property="gifkeyboardView" destination="HZK-IE-1DP" id="2ZC-Hh-d60"/>
+                <outlet property="gifkeyboardView" destination="HZK-IE-1DP" id="vhB-6Z-K33"/>
                 <outlet property="indicatorView" destination="CrI-oS-Wq1" id="eMy-7E-GSZ"/>
                 <outlet property="inputTextField" destination="qyD-h4-5cW" id="FHe-xo-6m4"/>
                 <outlet property="inputTextHeightConstraint" destination="6Up-gE-rUJ" id="ku0-6a-MeV"/>

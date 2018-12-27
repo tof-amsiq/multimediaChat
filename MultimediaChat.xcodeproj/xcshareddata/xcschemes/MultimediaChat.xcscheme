@@ -28,6 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81DD128F21CBABF00061005B"
+               BuildableName = "MultimediaChatTests_.xctest"
+               BlueprintName = "MultimediaChatTests_"
+               ReferencedContainer = "container:MultimediaChat.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81DD12BD21CBD9FB0061005B"
+               BuildableName = "MultimediaChatTests.xctest"
+               BlueprintName = "MultimediaChatTests"
+               ReferencedContainer = "container:MultimediaChat.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81DD12CD21CBE3090061005B"
+               BuildableName = "MultimediaChatUITests.xctest"
+               BlueprintName = "MultimediaChatUITests"
+               ReferencedContainer = "container:MultimediaChat.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

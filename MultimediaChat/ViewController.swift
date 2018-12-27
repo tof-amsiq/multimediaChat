@@ -72,7 +72,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             })
             
             if !usernameExists {
-                let newTextMessage = Message(messageType: .text, isSender: false, time: Date(), nameSender: nickname , filePath: "", imageTest: nil, messageText: text)!
+                let newTextMessage = Message(messageType: .text, isSender: false, time: Date(), nameSender: nickname , filePath: "", messageText: text)!
                 
                 self.addNewMessageToCollectionView(newMessage: newTextMessage)
             }
@@ -85,7 +85,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             if self.userName != audio.element?[1] as? String {
                 if let imageBase64String = audio.element?[0] as? String {
      
-                    let newAudioMessage = Message(messageType: .audio, isSender: false, time: Date(), nameSender: self.userName, filePath: imageBase64String, imageTest: nil, messageText: nil)!
+                    let newAudioMessage = Message(messageType: .audio, isSender: false, time: Date(), nameSender: self.userName, filePath: imageBase64String, messageText: "")!
                     self.addNewMessageToCollectionView(newMessage: newAudioMessage)
                 }
             }
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             
             let image = UIImage(data: imageData!)
 
-                let newImageMesssage = Message(messageType: .photo, isSender: false, time: Date(), nameSender: self.userName, filePath: "", imageTest: image, messageText: nil)!
+                let newImageMesssage = Message(messageType: .photo, isSender: false, time: Date(), nameSender: self.userName, filePath: "", messageText: "")!
                 self.addNewMessageToCollectionView(newMessage: newImageMesssage)
             }
             }
@@ -111,7 +111,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             if self.userName != gif.element?[1] as? String {
                 let path = gif.element![0]
                 let imageURL = UIImage.gifImageWithURL(path as! String)
-                let newGifMessage = Message(messageType: .gif, isSender: false, time: Date(), nameSender: gif.element![1] as! String, filePath: path as! String, imageTest: nil, messageText: nil)!
+                let newGifMessage = Message(messageType: .gif, isSender: false, time: Date(), nameSender: gif.element![1] as! String, filePath: path as! String, messageText: "")!
                 self.addNewMessageToCollectionView(newMessage: newGifMessage)
                 }
             }
@@ -229,7 +229,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             
             let imageData:NSData = NSData.init(contentsOf: url)!
             
-            let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, imageTest: nil, messageText: "")!
+            let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newFileMessage)
             self.dismiss(animated: true)
         }
@@ -333,7 +333,6 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         var messageType = self.messageArray[indexPath.row].type
         let messagePath = self.messageArray[indexPath.row].linkToFile
-        let messageImage = self.messageArray[indexPath.row].image
         var isSender = self.messageArray[indexPath.row].sender
         
         
@@ -359,7 +358,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: false)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -367,7 +366,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: messageImage, isSender: isSender, isSent: false)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: false)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -510,7 +509,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func getLink(_ url: String?) {
         if let _url = url {
-            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
+            let newGifMessage = Message(messageType: .gif, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newGifMessage)
             SocketIOManager.shared.sendGifMessage(giflink: _url, nickName: self.userName)
             
@@ -520,7 +519,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     
     func getAudioBase64(_ url: String?) {
         if let _url = url {
-            let newAudioMessage = Message(messageType: .audio, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, imageTest: nil, messageText: "")!
+            let newAudioMessage = Message(messageType: .audio, isSender: true, time: Date(), nameSender: self.userName, filePath: _url, messageText: "")!
             self.addNewMessageToCollectionView(newMessage: newAudioMessage)
              let audioData = NSData(base64Encoded: _url)!
             
@@ -566,7 +565,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         let messageText = self.inputTextField.text
         
-        let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "", imageTest: nil, messageText: messageText)!
+        let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: "Tobias", filePath: "", messageText: messageText)!
         self.addNewMessageToCollectionView(newMessage: newTextMessage)
         SocketIOManager.shared.sendMessage(message: messageText!, withNickname: self.userName)
         

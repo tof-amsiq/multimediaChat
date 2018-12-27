@@ -29,7 +29,6 @@ class TestViewController: UIViewController, MessageDelegate {
         ack?.timingOut(after: 3, callback: { (response) -> Void in
             if let ackString = response.first as? String {
                 if ackString == "NO ACK" {
-//                    self.test.setOfflineMessage(message: message)
                     message.isSent = false
                     self.test.collectionView.reloadData()
                 }
@@ -57,7 +56,7 @@ class TestViewController: UIViewController, MessageDelegate {
         self.test.setUsername(name: self.userName!)
       
         
-        SocketIOManager.shared.getChatHistory(last: 0)
+        SocketIOManager.shared.getChatHistory(last: 20)
 
         // Do any additional setup after loading the view.
         _ = SocketIOManager.shared.socket.rx.on("testnewChatMessage").subscribe { (message) in
@@ -72,20 +71,11 @@ class TestViewController: UIViewController, MessageDelegate {
                     
                     let json = try? JSON(data: dataFromString)
                     debugPrint("plen\(json)")
-//                    debugPrint(json?[0]["text"].stringValue)
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                   
                     for (message) in json ?? [] {
-//                        debugPrint(message.1["text"].stringValue)
-//                        let user = message.1["user"].stringValue
-//                        let date = message.1["date"].stringValue
-//                        let text = message.1["text"].stringValue
-//
-//                        let datevalue = dateFormatter.date(from: date)
-//                        let newMessage = self.test.createMessage(user: user, date: datevalue!, type: .text, filePath: "", messageText: text)!
-//                        self.test.addNewMessageToCollectionView(newMessage: newMessage)
-                    
+
                         let user = message.1["user"].stringValue
                         let date = message.1["date"].stringValue
                         let text = message.1["messageText"].stringValue

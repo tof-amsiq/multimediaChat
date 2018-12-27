@@ -101,9 +101,9 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     func createMessage(user: String, date: Date, type: messageType, filePath: String,  messageText: String?, fileName: String?) -> Message?{
         
-      let isSender = user == self.userName
-        return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, imageTest: nil, messageText: messageText, fileName: fileName )
+        let isSender = user == self.userName
         
+        return Message(messageType: type, isSender: isSender, time: date, nameSender: user, filePath: filePath, messageText: messageText, fileName: fileName )
         
     }
 
@@ -186,7 +186,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     @objc func dismissKeyboard() {
 //        self.endEditing(true)
-        self.gifkeyboardView.textField.endEditing(true)
+//        self.gifkeyboardView.textField.endEditing(true)
         self.inputTextField.endEditing(true)
     }
     
@@ -206,9 +206,6 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         let lastItemIndex = self.collectionView.numberOfItems(inSection: section) - 1
         let indexPath:NSIndexPath = NSIndexPath.init(item: lastItemIndex, section: section)
         self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: false)
-        
-
-        
     }
     
     
@@ -294,7 +291,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: isSent)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -302,7 +299,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, image: nil, isSender: isSender, isSent: isSent)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -354,11 +351,14 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 
                 let rect = NSString(string: text).boundingRect(with: size, options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: attribues, context: nil)
                 
-                let returnSize = CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20)
+                var returnSize = CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20)
                 if messageType == .linkPreView {
   
                     return CGSize(width: self.frame.width - 50 , height: rect.height + 20 + 20 + 120)
                 } else {
+                    if returnSize.width < 0 {
+                        returnSize.width = 0
+                    }
                     return returnSize
                 }
             }
@@ -434,11 +434,11 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         }
         let newMessage : Message
         if shouldShowLinkView {
-           let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true, time: Date(), nameSender: self.userName, filePath: URL, imageTest: nil, messageText: messageText)!
+           let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true, time: Date(), nameSender: self.userName, filePath: URL, messageText: messageText)!
             self.addNewMessageToCollectionView(newMessage: newlinkPreViewMessage)
             newMessage = newlinkPreViewMessage
         } else {
-             let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", imageTest: nil, messageText: messageText)!
+             let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", messageText: messageText)!
              self.addNewMessageToCollectionView(newMessage: newTextMessage)
             newMessage = newTextMessage
         }
@@ -487,7 +487,18 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         return VC
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        flowLayout.invalidateLayout()
+    }
+    
+    
 }
+
+
 
 
 

@@ -38,19 +38,26 @@ class TextViewCell: UICollectionViewCell {
     
     
     func setup(text: String, isSender: Bool, date: Date, isSent: Bool?) {
+       var constantSize: CGFloat = 0.0
         if let _isSent = isSent, _isSent == false {
             self.containerTextView.alpha = 0.1
+        }
+        
+        if ( UIDevice.current.model.range(of: "iPad") != nil){
+            constantSize = 200
+        } else {
+            constantSize = 50
         }
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
        let date = dateFormatterGet.string(from: date)
         self.dateLabel.text = date
         if isSender {
-            self.textLeadingConstraint.constant = 50
+            self.textLeadingConstraint.constant = constantSize
             self.textTrailingConstraint.constant = 0
             self.setupView(withColor: UIColor.blue.cgColor, secoundColor: .blue)
         } else {
-            self.textTrailingConstraint.constant = 50
+            self.textTrailingConstraint.constant = constantSize
             self.textLeadingConstraint.constant = 0
             self.setupView(withColor: UIColor.green.cgColor, secoundColor: .green)
         }

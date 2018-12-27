@@ -48,6 +48,26 @@
                ReferencedContainer = "container:MultimediaChat.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81DD128021CBA9A40061005B"
+               BuildableName = "MultimediaChatTests1.xctest"
+               BlueprintName = "MultimediaChatTests1"
+               ReferencedContainer = "container:MultimediaChat.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "81DD128F21CBABF00061005B"
+               BuildableName = "MultimediaChatTests_.xctest"
+               BlueprintName = "MultimediaChatTests_"
+               ReferencedContainer = "container:MultimediaChat.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
