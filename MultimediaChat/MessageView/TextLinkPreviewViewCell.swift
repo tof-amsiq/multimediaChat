@@ -14,14 +14,8 @@ import MisterFusion
 
 class TextLinkPreviewViewCell: UICollectionViewCell {
     @IBOutlet weak var preViewContrainerView: UIView!
-    //    @IBOutlet weak var container: UIView!
-//
-//    @IBOutlet weak var textDescriptionView: ReadMoreTextView!
-//    @IBOutlet weak var imageView: UIImageView!
-//
-//    @IBOutlet weak var textTitle: UILabel!
-//    @IBOutlet weak var textLabel: UILabel!
-//
+
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var viewTrailingConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
@@ -52,29 +46,9 @@ class TextLinkPreviewViewCell: UICollectionViewCell {
                                                     embeddedView.bottom |-| 7.5
         )
         
-    
-//         self.slp = SwiftLinkPreview(session: URLSession.shared, workQueue: SwiftLinkPreview.defaultWorkQueue, responseQueue: DispatchQueue.main, cache:  DisabledCache.instance)
         self.textLabel.numberOfLines = 0
         self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-//        self.textDescription.numberOfLines = 0
-//        let readMoreTextAttributes: [NSAttributedStringKey: Any] = [
-//            NSAttributedStringKey.foregroundColor: self.tintColor,
-//            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16)
-//        ]
-//        let readLessTextAttributes = [
-//            NSAttributedStringKey.foregroundColor: UIColor.red,
-//            NSAttributedStringKey.font: UIFont.italicSystemFont(ofSize: 16)
-//        ]
-//        self.textDescriptionView.attributedReadMoreText = NSAttributedString(string: "... Read more", attributes: readMoreTextAttributes)
-//        self.textDescriptionView.attributedReadLessText = NSAttributedString(string: " Read less", attributes: readLessTextAttributes)
-//        self.textDescriptionView.maximumNumberOfLines = 1
-//        self.textDescriptionView.shouldTrim = true
-//        self.textTitle.numberOfLines = 0
-//
-//
-//        self.textLabel.padding = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 0)
-//        self.textTitle.padding = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
-   
+
         embeddedView.didTapHandler = { [weak self] embeddedView, URL in
             guard let URL = URL else { return }
             
@@ -101,15 +75,10 @@ class TextLinkPreviewViewCell: UICollectionViewCell {
         self.embeddedView.prepareViewsForReuse()
         self.textLabel.text = nil
         
-//        imageView.display(image: nil)
-//        self.textLabel.text = ""
-//        self.textTitle.text = ""
-//        self.textDescriptionView.text = ""
-        
     }
 
     
-    func setup(url: String, fullText: String, isSender: Bool, isSent: Bool?) {
+    func setup(url: String, fullText: String, isSender: Bool, isSent: Bool?, userName: String, date: String) {
         if let _isSent = isSent, _isSent == false {
             self.containerView.alpha = 0.1
         }
@@ -120,7 +89,7 @@ class TextLinkPreviewViewCell: UICollectionViewCell {
             self.viewLeadingConstraint.constant = 0
             self.viewTrailingConstraint.constant = 50
         }
-        
+        self.dateLabel.text = "\(userName) at \(date)"
         self.textLabel.text = fullText
       
         

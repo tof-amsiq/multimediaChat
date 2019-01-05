@@ -160,8 +160,9 @@ class KeyboardTabView: UIView, GifPickerDelegate, AudioPickerDelegate {
             }
             
             
-            let newFileMessage = Message(messageType: .file, isSender: true, time: Date(), nameSender: "Tobias", filePath: file.displayName, messageText: nil)!
-//            self.addNewMessageToCollectionView(newMessage: newFileMessage)
+            let newFileMessage = Message(messageType: .file, isSender: true, time: "", nameSender: "Tobias", filePath: file.displayName, messageText: nil)
+            
+            //            self.addNewMessageToCollectionView(newMessage: newFileMessage)
             currentController?.dismiss(animated: true)
 //
 //

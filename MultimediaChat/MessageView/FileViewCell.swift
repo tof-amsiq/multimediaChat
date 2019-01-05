@@ -16,6 +16,7 @@ class FileViewCell: UICollectionViewCell {
     @IBOutlet weak var viewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var imagView: UIImageView!
     
+    @IBOutlet weak var dateLabel: UILabel!
     public var path: String?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,8 @@ class FileViewCell: UICollectionViewCell {
     }
 
     
-    func setup(isSender: Bool, nameOfFile: String?, path: String, isSent: Bool?) {
+    func setup(isSender: Bool, nameOfFile: String?, path: String, isSent: Bool?, userName: String, date: String) {
+        self.dateLabel.text = "\(userName) at \(date)"
         self.path = path
         let _nameOfFile = nameOfFile ?? ""
         if let _isSent = isSent, _isSent == false {

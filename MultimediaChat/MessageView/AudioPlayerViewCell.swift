@@ -20,6 +20,7 @@ class AudioPlayerViewCell:UICollectionViewCell {
     var isPlaying = false
     private var audioURL: String?
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
   
@@ -39,10 +40,11 @@ class AudioPlayerViewCell:UICollectionViewCell {
         
     }
     
-    func setup(url: String, isSent: Bool?) {
+    func setup(url: String, isSent: Bool?, userName: String, date: String) {
         if let _isSent = isSent, _isSent == false {
             self.alpha = 0.1
         }
+        self.dateLabel.text = "\(userName) at \(date)"
         self.audioURL = url
         self.play()
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(sender:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer?.currentItem)

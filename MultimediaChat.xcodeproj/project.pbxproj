@@ -15,7 +15,7 @@
 		8120DA0C2199A7D3001B7B7F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA0B2199A7D3001B7B7F /* ChatView.swift */; };
 		8120DA0E2199A82B001B7B7F /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA0D2199A82B001B7B7F /* ChatView.xib */; };
 		8120DA102199AC4B001B7B7F /* KeyboardTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */; };
-		8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA112199B0FF001B7B7F /* TestViewController.swift */; };
+		8120DA122199B0FF001B7B7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA112199B0FF001B7B7F /* MainViewController.swift */; };
 		8120DA182199B4A2001B7B7F /* extensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA172199B4A2001B7B7F /* extensionUIView.swift */; };
 		8120DA1A2199BDF5001B7B7F /* KeyboardTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */; };
 		8120DA1E219C5F06001B7B7F /* GifKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */; };
@@ -65,6 +65,8 @@
 		81DD12C121CBD9FB0061005B /* MultimediaChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD12C021CBD9FB0061005B /* MultimediaChatTests.swift */; };
 		81DD12D121CBE3090061005B /* MultimediaChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DD12D021CBE3090061005B /* MultimediaChatUITests.swift */; };
 		81E56F5E2189CF3200F8E263 /* example1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 81E56F5D2189CF3200F8E263 /* example1.mp3 */; };
+		81F8414221DE1A12003179EC /* MultimediaMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8414121DE1A12003179EC /* MultimediaMessage.swift */; };
+		81F8414621E0EB6B003179EC /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F8414521E0EB6B003179EC /* ExtensionDate.swift */; };
 		C389E611EBAAF068944D5BE9 /* Pods_MultimediaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559D551000469F9C5EE1E15C /* Pods_MultimediaChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +98,7 @@
 		8120DA0B2199A7D3001B7B7F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		8120DA0D2199A82B001B7B7F /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		8120DA0F2199AC4B001B7B7F /* KeyboardTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTabView.swift; sourceTree = "<group>"; };
-		8120DA112199B0FF001B7B7F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8120DA112199B0FF001B7B7F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8120DA172199B4A2001B7B7F /* extensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIView.swift; sourceTree = "<group>"; };
 		8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardTabView.xib; sourceTree = "<group>"; };
 		8120DA1D219C5F06001B7B7F /* GifKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GifKeyboardView.swift; path = ../GIFViewController/GifKeyboardView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,8 @@
 		81DD12D021CBE3090061005B /* MultimediaChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimediaChatUITests.swift; sourceTree = "<group>"; };
 		81DD12D221CBE3090061005B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81E56F5D2189CF3200F8E263 /* example1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = example1.mp3; path = ../../../../Downloads/example1.mp3; sourceTree = "<group>"; };
+		81F8414121DE1A12003179EC /* MultimediaMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimediaMessage.swift; sourceTree = "<group>"; };
+		81F8414521E0EB6B003179EC /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		C32189C5A3D4678F6B4D23DF /* Pods-MultimediaChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.release.xcconfig"; sourceTree = "<group>"; };
 		E0C7D557DF0685500B7A8258 /* Pods-CollectionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionView/Pods-CollectionView.debug.xcconfig"; sourceTree = "<group>"; };
 		F90B72CB4731C9516C463215 /* Pods-MultimediaChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultimediaChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MultimediaChat/Pods-MultimediaChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				8120DA192199BDF5001B7B7F /* KeyboardTabView.xib */,
 				8120DA3821A307A5001B7B7F /* ExtensionCALayer.swift */,
 				8120DA3A21A30DD2001B7B7F /* ExtensionLabel.swift */,
+				81F8414521E0EB6B003179EC /* ExtensionDate.swift */,
 				8120DA3C21A474DE001B7B7F /* ExtensionUIImageView.swift */,
 			);
 			path = ChatViewlibrary;
@@ -275,7 +280,6 @@
 			children = (
 				8120DA0A2199A386001B7B7F /* ChatViewlibrary */,
 				81C1F37F216E62B8007728C0 /* MessageView */,
-				812363C1216E18BB00D224B8 /* SocketController */,
 				81D689D92164C07E00F569EE /* CameraController */,
 				81D689D02163CEF900F569EE /* AudioRecorder */,
 				81D689CD216221C900F569EE /* DataController */,
@@ -285,15 +289,13 @@
 				81AE8B6D214A5E56009F8524 /* AppDelegate.swift */,
 				8132AC8D21946D3D00A97A17 /* Views */,
 				81AE8B6F214A5E56009F8524 /* ViewController.swift */,
-				8152DF31217DFCE600E68F45 /* RxExtension.swift */,
+				81F8414021DE1936003179EC /* DemoApplication */,
 				81D689CB2160D31800F569EE /* Main.storyboard */,
 				81AE8B74214A5E58009F8524 /* Assets.xcassets */,
 				8152DF252178E10E00E68F45 /* example.mp3 */,
 				81E56F5D2189CF3200F8E263 /* example1.mp3 */,
 				81AE8B76214A5E58009F8524 /* LaunchScreen.storyboard */,
-				8120DA112199B0FF001B7B7F /* TestViewController.swift */,
 				81AE8B79214A5E58009F8524 /* Info.plist */,
-				8152DF34217F244B00E68F45 /* LoginViewController.swift */,
 				814C75C8214BAB43007C07E8 /* ReceiverViewCell.swift */,
 				814C75C9214BAB43007C07E8 /* ReceiverViewCell.xib */,
 				81095338215A68F2009291C6 /* imageExtension.swift */,
@@ -373,6 +375,18 @@
 				81DD12D221CBE3090061005B /* Info.plist */,
 			);
 			path = MultimediaChatUITests;
+			sourceTree = "<group>";
+		};
+		81F8414021DE1936003179EC /* DemoApplication */ = {
+			isa = PBXGroup;
+			children = (
+				812363C1216E18BB00D224B8 /* SocketController */,
+				8120DA112199B0FF001B7B7F /* MainViewController.swift */,
+				8152DF34217F244B00E68F45 /* LoginViewController.swift */,
+				8152DF31217DFCE600E68F45 /* RxExtension.swift */,
+				81F8414121DE1A12003179EC /* MultimediaMessage.swift */,
+			);
+			path = DemoApplication;
 			sourceTree = "<group>";
 		};
 		C1B91A85E2B38684FA7581A9 /* Frameworks */ = {
@@ -583,7 +597,10 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke-FLAnimatedImage-Plugin/NukeFLAnimatedImagePlugin.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/ReadMoreTextView/ReadMoreTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -606,7 +623,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NukeFLAnimatedImagePlugin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadMoreTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
@@ -645,15 +665,17 @@
 				81060834215B95060073E3DB /* GifCell.swift in Sources */,
 				814C75CD214BB5A7007C07E8 /* Message.swift in Sources */,
 				81DD127821BEBBC90061005B /* DownloadController.swift in Sources */,
-				8120DA122199B0FF001B7B7F /* TestViewController.swift in Sources */,
+				8120DA122199B0FF001B7B7F /* MainViewController.swift in Sources */,
 				8120DA3921A307A5001B7B7F /* ExtensionCALayer.swift in Sources */,
 				81AE8B6E214A5E56009F8524 /* AppDelegate.swift in Sources */,
 				8152DF35217F244C00E68F45 /* LoginViewController.swift in Sources */,
 				81D689CF2162224500F569EE /* Datamodel.swift in Sources */,
 				81C1F382216E6721007728C0 /* ImageViewCell.swift in Sources */,
 				8152DF232178D0AE00E68F45 /* AudioPlayerViewCell.swift in Sources */,
+				81F8414621E0EB6B003179EC /* ExtensionDate.swift in Sources */,
 				81060830215B90B10073E3DB /* GifView.swift in Sources */,
 				812363C3216E1B0300D224B8 /* SocketIOManager.swift in Sources */,
+				81F8414221DE1A12003179EC /* MultimediaMessage.swift in Sources */,
 				81095339215A68F2009291C6 /* imageExtension.swift in Sources */,
 				8152DF1A217770ED00E68F45 /* CoverA.swift in Sources */,
 				8120DA102199AC4B001B7B7F /* KeyboardTabView.swift in Sources */,

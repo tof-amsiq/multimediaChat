@@ -37,7 +37,7 @@ class TextViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(text: String, isSender: Bool, date: Date, isSent: Bool?) {
+    func setup(text: String, isSender: Bool, date: String, isSent: Bool?, userName: String) {
        var constantSize: CGFloat = 0.0
         if let _isSent = isSent, _isSent == false {
             self.containerTextView.alpha = 0.1
@@ -48,10 +48,7 @@ class TextViewCell: UICollectionViewCell {
         } else {
             constantSize = 50
         }
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-       let date = dateFormatterGet.string(from: date)
-        self.dateLabel.text = date
+        self.dateLabel.text = "\(userName) at \(date)"
         if isSender {
             self.textLeadingConstraint.constant = constantSize
             self.textTrailingConstraint.constant = 0

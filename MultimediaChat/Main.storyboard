@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="486" y="-527"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="coU-jb-bCH">
             <objects>
-                <viewController storyboardIdentifier="testViewController" id="TQf-gM-eLQ" customClass="TestViewController" customModule="MultimediaChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="TQf-gM-eLQ" customClass="MainViewController" customModule="MultimediaChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s82-u7-EUd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +272,7 @@
                         <viewLayoutGuide key="safeArea" id="UyQ-8s-LRf"/>
                     </view>
                     <connections>
-                        <outlet property="test" destination="Ili-kP-PZp" id="hhD-LY-zTk"/>
+                        <outlet property="multimediaChatView" destination="Ili-kP-PZp" id="OfT-D1-DG9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S35-m7-AHa" userLabel="First Responder" sceneMemberID="firstResponder"/>

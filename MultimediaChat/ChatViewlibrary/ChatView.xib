@@ -31,7 +31,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-Pi-WIT">
                     <rect key="frame" x="16" y="20" width="343" height="587"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QwB-3k-d2b">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -52,11 +52,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mp-1d-142">
                     <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-Ww-EW5">
-                            <rect key="frame" x="325" y="3" width="38" height="32"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="Send">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-Ww-EW5">
+                            <rect key="frame" x="328" y="10" width="35" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="ufc-EK-aYW"/>
+                                <constraint firstAttribute="height" constant="30" id="wZy-Gy-6aG"/>
+                            </constraints>
+                            <state key="normal" title="Send" image="sendBTN">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -64,20 +66,18 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qyD-h4-5cW">
-                            <rect key="frame" x="0.0" y="0.0" width="325" height="40"/>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="8" y="0.0" width="320" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                     </subviews>
-                    <color key="backgroundColor" red="0.33286723499999998" green="0.73370709199999995" blue="0.22260315059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="6Up-gE-rUJ"/>
                         <constraint firstItem="qyD-h4-5cW" firstAttribute="top" secondItem="7mp-1d-142" secondAttribute="top" id="AgE-0l-CDe"/>
                         <constraint firstAttribute="trailing" secondItem="jlw-Ww-EW5" secondAttribute="trailing" constant="12" id="Agj-EW-Wvn"/>
                         <constraint firstAttribute="bottom" secondItem="qyD-h4-5cW" secondAttribute="bottom" id="Dze-iJ-VcO"/>
-                        <constraint firstAttribute="bottom" secondItem="jlw-Ww-EW5" secondAttribute="bottom" constant="5" id="l2m-r1-O28"/>
-                        <constraint firstItem="qyD-h4-5cW" firstAttribute="leading" secondItem="7mp-1d-142" secondAttribute="leading" id="lxY-Cg-EDA"/>
+                        <constraint firstAttribute="bottom" secondItem="jlw-Ww-EW5" secondAttribute="bottom" id="l2m-r1-O28"/>
+                        <constraint firstItem="qyD-h4-5cW" firstAttribute="leading" secondItem="7mp-1d-142" secondAttribute="leading" constant="8" id="lxY-Cg-EDA"/>
                         <constraint firstItem="jlw-Ww-EW5" firstAttribute="leading" secondItem="qyD-h4-5cW" secondAttribute="trailing" id="uDO-OE-gqQ"/>
                     </constraints>
                 </view>
@@ -128,4 +128,7 @@
             <point key="canvasLocation" x="-476" y="315"/>
         </view>
     </objects>
+    <resources>
+        <image name="sendBTN" width="144" height="144"/>
+    </resources>
 </document>

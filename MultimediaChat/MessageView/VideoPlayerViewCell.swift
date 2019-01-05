@@ -35,7 +35,7 @@ class VideoPlayerViewCell: UICollectionViewCell {
         
     }
     
-    func setup(urlString: String, isSent: Bool?) {
+    func setup(urlString: String, isSent: Bool?, userName: String, date: String) {
 
         if let _isSent = isSent, _isSent == false {
             self.videoPlayerView.alpha = 0.1

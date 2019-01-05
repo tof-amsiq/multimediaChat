@@ -9,6 +9,8 @@
 import UIKit
 import NVActivityIndicatorView
 import QuickLook
+import Reachability
+import BRYXBanner
 
 protocol typningMessageDelegate: class {
     func getTypningStatus(isEditning: Bool)
@@ -16,7 +18,7 @@ protocol typningMessageDelegate: class {
 
 protocol MessageDelegate: class {
     func userSendNewMessage(text: String, user: String)
-    func newMessagdeAdded(message: Message)
+    func newMessageAdded(message: Message)
 }
 
 class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, newMessageDelegate, keyboardIconTappedDelegate, GifPickerDelegate, AudioPickerDelegate, QLPreviewControllerDataSource {
@@ -93,13 +95,17 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
  
     func newMessage(messageType: messageType, filePath: String, fileName: String?) {
-        if let message = self.createMessage(user: self.userName, date: Date(), type: messageType, filePath: filePath, messageText: nil, fileName: fileName) {
+        let today = Date()
+        let stringDate = today.toString()
+        
+        
+        if let message = self.createMessage(user: self.userName, date: stringDate, type: messageType, filePath: filePath, messageText: nil, fileName: fileName) {
             self.addNewMessageToCollectionView(newMessage: message)
-            self.messageDelegate?.newMessagdeAdded(message: message)
+            self.messageDelegate?.newMessageAdded(message: message)
         }
     }
     
-    func createMessage(user: String, date: Date, type: messageType, filePath: String,  messageText: String?, fileName: String?) -> Message?{
+    func createMessage(user: String, date: String, type: messageType, filePath: String,  messageText: String?, fileName: String?) -> Message?{
         
         let isSender = user == self.userName
         
@@ -112,6 +118,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
 
     @IBOutlet weak var indicatorView: NVActivityIndicatorView!
     
+    
     @IBOutlet var ContentView: UIView!
     
     @IBOutlet weak var inputTextField: UITextView!
@@ -120,7 +127,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     @IBOutlet weak var messageInputContainerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var messageArray: [Message] = []
+   private var messageArray: [Message] = []
     
     public var userName: String = ""
     
@@ -133,6 +140,9 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     weak var delegate: typningMessageDelegate?
     
     weak var messageDelegate: MessageDelegate?
+    
+    let reachability = Reachability()!
+    
 
     
     override init(frame: CGRect) {
@@ -153,6 +163,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func setup(){
+        self.indicatorView.type = .ballPulse
+        self.indicatorView.color = .red
         let size = CGSize(width: self.inputTextField.frame.width, height: .infinity)
         let estimatedSize = self.inputTextField.sizeThatFits(size)
         self.estamitedInputTextHeight = estimatedSize.height
@@ -160,12 +172,18 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         
         self.inputTextField.delegate = self
         self.inputTextField.isScrollEnabled = false
+        
+        self.inputTextField.layer.cornerRadius = 5
+        self.inputTextField.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        self.inputTextField.layer.borderWidth = 1
+        self.inputTextField.clipsToBounds = true
+        
         self.collectionView?.isPrefetchingEnabled = false
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.keyBoardTabView.messageDelegate = self
         self.keyBoardTabView.keyboardDelegate = self
-        inputTextField.inputAccessoryView = self.keyBoardTabView
+        self.inputTextField.inputAccessoryView = self.keyBoardTabView
         
         self.collectionView.register(UINib.init(nibName: "ImageViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageViewCell")
         self.collectionView.register(UINib.init(nibName: "TextViewCell", bundle: nil), forCellWithReuseIdentifier: "TextViewCell")
@@ -180,7 +198,26 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
 //        self.addGestureRecognizer(tap)
-
+        
+        //declare this property where it won't go out of scope relative to your listener
+        
+       
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        let banner = Banner(title: "No Internet", backgroundColor: UIColor(red:211/255.0, green:21/255.0, blue:40/255.0, alpha:1.000))
+        banner.dismissesOnTap = false
+        
+        self.reachability.whenUnreachable = { _ in
+            banner.show()
+        }
+        
+        self.reachability.whenReachable = { _ in
+            banner.dismiss()
+        }
+        
         
     }
     
@@ -218,7 +255,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
                 self.previewController.dataSource = self
                 if isWebURL {
                     
-                    Downloader.testLoad(url: path) { (url) in
+                    DownloadController.load(url: path) { (url) in
                         DispatchQueue.main.async {
                         self.quickLookLink = url
                         if let naviagtionController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
@@ -265,16 +302,16 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let messageType = self.messageArray[indexPath.row].type
         let messagePath = self.messageArray[indexPath.row].linkToFile
-//        let messageImage = self.messageArray[indexPath.row].image
         let isSender = self.messageArray[indexPath.row].sender
         let date = self.messageArray[indexPath.row].timestamp
         let isSent = self.messageArray[indexPath.row].isSent
+        let userName = self.messageArray[indexPath.row].nameOfSender
        
         var cell = UICollectionViewCell()
         switch messageType {
         case .audio:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AudioPlayerViewCell", for: indexPath) as? AudioPlayerViewCell  {
-                menuCell.setup(url: messagePath, isSent: isSent)
+                menuCell.setup(url: messagePath, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -283,7 +320,8 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .text:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextViewCell", for: indexPath) as? TextViewCell  {
                 let messageText = self.messageArray[indexPath.row].text
-                menuCell.setup(text: messageText!, isSender: isSender, date: date, isSent: isSent)
+                
+                menuCell.setup(text: messageText!, isSender: isSender, date: date, isSent: isSent, userName: userName)
                 menuCell.textLabel.sizeToFit()
                 cell = menuCell
             } else {
@@ -291,7 +329,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             }
         case .gif:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -299,7 +337,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .photo:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageViewCell", for: indexPath) as? ImageViewCell  {
-                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent)
+                menuCell.setup(type: messageType, path: messagePath, isSender: isSender, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -307,7 +345,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             break
         case .video:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoPlayerViewCell", for: indexPath) as? VideoPlayerViewCell  {
-                menuCell.setup(urlString: messagePath, isSent: isSent)
+                menuCell.setup(urlString: messagePath, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -317,7 +355,7 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             let nameOfFile = self.messageArray[indexPath.row].fileName
             let path = self.messageArray[indexPath.row].linkToFile
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FileViewCell", for: indexPath) as? FileViewCell  {
-                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: path, isSent: isSent)
+                menuCell.setup(isSender: isSender, nameOfFile: nameOfFile, path: path, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             } else {
                 return UICollectionViewCell()
@@ -326,9 +364,11 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .linkPreView:
             if let menuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextLinkPreviewViewCell", for: indexPath) as? TextLinkPreviewViewCell  {
                 let messageText = self.messageArray[indexPath.row].text ?? ""
-                menuCell.setup(url: messagePath, fullText: messageText, isSender: isSender, isSent: isSent)
+                menuCell.setup(url: messagePath, fullText: messageText, isSender: isSender, isSent: isSent, userName: userName, date: date)
                 cell = menuCell
             }
+        case .unknow:
+            break
         }
         return cell
     }
@@ -370,10 +410,12 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         case .video:
             return CGSize(width: self.frame.width - 50, height: 250)
         case .audio:
-            return CGSize(width: self.frame.width - 50, height: 65)
+            return CGSize(width: self.frame.width - 50, height: 75)
         case .file:
             return CGSize(width: self.frame.width - 50, height: 60)
     
+        case .unknow:
+            break
             
             
         
@@ -404,12 +446,12 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             }
         }
     }
-   
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
         delegate?.getTypningStatus(isEditning: true)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         delegate?.getTypningStatus(isEditning: false)
     }
     
@@ -432,19 +474,25 @@ class ChatView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
             URL = String(url)
             shouldShowLinkView = self.verifyUrl(urlString: String(url))
         }
-        let newMessage : Message
+        let today = Date()
+        let stringDate = today.toString()
+        var newMessage : Message? = Message(messageType: .unknow, isSender: false, time: stringDate, nameSender: "", filePath: "", messageText: "")
         if shouldShowLinkView {
-           let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true, time: Date(), nameSender: self.userName, filePath: URL, messageText: messageText)!
+            if let newlinkPreViewMessage = Message(messageType: .linkPreView, isSender: true,time: stringDate, nameSender: self.userName, filePath: URL, messageText: messageText){
             self.addNewMessageToCollectionView(newMessage: newlinkPreViewMessage)
             newMessage = newlinkPreViewMessage
+            }
         } else {
-             let newTextMessage = Message(messageType: .text, isSender: true, time: Date(), nameSender: self.userName, filePath: "", messageText: messageText)!
-             self.addNewMessageToCollectionView(newMessage: newTextMessage)
-            newMessage = newTextMessage
+            if let newTextMessage = Message(messageType: .text, isSender: true, time: stringDate, nameSender: self.userName, filePath: "", messageText: messageText) {
+                self.addNewMessageToCollectionView(newMessage: newTextMessage)
+                newMessage = newTextMessage
+            }
+
         }
-        
         self.messageDelegate?.userSendNewMessage(text: messageText, user: self.userName)
-        self.messageDelegate?.newMessagdeAdded(message: newMessage)
+        if let _message = newMessage {
+            self.messageDelegate?.newMessageAdded(message: _message)
+        }
        
         
         self.dismissKeyboard()

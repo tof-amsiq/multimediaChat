@@ -65,6 +65,9 @@ class ReceiverViewCell: UICollectionViewCell {
             
         case .linkPreView:
             break
+        case .unknow:
+            break
+       
         }
         imageView.backgroundColor = .black
         if type == .file {

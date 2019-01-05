@@ -47,7 +47,7 @@ class ImageViewCell: UICollectionViewCell {
 //    }
     
     
-    func setup(type: messageType, path: String, isSender: Bool, isSent: Bool?) {
+    func setup(type: messageType, path: String, isSender: Bool, isSent: Bool?, userName: String, date: String) {
         var constantSize: CGFloat = 0.0
         if let _isSent = isSent, _isSent == false {
             self.imageView.alpha = 0.1
@@ -59,7 +59,7 @@ class ImageViewCell: UICollectionViewCell {
             constantSize = 50
         }
         
-        self.dateLabel.text = "\(Date())"
+        self.dateLabel.text = "\(userName) at  \(date)"
         if isSender {
             self.viewLeadingConstraint.constant = constantSize
             self.setupView(withColor: UIColor.blue.cgColor)
@@ -68,17 +68,11 @@ class ImageViewCell: UICollectionViewCell {
             self.setupView(withColor: UIColor.green.cgColor)
         }
         if type == .gif {
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(videoPlayer(tapGestureRecognizer:)))
-//            self.imageView.isUserInteractionEnabled = true
-//            self.imageView.addGestureRecognizer(tapGestureRecognizer)
-//
             if let url = URL(string: path ) {
                 Nuke.loadImage(
                     with: url,
                     options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)),
-                    into: imageView,
-                    completion: { [weak self] _, _ in
-                })
+                    into: imageView)
                 
                
             }
@@ -90,9 +84,7 @@ class ImageViewCell: UICollectionViewCell {
                     Nuke.loadImage(
                         with: url,
                         options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)),
-                        into: self.imageView,
-                        completion: { [weak self] _, _ in
-                    })
+                        into: self.imageView)
                 }
                 
             } else if let decodedData = Data(base64Encoded: path, options: .ignoreUnknownCharacters) {
@@ -104,41 +96,6 @@ class ImageViewCell: UICollectionViewCell {
                 let image = UIImage(contentsOfFile: path)
                 self.imageView.image = image
             }
-            
-            
-            
-//            let dataDecoded : Data = Data(base64Encoded: path, options: .ignoreUnknownCharacters)!
-//            let decodedimage = UIImage(data: dataDecoded)
-//            do {
-//                let imageData = try Data(contentsOf: URL(string: path)!)
-//                self.imageView.image = UIImage(data: imageData)
-//            } catch {
-//                print("Error loading image : \(error)")
-//            }
-            
-//            if let url = URL(string: path) {
-//
-////                  let scaleImage = self.resizeImageWithAspect(image: image, scaledToMaxWidth: 250, maxHeight: 300)
-//                Nuke.loadImage(
-//                    with: url,
-//                    options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33)),
-//                    into: self.imageView,
-//                    completion: { [weak self] _, _ in
-//                })
-//
-//            }
-          
-//
-//            imageView.image = scaleImage
-        
-            
-//            if FileManager.default.fileExists(atPath: path) {
-//                let url = URL(string: path)!
-//                let data = try? Data(contentsOf: url)
-//                imageView.image = UIImage(data: data!)
-//            } else {
-//                imageView.image = image!
-//            }
         }
         
     }

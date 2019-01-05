@@ -16,20 +16,21 @@ enum messageType: String, RawRepresentable {
     case audio
     case file
     case linkPreView
+    case unknow
 }
 
 class Message: NSObject, NSCopying {
     
     public var type: messageType
     public let sender: Bool
-    public var timestamp: Date
+    public var timestamp: String
     public var nameOfSender: String
     public var linkToFile: String
     public var text: String?
     public var isSent: Bool?
     public var fileName: String?
     
-    init?(messageType: messageType, isSender: Bool, time: Date, nameSender: String, filePath: String, messageText: String?, fileName:String? = "") {
+    init?(messageType: messageType, isSender: Bool, time: String, nameSender: String, filePath: String, messageText: String?, fileName:String? = "") {
         
         self.type = messageType
         self.sender = isSender

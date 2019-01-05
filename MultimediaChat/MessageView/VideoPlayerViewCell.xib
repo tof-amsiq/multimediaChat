@@ -23,8 +23,8 @@
                         <rect key="frame" x="8" y="8" width="224" height="113"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="play_button" translatesAutoresizingMaskIntoConstraints="NO" id="hcG-N8-l6O">
-                        <rect key="frame" x="70" y="23" width="99" height="83"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_button" translatesAutoresizingMaskIntoConstraints="NO" id="hcG-N8-l6O">
+                        <rect key="frame" x="95" y="39.5" width="50" height="50"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>

@@ -6,13 +6,9 @@
 //  Copyright © 2018 Tobias Frantsen. All rights reserved.
 //
 import UIKit
-class Downloader {
-    class func load(url: URL, to localUrl: URL, completion: @escaping () -> ()) {
-       
-}
-
-
-    class func testLoad(url: String, completion: @escaping (_ path: URL?) -> ()) {
+class DownloadController {
+    
+    class func load(url: String, completion: @escaping (_ path: URL?) -> ()) {
         // Create destination URL
         let documentsUrl:URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL!
         
@@ -26,13 +22,6 @@ class Downloader {
             
         }
         
-        
-//        let date = Date()
-//        let dateFormatterGet = DateFormatter()
-//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//
-//        let result = dateFormatterGet.string(from: date)
-//
         let destinationFileUrl = documentsUrl.appendingPathComponent("downloadedFile_\(_fileName).\(fileType)")
         
        

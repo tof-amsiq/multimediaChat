@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,20 +13,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AudioPlayerViewCell" customModule="MultimediaChat" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="257" height="59"/>
+            <rect key="frame" x="0.0" y="0.0" width="257" height="96"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="257" height="59"/>
+                <rect key="frame" x="0.0" y="0.0" width="257" height="96"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yCK-gq-SSz">
-                        <rect key="frame" x="20" y="14.5" width="217" height="30"/>
+                        <rect key="frame" x="20" y="33" width="217" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Yul-l3-YlX"/>
                         </constraints>
                     </progressView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-j0-oWC">
-                        <rect key="frame" x="32" y="19.5" width="20" height="20"/>
+                        <rect key="frame" x="32" y="38" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="fRI-iw-geQ"/>
                             <constraint firstAttribute="width" constant="20" id="sgD-bI-mxM"/>
@@ -37,7 +37,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-Fc-rcQ">
-                        <rect key="frame" x="229" y="19.5" width="0.0" height="20"/>
+                        <rect key="frame" x="229" y="38" width="0.0" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="6qU-Rf-u6F"/>
                         </constraints>
@@ -45,12 +45,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-dq-rNa">
+                        <rect key="frame" x="0.0" y="7" width="257" height="16"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/ 10 KL. 10:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni7-5s-hP7">
+                                <rect key="frame" x="0.0" y="2.5" width="257" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ni7-5s-hP7" secondAttribute="bottom" id="9rU-bh-WVI"/>
+                            <constraint firstItem="ni7-5s-hP7" firstAttribute="leading" secondItem="ElU-dq-rNa" secondAttribute="leading" id="ZO0-J8-4HJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ni7-5s-hP7" secondAttribute="trailing" id="a53-Qo-hfJ"/>
+                            <constraint firstAttribute="height" constant="16" id="yLh-Si-wd3"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="yCK-gq-SSz" firstAttribute="top" secondItem="ElU-dq-rNa" secondAttribute="bottom" constant="10" id="GgA-jt-zcc"/>
+                <constraint firstItem="ElU-dq-rNa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Gy4-qw-7wH"/>
                 <constraint firstItem="Mch-Fc-rcQ" firstAttribute="centerY" secondItem="yCK-gq-SSz" secondAttribute="centerY" id="HPC-5t-7Mf"/>
                 <constraint firstItem="LTJ-j0-oWC" firstAttribute="centerY" secondItem="yCK-gq-SSz" secondAttribute="centerY" id="MzF-CW-AHj"/>
                 <constraint firstItem="yCK-gq-SSz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="NTx-CA-Mrq"/>
+                <constraint firstAttribute="trailing" secondItem="ElU-dq-rNa" secondAttribute="trailing" id="QJD-5Q-6gl"/>
                 <constraint firstAttribute="trailing" secondItem="yCK-gq-SSz" secondAttribute="trailing" constant="20" id="aru-6Q-Lyb"/>
                 <constraint firstItem="yCK-gq-SSz" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ayy-Gd-fa8"/>
                 <constraint firstItem="yCK-gq-SSz" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="b4P-rX-0J3"/>
@@ -58,15 +78,16 @@
                 <constraint firstItem="Mch-Fc-rcQ" firstAttribute="trailing" secondItem="yCK-gq-SSz" secondAttribute="trailing" constant="-8" id="x9g-wH-ytZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="257" height="59"/>
+            <size key="customSize" width="257" height="96"/>
             <connections>
+                <outlet property="dateLabel" destination="ni7-5s-hP7" id="BKr-fR-xKU"/>
                 <outlet property="leadingConstraint" destination="NTx-CA-Mrq" id="MSv-Pv-C1n"/>
                 <outlet property="playButton" destination="LTJ-j0-oWC" id="Wvh-gT-ga4"/>
                 <outlet property="progressView" destination="yCK-gq-SSz" id="eOF-94-lBX"/>
                 <outlet property="timeLabel" destination="Mch-Fc-rcQ" id="7nn-im-rql"/>
                 <outlet property="trailingConstraint" destination="aru-6Q-Lyb" id="Kdw-Q7-Ew4"/>
             </connections>
-            <point key="canvasLocation" x="303.19999999999999" y="145.27736131934034"/>
+            <point key="canvasLocation" x="303.19999999999999" y="128.63568215892056"/>
         </collectionViewCell>
     </objects>
     <resources>
